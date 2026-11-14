@@ -16,7 +16,13 @@ BASE = {"binance": "https://fapi.binance.com", "bybit": "https://api.bybit.com",
 # Block obvious traditional-asset derivatives; this is NOT a verified crypto-only registry.
 EXCLUDE = ("XAU", "XAG", "OIL", "GOLD", "SILVER", "EUR", "GBP", "JPY",
            "USOIL", "UKOIL", "SOXS", "QQQ", "SPY", "SHELL", "STOCK")
-EXACT_EXCLUDE = {"CL", "GC", "SI", "NG", "ES", "NQ", "YM", "DXY", "SPX"}
+EXACT_EXCLUDE = {"CL", "GC", "SI", "NG", "ES", "NQ", "YM", "DXY", "SPX",
+                 "NVDA", "NVIDIA", "MU", "TSLA", "AAPL", "MSFT", "GOOGL",
+                 "GOOG", "AMZN", "META", "NFLX", "AMD", "INTC", "COIN",
+                 "MSTR", "QQQ", "SPY", "SHELL", "SOXS", "SOXL", "SKHYNIX",
+                 "BABA", "PLTR", "HOOD", "XOM", "USO", "SLV", "GLD"}
+# Symbol exclusions are only a temporary safeguard; a verified asset-type
+# catalog is needed before labeling the universe as strictly crypto.
 
 def number(value, default=np.nan):
     try:
@@ -263,7 +269,8 @@ with st.sidebar:
 st.info("Bộ lọc tích lũy và chuẩn bị breakout trong 4 giờ: dùng nến 1H đã đóng, "
         "Bollinger squeeze, biên giá, tăng tốc volume, RSI và khoảng cách kháng cự. "
         "Đây là HEURISTIC chưa backtest, KHÔNG phải xác suất pump, không đo Spot CVD/OI.")
-st.caption("ƯU TIÊN 4H = setup kỹ thuật phù hợp; không đảm bảo giá sẽ tăng trong 4 giờ.")
+st.caption("ƯU TIÊN 4H = setup kỹ thuật phù hợp, không đảm bảo giá tăng. "
+           "Bộ lọc tài sản truyền thống theo ticker hiện chưa đầy đủ, không phải xác minh loại tài sản.")
 if st.button("🔄 QUÉT NGAY", type="primary"):
     if not selected:
         st.warning("Hãy chọn ít nhất một sàn.")
@@ -292,6 +299,7 @@ if "frame" in st.session_state:
     if only_setups and not filtered.empty:
         filtered = filtered[filtered["trạng thái 4H"].isin(["ƯU TIÊN 4H", "THEO DÕI TÍCH LŨY"])]
     st.subheader("Ứng viên có khả năng chuẩn bị breakout 4 giờ")
+    st.caption("Bảng chỉ hiện khi đủ cả cấu trúc tích lũy, volume tăng, giá chưa tăng nóng và gần kháng cự.")
     if frame.empty:
         st.warning("Không thu được dữ liệu. Xem trạng thái API ở trên.")
     else:
@@ -300,6 +308,12 @@ if "frame" in st.session_state:
         st.dataframe(preferred, use_container_width=True, hide_index=True)
         if preferred.empty:
             st.caption("Chưa có ứng viên vượt đầy đủ điều kiện. Không ép tạo tín hiệu mua.")
+        st.subheader("Ứng viên tích lũy cần quan sát thêm")
+        watchlist = filtered[filtered["trạng thái 4H"] == "THEO DÕI TÍCH LŨY"]
+        if not watchlist.empty:
+            st.dataframe(watchlist, use_container_width=True, hide_index=True)
+        else:
+            st.caption("Chưa có coin đang tích lũy đủ điểm theo dõi.")
         st.subheader("Toàn bộ kết quả đã lọc")
         st.dataframe(filtered, use_container_width=True, hide_index=True)
         st.caption("Cùng một coin trên hai sàn được ghi thành hai quan sát, chưa xác nhận Spot CVD hay OI.")
