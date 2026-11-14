@@ -13,7 +13,10 @@ st.title("🔎 Pre-Pump Scanner — 4 sàn")
 st.caption("Binance • Bybit • OKX • MEXC | Rule-based, không phải AI đã huấn luyện. Chỉ dữ liệu công khai, không đặt lệnh.")
 BASE = {"binance": "https://fapi.binance.com", "bybit": "https://api.bybit.com",
         "okx": "https://www.okx.com", "mexc": "https://contract.mexc.com"}
-EXCLUDE = ("XAU", "XAG", "OIL", "USOIL", "UKOIL", "GOLD", "SILVER", "EUR", "GBP", "JPY")
+# Block obvious traditional-asset derivatives; this is NOT a verified crypto-only registry.
+EXCLUDE = ("XAU", "XAG", "OIL", "GOLD", "SILVER", "EUR", "GBP", "JPY",
+           "USOIL", "UKOIL", "SOXS", "QQQ", "SPY", "SHELL", "STOCK")
+EXACT_EXCLUDE = {"CL", "GC", "SI", "NG", "ES", "NQ", "YM", "DXY", "SPX"}
 
 def number(value, default=np.nan):
     try:
@@ -25,6 +28,10 @@ def number(value, default=np.nan):
 def api(ex, path, params=None):
     r = httpx.get(BASE[ex] + path, params=params, timeout=13.0,
                   headers={"User-Agent": "PrePumpScanner/1.1"})
+    if r.status_code in (403, 451):
+        msg = ("Giới hạn khu vực/IP theo chính sách sàn (HTTP "
+               + str(r.status_code) + "). Không thể truy cập từ hosting hiện tại.")
+        raise RuntimeError(msg)
     r.raise_for_status()
     obj = r.json()
     if ex == "bybit" and obj.get("retCode", 0) != 0:
@@ -67,12 +74,19 @@ def find_markets(ex):
                 px = number(r.get("last"))
                 rows.append((sym.split("-")[0], sym, px, number(r.get("volCcy24h")) * px))
     else:
+        # MEXC ticker can include delisted, paused or non-kline-enabled contracts.
+        # Fetch contract metadata ONCE per scan, not once per symbol.
+        metadata = api(ex, "/api/v1/contract/detail")["data"]
+        allowed = {m.get("symbol") for m in metadata
+                   if m.get("state") == 0 and m.get("quoteCoin") == "USDT"
+                   and m.get("futureType", 1) == 1}
         raw = api(ex, "/api/v1/contract/ticker")["data"]
         for r in raw if isinstance(raw, list) else [raw]:
             sym = r.get("symbol", "")
-            if sym.endswith("_USDT"):
+            if sym.endswith("_USDT") and sym in allowed:
                 rows.append((sym[:-5], sym, number(r.get("lastPrice")), number(r.get("amount24"))))
-    return [r for r in rows if r[0] and not any(x in r[0].upper() for x in EXCLUDE)
+    return [r for r in rows if r[0] and r[0].upper() not in EXACT_EXCLUDE
+            and not any(x in r[0].upper() for x in EXCLUDE)
             and np.isfinite(r[2]) and r[2] > 0 and np.isfinite(r[3])]
 
 def history(ex, native):
@@ -140,6 +154,12 @@ def signal(ex, base, native, price, turnover):
         reasons.append("Gần kháng cự")
     if -2 <= change4h <= 3:
         score += 10
+    # Without meaningful relative volume do not rank squeeze-only setups as high-confidence.
+    if rvol < 0.6:
+        score = min(score, 30)
+        reasons.append("RVOL yếu: giới hạn điểm")
+    elif rvol < 1.2:
+        score = min(score, 45)
     # OI, spot CVD and funding are deliberately not scored until properly collected.
     return {"sàn": ex, "coin": f"{base}/USDT", "score /90": score,
             "giá": price, "turnover 24h USDT": turnover, "RVOL 1H": round(rvol, 2),
@@ -149,14 +169,18 @@ def signal(ex, base, native, price, turnover):
 
 def scan(selected, top, min_turnover):
     jobs, errors = [], []
+    status = {ex: "Chưa quét" for ex in selected}
     for ex in selected:
         try:
             choices = sorted((m for m in find_markets(ex) if m[3] >= min_turnover),
                              key=lambda r: r[3], reverse=True)[:top]
             jobs.extend((ex, *m) for m in choices)
+            status[ex] = f"Đã lấy danh sách ({len(choices)} hợp đồng)"
         except Exception as exc:
+            status[ex] = "KHÔNG truy cập được dữ liệu"
             errors.append(f"{ex}: không lấy được danh sách — {exc}")
     results = []
+    skipped = {ex: 0 for ex in selected}
     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
         futures = {pool.submit(signal, *j): j for j in jobs}
         for fut in concurrent.futures.as_completed(futures):
@@ -166,9 +190,17 @@ def scan(selected, top, min_turnover):
                     results.append(v)
             except Exception as exc:
                 j = futures[fut]
-                errors.append(f"{j[0]} {j[1]}: {str(exc)[:150]}")
+                # Many MEXC symbols return 510 despite appearing in its ticker.
+                # Count as unavailable rather than treating them as trading signals.
+                skipped[j[0]] += 1
+                if len([e for e in errors if e.startswith(j[0] + " ")]) < 5:
+                    errors.append(f"{j[0]} {j[1]}: {str(exc)[:150]}")
+    for ex in selected:
+        if status[ex].startswith("Đã lấy"):
+            success = sum(x["sàn"] == ex for x in results)
+            status[ex] = f"{success} có dữ liệu; {skipped[ex]} lỗi/không hỗ trợ"
     results.sort(key=lambda x: (x["score /90"], x["RVOL 1H"]), reverse=True)
-    return pd.DataFrame(results), errors
+    return pd.DataFrame(results), errors, status
 
 with st.sidebar:
     st.header("Cấu hình quét")
@@ -185,14 +217,21 @@ if st.button("🔄 QUÉT NGAY", type="primary"):
         st.warning("Hãy chọn ít nhất một sàn.")
     else:
         with st.spinner("Đang lấy dữ liệu các sàn và tính chỉ báo 1H..."):
-            frame, errors = scan(selected, top, minimum)
+            frame, errors, status = scan(selected, top, minimum)
         st.session_state["frame"] = frame
         st.session_state["errors"] = errors
+        st.session_state["status"] = status
         st.session_state["scan_time"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
 
 if "frame" in st.session_state:
     frame = st.session_state["frame"]
     st.caption("Quét gần nhất (UTC): " + st.session_state["scan_time"])
+    st.subheader("Trạng thái kết nối 4 sàn")
+    for ex, info in st.session_state.get("status", {}).items():
+        if "KHÔNG" in info:
+            st.error(f"{ex.upper()}: {info}")
+        else:
+            st.caption(f"{ex.upper()}: {info}")
     a, b, c = st.columns(3)
     a.metric("Quan sát", len(frame))
     b.metric("Coin riêng biệt", frame["coin"].nunique() if not frame.empty else 0)
@@ -204,7 +243,7 @@ if "frame" in st.session_state:
                            file_name="prepump_scanner.csv", mime="text/csv")
     errors = st.session_state.get("errors", [])
     if errors:
-        with st.expander(f"Lỗi API / thiếu dữ liệu: {len(errors)}"):
+        with st.expander(f"Ví dụ lỗi API / thiếu dữ liệu ({len(errors)} thông báo; xem số lượng theo sàn ở trên)"):
             st.code("\n".join(errors[:60]))
 else:
     st.write("Chọn cấu hình và nhấn **QUÉT NGAY** để lấy dữ liệu thực từ bốn sàn.")
