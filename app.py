@@ -133,38 +133,87 @@ def signal(ex, base, native, price, turnover):
     resistance = float(high.iloc[-25:-1].max())
     distance = (resistance / close.iloc[-1] - 1) * 100
     change4h = (close.iloc[-1] / close.iloc[-5] - 1) * 100
+    # Pre-4H breakout setup: accumulation is only a proxy from OHLCV,
+    # NOT proof of whale buying. All measurements use closed 1H candles.
+    price24 = (close.iloc[-1] / close.iloc[-25] - 1) * 100
+    recent_range = (high.iloc[-8:].max() / df["low"].iloc[-8:].min() - 1) * 100
+    # Compare last 2 complete hours against preceding 6 hours.
+    vol_accel = float(vol.iloc[-2:].mean() / max(vol.iloc[-8:-2].mean(), 1e-9))
+    price_vs_ema = (close.iloc[-1] / ema20.iloc[-1] - 1) * 100
+    # Breakout must not already be far above previous 24h resistance.
+    near_resistance = -0.5 <= distance <= 3
+    compressed = bb_pct <= 35 and recent_range <= 6
+    controlled_price = -2 <= change4h <= 3 and -5 <= price24 <= 8
+    demand_warming = rvol >= 0.8 and vol_accel >= 1.15
+    trend_ready = 45 <= rsi <= 67 and -1 <= price_vs_ema <= 3
+    overheated = (change4h > 5 or price24 > 12 or rsi > 72
+                  or distance < -2 or rvol > 8)
     score = 0
     reasons = []
-    if rvol >= 1.8:
-        score += 25
-        reasons.append("RVOL ≥1.8")
-    elif rvol >= 1.2:
-        score += 10
     if bb_pct <= 25:
         score += 20
-        reasons.append("Bollinger squeeze")
-    if close.iloc[-1] > ema20.iloc[-1]:
+        reasons.append("BB nén mạnh")
+    elif bb_pct <= 35:
+        score += 13
+        reasons.append("BB đang nén")
+    if recent_range <= 4:
         score += 10
-        reasons.append("Trên EMA20")
-    if 48 <= rsi <= 68:
-        score += 10
-        reasons.append("RSI thuận lợi")
-    if -0.5 <= distance <= 3:
+        reasons.append("Biên 8H hẹp")
+    elif recent_range <= 6:
+        score += 6
+    if -2 <= change4h <= 2 and -4 <= price24 <= 6:
         score += 15
-        reasons.append("Gần kháng cự")
-    if -2 <= change4h <= 3:
+        reasons.append("Giá chưa tăng nóng")
+    elif controlled_price:
+        score += 8
+    if 0.8 <= rvol <= 3.5 and vol_accel >= 1.15:
+        score += 20
+        reasons.append("Volume đang tăng")
+    elif 1.2 <= rvol <= 5:
         score += 10
-    # Without meaningful relative volume do not rank squeeze-only setups as high-confidence.
-    if rvol < 0.6:
-        score = min(score, 30)
-        reasons.append("RVOL yếu: giới hạn điểm")
-    elif rvol < 1.2:
-        score = min(score, 45)
-    # OI, spot CVD and funding are deliberately not scored until properly collected.
-    return {"sàn": ex, "coin": f"{base}/USDT", "score /90": score,
-            "giá": price, "turnover 24h USDT": turnover, "RVOL 1H": round(rvol, 2),
+    if near_resistance:
+        score += 15
+        reasons.append("Sát kháng cự")
+    if trend_ready:
+        score += 15
+        reasons.append("Động lượng phù hợp")
+    elif close.iloc[-1] > ema20.iloc[-1] and rsi < 70:
+        score += 7
+    if -1 <= price_vs_ema <= 2:
+        score += 5
+
+    # Hard guards: no strong early-pump label without BOTH price compression
+    # and rising turnover; avoid chasing already extended candles.
+    if not compressed:
+        score = min(score, 64)
+    if not controlled_price:
+        score = min(score, 55)
+    if rvol < 0.8 or vol_accel < 1.15:
+        score = min(score, 59)
+        reasons.append("Chưa có xác nhận volume")
+    if overheated:
+        score = min(score, 39)
+        reasons.append("Cảnh báo tăng nóng / mua đuổi")
+    score = min(score, 100)
+    if overheated:
+        phase = "ĐÃ TĂNG NÓNG"
+    elif score >= 75 and compressed and controlled_price and demand_warming and near_resistance:
+        phase = "ƯU TIÊN 4H"
+    elif score >= 55 and compressed and controlled_price:
+        phase = "THEO DÕI TÍCH LŨY"
+    else:
+        phase = "CHƯA XÁC NHẬN"
+
+    return {"sàn": ex, "coin": f"{base}/USDT", "trạng thái 4H": phase,
+            "Tích lũy 4H /100": int(score),
+            "giá": price, "turnover 24h USDT": round(turnover, 2),
+            "RVOL 1H": round(rvol, 2),
+            "volume tăng tốc": round(vol_accel, 2),
             "RSI 1H": round(rsi, 1), "BB percentile": round(bb_pct, 1),
-            "cách kháng cự %": round(distance, 2), "giá 4H %": round(change4h, 2),
+            "biên 8H %": round(recent_range, 2),
+            "cách kháng cự %": round(distance, 2),
+            "giá 4H %": round(change4h, 2),
+            "giá 24H %": round(price24, 2),
             "lý do": ", ".join(reasons)}
 
 def scan(selected, top, min_turnover):
@@ -199,7 +248,7 @@ def scan(selected, top, min_turnover):
         if status[ex].startswith("Đã lấy"):
             success = sum(x["sàn"] == ex for x in results)
             status[ex] = f"{success} có dữ liệu; {skipped[ex]} lỗi/không hỗ trợ"
-    results.sort(key=lambda x: (x["score /90"], x["RVOL 1H"]), reverse=True)
+    results.sort(key=lambda x: (x["Tích lũy 4H /100"], x["volume tăng tốc"]), reverse=True)
     return pd.DataFrame(results), errors, status
 
 with st.sidebar:
@@ -208,10 +257,13 @@ with st.sidebar:
     top = st.slider("Hợp đồng mỗi sàn", 5, 60, 15, 5)
     minimum = st.number_input("Turnover 24h tối thiểu (USDT)", min_value=0,
                               value=10_000_000, step=1_000_000)
-    threshold = st.slider("Điểm tối thiểu (/90)", 0, 90, 30, 5)
+    threshold = st.slider("Điểm tối thiểu tích lũy (/100)", 0, 100, 50, 5)
+    only_setups = st.checkbox("Chỉ hiển thị ứng viên tích lũy", value=False)
 
-st.info("Đây là bản quét thủ công theo yêu cầu, chưa dự báo xác suất pump bằng AI, "
-        "chưa đo Spot CVD hay OI 4H. Không sử dụng điểm để tự động mua bán.")
+st.info("Bộ lọc tích lũy và chuẩn bị breakout trong 4 giờ: dùng nến 1H đã đóng, "
+        "Bollinger squeeze, biên giá, tăng tốc volume, RSI và khoảng cách kháng cự. "
+        "Đây là HEURISTIC chưa backtest, KHÔNG phải xác suất pump, không đo Spot CVD/OI.")
+st.caption("ƯU TIÊN 4H = setup kỹ thuật phù hợp; không đảm bảo giá sẽ tăng trong 4 giờ.")
 if st.button("🔄 QUÉT NGAY", type="primary"):
     if not selected:
         st.warning("Hãy chọn ít nhất một sàn.")
@@ -235,9 +287,22 @@ if "frame" in st.session_state:
     a, b, c = st.columns(3)
     a.metric("Quan sát", len(frame))
     b.metric("Coin riêng biệt", frame["coin"].nunique() if not frame.empty else 0)
-    c.metric("Điểm cao nhất (/90)", int(frame["score /90"].max()) if not frame.empty else 0)
-    filtered = frame[frame["score /90"] >= threshold] if not frame.empty else frame
-    st.dataframe(filtered, use_container_width=True, hide_index=True)
+    c.metric("Điểm tích lũy cao nhất (/100)", int(frame["Tích lũy 4H /100"].max()) if not frame.empty else 0)
+    filtered = frame[frame["Tích lũy 4H /100"] >= threshold] if not frame.empty else frame
+    if only_setups and not filtered.empty:
+        filtered = filtered[filtered["trạng thái 4H"].isin(["ƯU TIÊN 4H", "THEO DÕI TÍCH LŨY"])]
+    st.subheader("Ứng viên có khả năng chuẩn bị breakout 4 giờ")
+    if frame.empty:
+        st.warning("Không thu được dữ liệu. Xem trạng thái API ở trên.")
+    else:
+        preferred = frame[frame["trạng thái 4H"] == "ƯU TIÊN 4H"]
+        st.metric("Setup ưu tiên 4H", len(preferred))
+        st.dataframe(preferred, use_container_width=True, hide_index=True)
+        if preferred.empty:
+            st.caption("Chưa có ứng viên vượt đầy đủ điều kiện. Không ép tạo tín hiệu mua.")
+        st.subheader("Toàn bộ kết quả đã lọc")
+        st.dataframe(filtered, use_container_width=True, hide_index=True)
+        st.caption("Cùng một coin trên hai sàn được ghi thành hai quan sát, chưa xác nhận Spot CVD hay OI.")
     if not frame.empty:
         st.download_button("📥 Tải CSV", filtered.to_csv(index=False).encode("utf-8-sig"),
                            file_name="prepump_scanner.csv", mime="text/csv")
