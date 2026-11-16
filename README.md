@@ -109,3 +109,12 @@ Trên Dashboard, bảng **V3.2 — PRE-PUMP CONFIRMATION** đứng trước bả
 Không đủ nguồn OI, Spot, thiếu lịch sử, dữ liệu cũ, lỗi API, hay chỉ có một sàn -> **CHƯA XÁC NHẬN**. Tại nút mở rộng, xem lý do của từng mã. Điểm kỹ thuật V3.1 không bị sửa hoặc dùng để giả làm xác suất.
 
 Đây là bộ lọc thử nghiệm, không tự đặt lệnh, không chứng minh có cá voi tích trữ, không có full Spot CVD và chưa được backtest độc lập. Cần tiếp tục thu thập mẫu mới và kiểm chứng trước khi sử dụng vốn thật.
+
+
+## V3.2.1 — OKX HTTP 429 và cảnh báo DOGE nén trong xu hướng giảm
+
+- Sửa việc yêu cầu nến lịch sử OKX: **mỗi trang tối đa 100 nến**, phân trang bằng after; trước đây một số trang yêu cầu tới 300 và phần cuối còn tạo truy vấn 1 nến. OKX giới hạn endpoint history-candles theo IP.
+- Bổ sung tốc độ yêu cầu tối thiểu cách nhau ~0,24 giây trên cùng tiến trình, tối đa 3 lần thử khi gặp HTTP 429, tôn trọng Retry-After trong giới hạn an toàn và giảm số luồng đồng thời từ 6 xuống 3 cho scan, từ 4 xuống 2 cho backtest. Có cache nến 10 phút theo symbol/lookback. **Không bảo đảm hết 429** nếu nhiều người dùng hoặc host chia sẻ IP.
+- HTTP 451/403 của Binance/Bybit là chặn truy cập tại máy chủ và không được né chặn. Các endpoint lỗi được ghi rõ, không giả mạo dữ liệu.
+- Bộ điểm gốc giữ nguyên để so sánh các nghiên cứu đã thực hiện. Thêm cảnh báo **giá dưới EMA50 đang giảm** (EMA50 hiện dưới EMA50 cách 12 nến 1H) để nhận diện trường hợp nén giá sau giảm mạnh; bảng tổng hợp hạ nhóm ưu tiên trình bày, và Pre-Pump Confirmation không xác nhận các sàn có cảnh báo này. EMA50 không chứng minh đáy thị trường.
+- Nếu thiếu dữ liệu để xác định xu hướng, không được kết luận chắc chắn có pump. Không sử dụng để giao dịch tự động.
