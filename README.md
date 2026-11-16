@@ -129,3 +129,17 @@ Màn hình chính hiển thị **một bảng coin**, gộp theo mã, với đú
 3. **Breakout — dòng tiền xác nhận:** Có breakout kỹ thuật tiếp diễn, và bộ kiểm tra V3.2 xác nhận sơ bộ OI + Spot mẫu đồng thuận tối thiểu hai sàn. Không phải dự báo chắc chắn hay xác suất thắng.
 
 Những coin chưa đủ điều kiện lọc không xuất hiện ở bảng chính. Phần trạng thái kết nối, bảng Pre-Pump cũ, OI, nhật ký, kiểm định và lỗi API vẫn có thể xem tại **Phân tích nâng cao**, mặc định đóng. Giữ nguyên bộ điểm và dữ liệu nghiên cứu; đây chỉ là thay đổi giao diện và phân loại theo quy tắc.
+
+
+## MEXC Fast-Mover — tìm biến động sớm 5–15 phút
+
+Giao diện giữ nguyên một bảng chính với 3 trạng thái. Mở mục **MEXC FAST-MOVER** ngay dưới bảng để chạy quét độc lập. Bấm **QUÉT BIẾN ĐỘNG NHANH MEXC**.
+
+- Dùng ticker Futures MEXC (24H turnover, change24) để chọn nhóm có thanh khoản, nhóm tăng vừa phải và một phần nhóm tăng mạnh. Đây là *mẫu* tối đa 15–70 hợp đồng, không quét toàn sàn, không đảm bảo tìm mọi coin.
+- Tải nến Futures **Min5 đã đóng**, tính biến động 5m, 15m, 1H; RVOL 15 phút (trung bình 3 nến gần nhất so với trung bình 36 nến trước đó), turnover 15 phút và mức vượt vùng đỉnh gần nhất.
+- **Tăng tốc sớm — theo dõi**: RVOL ít nhất 1,7 lần, turnover 15m ít nhất 15.000 USDT, biến động 15m từ +0,4% đến +4%, 1H từ +0,6% đến +7%; giá gần/đã vượt vùng đỉnh cũ và giá 24H chưa tăng trên 18%.
+- **Volume tăng — chờ phá cản**: Có volume bất thường, giá bắt đầu tăng nhưng chưa đầy đủ điều kiện trên.
+- **Đã pump — tránh mua đuổi**: Giá tăng quá xa trong 5m/15m/1H hoặc +25% trong 24H. Đây là cảnh báo truy đuổi, không phải lệnh Short.
+- Chỉ hiện các hợp đồng có ít nhất 40 nến Min5 hợp lệ; lỗi API xuất hiện trong mục chẩn đoán, không tạo dữ liệu giả. Điểm hoạt động 0–100 là quy tắc thủ công chưa hiệu chỉnh, không phải xác suất pump.
+- **Quan trọng:** Fast-Mover hiện **quét thủ công** khi bạn nhấn nút, không tự giám sát liên tục hay gửi thông báo đẩy. Nếu MEXC đổi API / chặn hosting thì có thể không có kết quả. API có giới hạn tốc độ; chọn 35 hợp đồng lúc đầu.
+- Danh sách loại trừ tài sản cổ phiếu theo mã còn hạn chế; không có bảo đảm 100% hợp đồng là crypto.
