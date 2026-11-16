@@ -8,7 +8,7 @@ import pandas as pd
 from confirmation import confirmation_table
 
 DOWN = "1. NÉN TRONG XU HƯỚNG GIẢM"
-RECOVER = "2. TÍCH LŨY — CÓ DẤU HIỆU ĐẢO CHIỀU"
+RECOVER = "2. TÍCH LŨY — THEO DÕI ĐẢO CHIỀU"
 BREAK = "3. BREAKOUT — DÒNG TIỀN XÁC NHẬN"
 TECH_PHASES = {"NÉN LÂU — ƯU TIÊN 4H", "ĐANG TÍCH LŨY",
                "VỪA BREAKOUT — CÓ THỂ TIẾP DIỄN", "BREAKOUT CẦN XÁC NHẬN"}
@@ -35,13 +35,13 @@ def three_state_view(frame, archive, now=None, min_score=0, min_compression=0):
             continue
 
         # Strict priority: never label a downtrend as confirmed breakout.
-        if down:
+        if down and eligible and hours >= min_compression:
             label = DOWN
             note = "EMA50 đang giảm; nén giá chưa chứng minh lực mua tích lũy"
         elif breakout and is_confirmed.get(coin, False):
             label = BREAK
             note = "Breakout kỹ thuật và OI/Spot mẫu đồng thuận tối thiểu 2 sàn"
-        elif eligible and hours >= min_compression:
+        elif not down and eligible and hours >= min_compression:
             label = RECOVER
             note = "Theo dõi; thiếu xác nhận đầy đủ hoặc chưa breakout"
         else:
