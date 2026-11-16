@@ -27,3 +27,11 @@ Dashboard có hai bảng mới:
 - **Vừa breakout — khả năng tiếp diễn:** Tìm breakout của đỉnh 24H trong 4 nến 1H gần nhất, volume nến breakout >= 1.5 lần trung bình 48 nến trước, có ít nhất 6 nến nén trước breakout và giá hiện tại vẫn giữ gần vùng phá vỡ; kiểm tra RSI, mức tăng và RVOL để tránh mua đuổi.
 
 Ngưỡng là **heuristic thử nghiệm**, chưa có backtest và không phải xác suất tăng giá trong 4 giờ. Không có bảo đảm pump hay dữ liệu OI/Spot CVD. Thời gian nén là số giờ đo được từ dữ liệu nến gần đây, không khẳng định tích lũy thực của cá voi. Một số hợp đồng tài sản truyền thống vẫn có thể chưa được phân loại đúng. Bản Streamlit Cloud quét thủ công và không giám sát liên tục.
+
+## V2.4 — Accuracy Tracker (kiểm định hồi tưởng)
+
+Sau khi **QUÉT NGAY**, mở phần **PRE-PUMP ACCURACY TRACKER** và bấm **CHẠY KIỂM ĐỊNH 4H**. Chọn chốt lời, cắt lỗ, phí/trượt giá và số hợp đồng mẫu. Mỗi tín hiệu được tính bằng dữ liệu nến 1H đã đóng tại thời điểm lịch sử, giá vào ở mở cửa nến kế tiếp. Nếu cùng một nến chạm cả TP và SL, giả định SL khớp trước. Khoảng thời gian mỗi hợp đồng cách nhau ít nhất bốn giờ để giảm chồng lặp.
+
+Bảng thống kê: tổng tín hiệu, tỷ lệ đạt mục tiêu trước stop, lợi nhuận trung bình sau chi phí giả định, profit factor, phân loại nhóm nén lâu/breakout và tải CSV chi tiết. Nếu dữ liệu không đủ hoặc không có tín hiệu, không tính tỷ lệ đúng.
+
+**Cảnh báo:** Đây là kiểm định hồi tưởng có rủi ro điều chỉnh tham số trên cùng tập dữ liệu, KHÔNG phải kiểm định ngoài mẫu, không có nhật ký tín hiệu liên tục 24/7. Streamlit Community Cloud có thể ngủ/khởi động lại; dữ liệu kết quả nằm trong phiên trình duyệt, không lưu bền vững. Số nến gần nhất qua API có hạn; chỉ số không đủ để xác nhận win rate thực tế. Phí mặc định 0,25% gồm ước tính phí + trượt giá hai chiều, chưa tính funding hay độ sâu sổ lệnh.
