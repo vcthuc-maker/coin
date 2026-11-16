@@ -22,7 +22,7 @@ EXACT_EXCLUDE = {"CL", "GC", "SI", "NG", "ES", "NQ", "YM", "DXY", "SPX",
                  "NVDA", "NVIDIA", "MU", "TSLA", "AAPL", "MSFT", "GOOGL",
                  "GOOG", "AMZN", "META", "NFLX", "AMD", "INTC", "COIN",
                  "MSTR", "QQQ", "SPY", "SHELL", "SOXS", "SOXL", "SKHYNIX",
-                 "BABA", "PLTR", "HOOD", "XOM", "USO", "SLV", "GLD"}
+                 "BABA", "PLTR", "HOOD", "XOM", "USO", "SLV", "GLD", "SNDK"}
 # Symbol exclusions are only a temporary safeguard; a verified asset-type
 # catalog is needed before labeling the universe as strictly crypto.
 
@@ -486,6 +486,13 @@ if "frame" in st.session_state:
             st.info("Không tìm được tín hiệu lịch sử đủ điều kiện trong dữ liệu hiện có. "
                     "Không thể tính tỷ lệ dự đoán đúng.")
         else:
+            distinct_assets = trades["coin"].nunique()
+            distinct_exchange_pairs = trades[["sàn", "coin"]].drop_duplicates().shape[0]
+            st.caption(f"Kiểm định gồm {distinct_assets} mã tài sản, "
+                       f"{distinct_exchange_pairs} cặp sàn–mã, {len(trades)} tín hiệu.")
+            if distinct_assets < 5:
+                st.error("MẪU KHÔNG ĐẠI DIỆN: Quá ít mã tài sản. "
+                         "Không dùng tỷ lệ thắng/Profit Factor này để suy luận về khả năng pump của thị trường crypto.")
             m = metrics(trades)
             a, b, c, d = st.columns(4)
             a.metric("Tín hiệu mẫu", str(m["số tín hiệu"]))
