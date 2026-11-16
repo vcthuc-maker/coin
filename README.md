@@ -41,3 +41,29 @@ Bảng thống kê: tổng tín hiệu, tỷ lệ đạt mục tiêu trước st
 Phần quét thị trường tiếp tục sử dụng lịch sử ngắn. Khi bấm **CHẠY KIỂM ĐỊNH 4H**, chương trình yêu cầu đến **600 nến 1H đã đóng cho mỗi cặp sàn–coin**. OKX sử dụng API history-candles với phân trang theo `after`, MEXC sử dụng tham số start/end; Binance và Bybit dùng endpoint nến tương ứng nhưng vẫn phụ thuộc quyền truy cập từ máy chủ. Mục **Kiểm tra độ phủ dữ liệu kiểm định** hiển thị số nến và số tín hiệu thực tế thu được từng cặp.
 
 Nếu dữ liệu nến đủ nhưng không có sự kiện, đó là kết quả **không tìm thấy mẫu thỏa bộ lọc** — không được tính tỷ lệ đúng bằng 0%. Kiểm định vẫn là hồi tưởng, không phải chứng minh độ chính xác của dự báo và không thay thế kiểm định ngoài mẫu. Nếu hosting bị giới hạn IP/API, phần mềm báo lỗi và không tạo dữ liệu giả.
+
+
+## V3.0 — Validation 4H / 8H / 24H và Spot flow mẫu
+
+Ứng dụng giữ V2.5 làm mốc so sánh. Sau khi quét, chọn CHẠY KIỂM ĐỊNH V3.
+
+- Lấy tối đa 900 nến 1H/cặp. Các cửa sổ mô phỏng cách nhau tối thiểu 24H trên mỗi cặp, dùng ít nhất 105 giờ dữ liệu để tạo tín hiệu trước khi xét tương lai.
+- Vào tại giá mở nến kế tiếp. Nếu trong cùng nến chạm TP và SL, giả định chạm SL trước.
+- Kiểm định 4H với TP +1%, +2%, +3%, +4%; 8H với TP +2%, +4%, +6%; 24H với TP +4%, +6%, +10%. SL mặc định -2%; chi phí giả lập hai chiều 0,25%, chưa tính funding.
+- MFE là mức tăng tới đỉnh, MAE là mức giảm tới đáy trong **toàn bộ** horizon kể cả sau khi lệnh giả lập có thể đã đóng. MFE/MAE không phải P&L giao dịch thực.
+- Baseline định kỳ thử các cửa sổ mẫu 24H trên cùng các cặp và khoảng thời gian, không phụ thuộc tín hiệu.
+- Chia 70% thời gian đầu làm phần phát triển, 30% cuối là phần kiểm tra, có khoảng cách loại trừ 24H quanh mốc chia. Đây KHÔNG phải tập ngoài mẫu nguyên vẹn vì các quy tắc đã bị điều chỉnh dựa vào kết quả quá khứ.
+- Chọn top coin hiện tại theo turnover gây thiên lệch chọn mẫu, dữ liệu thiếu tài sản đã hủy niêm yết, và các tín hiệu cùng coin trên nhiều sàn không độc lập hoàn toàn. Các kết quả chỉ mang tính thử nghiệm.
+
+### OI và Spot taker flow tức thời
+
+Chọn **Kiểm tra dòng tiền top 8 quan sát** để thử lấy:
+- OI hiện tại từ OKX hoặc MEXC. Đơn vị OKX có thể USD/base coin; MEXC là số hợp đồng. Không so sánh trực tiếp.
+- Chênh lệch giá trị mua/bán chủ động trên mẫu tối đa 100 giao dịch Spot gần nhất tại OKX hoặc 500 tại MEXC; hiển thị độ dài thời gian mẫu và số giao dịch. **Không phải Spot CVD 4H** và không được sử dụng làm bằng chứng hồi tưởng trong backtest.
+- API bị từ chối hoặc cặp Spot không tồn tại được đánh dấu không khả dụng, không tự chế dữ liệu.
+
+### Kiểm thử
+
+GitHub Actions được cấu hình để biên dịch cú pháp và chạy test không dùng Internet trên Python 3.12 mỗi khi có push lên main. Cần kiểm tra tab **Actions** để xác nhận đã chạy xanh; mã nguồn cập nhật không có nghĩa là deploy hay kiểm thử đã thành công.
+
+**V3 không phải AI đã huấn luyện hay chiến lược đã kiểm chứng lợi nhuận. Không tự động đặt lệnh.**
