@@ -94,3 +94,18 @@ Bản Streamlit Cloud không có ổ đĩa bền vững, nên workflow riêng tr
 ### Kiểm thử
 
 Workflow **Validate Pre-Pump Scanner V3** chạy compileall và unittest đối với các thư viện V3.1. Chỉ coi hoạt động ổn định khi có workflow xanh và quan sát các giờ lưu thực tế. Dữ liệu lịch sử mới bắt đầu từ lần thu thập thành công đầu tiên, không hồi tố.
+
+
+## V3.2 — Pre-Pump Confirmation (sơ bộ, không phải dự báo xác suất)
+
+Trên Dashboard, bảng **V3.2 — PRE-PUMP CONFIRMATION** đứng trước bảng Top Coin. Mỗi coin chỉ được đưa vào danh sách đồng thuận sơ bộ khi đồng thời có:
+
+- Cấu trúc kỹ thuật đang tích lũy / nén lâu ưu tiên / vừa breakout còn lực tiếp diễn trên ít nhất hai sàn.
+- Bản ghi OI/Spot **không quá 2,5 giờ** tại thời điểm kiểm tra.
+- Mỗi sàn có quan sát OI cùng đơn vị khoảng 3–5 giờ trước, mức OI tăng tối thiểu **+3%**.
+- Mỗi sàn có **mẫu giao dịch Spot** tối thiểu 50 trades, mẫu kéo dài tối thiểu 0,25 phút, và imbalance mua chủ động ít nhất **+10%**. Mẫu này không đại diện cho toàn bộ 4 giờ.
+- Hai sàn **đều** đạt mọi điều kiện nói trên; hai tín hiệu đơn lẻ hoặc khác pha không được cộng điểm.
+
+Không đủ nguồn OI, Spot, thiếu lịch sử, dữ liệu cũ, lỗi API, hay chỉ có một sàn -> **CHƯA XÁC NHẬN**. Tại nút mở rộng, xem lý do của từng mã. Điểm kỹ thuật V3.1 không bị sửa hoặc dùng để giả làm xác suất.
+
+Đây là bộ lọc thử nghiệm, không tự đặt lệnh, không chứng minh có cá voi tích trữ, không có full Spot CVD và chưa được backtest độc lập. Cần tiếp tục thu thập mẫu mới và kiểm chứng trước khi sử dụng vốn thật.
