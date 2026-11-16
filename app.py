@@ -119,108 +119,143 @@ def history(ex, native):
 
 def signal(ex, base, native, price, turnover):
     df = history(ex, native)
-    if len(df) < 55:
+    if len(df) < 75:
         return None
     close = df["close"]
     high = df["high"]
+    low = df["low"]
     vol = df["turnover"]
     ema20 = close.ewm(span=20, adjust=False).mean()
     delta = close.diff()
-    gain = delta.clip(lower=0).ewm(alpha=1/14, adjust=False).mean()
-    loss = (-delta.clip(upper=0)).ewm(alpha=1/14, adjust=False).mean()
-    rsi = 100 - 100 / (1 + gain.iloc[-1] / max(loss.iloc[-1], 1e-12))
+    gain = delta.clip(lower=0).ewm(alpha=1 / 14, adjust=False).mean()
+    loss = (-delta.clip(upper=0)).ewm(alpha=1 / 14, adjust=False).mean()
+    rsi = float((100 - 100 / (1 + gain / loss.replace(0, 1e-12))).iloc[-1])
     rvol = float(vol.iloc[-1] / max(vol.iloc[-49:-1].mean(), 1e-9))
+    accel = float(vol.iloc[-2:].mean() / max(vol.iloc[-8:-2].mean(), 1e-9))
     avg = close.rolling(20).mean()
-    std = close.rolling(20).std()
-    bb_width = (4 * std / avg).replace([np.inf, -np.inf], np.nan)
-    sample = bb_width.dropna().tail(72)
-    bb_pct = float((sample <= bb_width.iloc[-1]).mean() * 100)
-    # Resistance is strictly from completed candles before the current completed candle.
-    resistance = float(high.iloc[-25:-1].max())
-    distance = (resistance / close.iloc[-1] - 1) * 100
-    change4h = (close.iloc[-1] / close.iloc[-5] - 1) * 100
-    # Pre-4H breakout setup: accumulation is only a proxy from OHLCV,
-    # NOT proof of whale buying. All measurements use closed 1H candles.
-    price24 = (close.iloc[-1] / close.iloc[-25] - 1) * 100
-    recent_range = (high.iloc[-8:].max() / df["low"].iloc[-8:].min() - 1) * 100
-    # Compare last 2 complete hours against preceding 6 hours.
-    vol_accel = float(vol.iloc[-2:].mean() / max(vol.iloc[-8:-2].mean(), 1e-9))
-    price_vs_ema = (close.iloc[-1] / ema20.iloc[-1] - 1) * 100
-    # Breakout must not already be far above previous 24h resistance.
-    near_resistance = -0.5 <= distance <= 3
-    compressed = bb_pct <= 35 and recent_range <= 6
-    controlled_price = -2 <= change4h <= 3 and -5 <= price24 <= 8
-    demand_warming = rvol >= 0.8 and vol_accel >= 1.15
-    trend_ready = 45 <= rsi <= 67 and -1 <= price_vs_ema <= 3
-    overheated = (change4h > 5 or price24 > 12 or rsi > 72
-                  or distance < -2 or rvol > 8)
-    score = 0
+    bbw = (4 * close.rolling(20).std() / avg).replace([np.inf, -np.inf], np.nan)
+    # History-relative threshold per bar, avoiding future observations.
+    bbw_limit = bbw.shift(1).rolling(48, min_periods=24).quantile(0.35)
+    rolling_range = high.rolling(8).max() / low.rolling(8).min() - 1
+    compression = (bbw <= bbw_limit) & (rolling_range <= 0.06)
+    compression = compression.fillna(False)
+    bb_pct = float((bbw.dropna().tail(72) <= bbw.iloc[-1]).mean() * 100)
+    change4 = float((close.iloc[-1] / close.iloc[-5] - 1) * 100)
+    change24 = float((close.iloc[-1] / close.iloc[-25] - 1) * 100)
+    distance = float((high.iloc[-25:-1].max() / close.iloc[-1] - 1) * 100)
+    ema_gap = float((close.iloc[-1] / ema20.iloc[-1] - 1) * 100)
+
+    def count_compressed(end_index):
+        hours = 0
+        for i in range(end_index, max(-1, end_index - 96), -1):
+            if i < 0 or not bool(compression.iloc[i]):
+                break
+            hours += 1
+        return hours
+
+    compressed_hours = count_compressed(len(df) - 1)
+    # Look for a *recent* 1H closed candle breaking a PREVIOUS 24H high,
+    # accompanied by meaningful turnover, and preceded by >= 6 compressed hours.
+    breakout = None
+    for j in range(len(df) - 1, len(df) - 5, -1):
+        if j < 50:
+            break
+        resistance_before = float(high.iloc[j-24:j].max())
+        past_volume = float(vol.iloc[j-48:j].mean())
+        bar_rvol = float(vol.iloc[j] / max(past_volume, 1e-9))
+        preceding_hours = count_compressed(j - 1)
+        # >= 0.2% above resistance avoids noise around the old top.
+        if (close.iloc[j] >= resistance_before * 1.002 and
+                bar_rvol >= 1.5 and preceding_hours >= 6):
+            breakout = (j, resistance_before, bar_rvol, preceding_hours)
+            break
+
+    overheated = (rsi >= 76 or change4 >= 12 or change24 >= 22 or ema_gap >= 10)
+    # Accumulation setup: strong compression over several completed hours
+    # and some turnover improvement, without price already extending far.
+    controlled = (-3 <= change4 <= 4 and -7 <= change24 <= 9 and
+                  43 <= rsi <= 70 and -3 <= ema_gap <= 4)
+    near_top = -0.7 <= distance <= 4.5
+    volume_waking = rvol >= 0.75 and accel >= 1.1
+    comp_score = min(compressed_hours / 24, 1) * 30
+    width_score = 15 if bb_pct <= 20 else (10 if bb_pct <= 35 else 0)
+    price_score = 15 if controlled else 0
+    volume_score = 20 if volume_waking else (8 if rvol >= 1.2 else 0)
+    resistance_score = 10 if near_top else 0
+    trend_score = 10 if 48 <= rsi <= 68 and close.iloc[-1] >= ema20.iloc[-1] else 0
+    pre_score = round(comp_score + width_score + price_score +
+                      volume_score + resistance_score + trend_score)
+    # Keep compression duration distinct from a single narrow BB sample.
+    if compressed_hours < 6:
+        pre_score = min(pre_score, 49)
+    if not controlled or overheated:
+        pre_score = min(pre_score, 39)
+    if not volume_waking:
+        pre_score = min(pre_score, 59)
+    pre_score = int(min(100, pre_score))
+    phase = "CHƯA XÁC NHẬN"
     reasons = []
-    if bb_pct <= 25:
-        score += 20
-        reasons.append("BB nén mạnh")
-    elif bb_pct <= 35:
-        score += 13
-        reasons.append("BB đang nén")
-    if recent_range <= 4:
-        score += 10
-        reasons.append("Biên 8H hẹp")
-    elif recent_range <= 6:
-        score += 6
-    if -2 <= change4h <= 2 and -4 <= price24 <= 6:
-        score += 15
-        reasons.append("Giá chưa tăng nóng")
-    elif controlled_price:
-        score += 8
-    if 0.8 <= rvol <= 3.5 and vol_accel >= 1.15:
-        score += 20
-        reasons.append("Volume đang tăng")
-    elif 1.2 <= rvol <= 5:
-        score += 10
-    if near_resistance:
-        score += 15
-        reasons.append("Sát kháng cự")
-    if trend_ready:
-        score += 15
-        reasons.append("Động lượng phù hợp")
-    elif close.iloc[-1] > ema20.iloc[-1] and rsi < 70:
-        score += 7
-    if -1 <= price_vs_ema <= 2:
-        score += 5
+    if compressed_hours >= 6:
+        reasons.append(f"Nén liên tục {compressed_hours}H")
+    if volume_waking:
+        reasons.append("Volume bắt đầu tăng")
+    if near_top:
+        reasons.append("Gần kháng cự")
+    if not controlled:
+        reasons.append("Động lượng/giá chưa phù hợp")
 
-    # Hard guards: no strong early-pump label without BOTH price compression
-    # and rising turnover; avoid chasing already extended candles.
-    if not compressed:
-        score = min(score, 64)
-    if not controlled_price:
-        score = min(score, 55)
-    if rvol < 0.8 or vol_accel < 1.15:
-        score = min(score, 59)
-        reasons.append("Chưa có xác nhận volume")
-    if overheated:
-        score = min(score, 39)
-        reasons.append("Cảnh báo tăng nóng / mua đuổi")
-    score = min(score, 100)
-    if overheated:
-        phase = "ĐÃ TĂNG NÓNG"
-    elif score >= 75 and compressed and controlled_price and demand_warming and near_resistance:
-        phase = "ƯU TIÊN 4H"
-    elif score >= 55 and compressed and controlled_price:
-        phase = "THEO DÕI TÍCH LŨY"
-    else:
-        phase = "CHƯA XÁC NHẬN"
+    breakout_age = None
+    breakout_volume = None
+    prior_compression = None
+    continuation_score = 0
+    if breakout is not None:
+        j, level, burst_rvol, prior_hours = breakout
+        breakout_age = len(df) - 1 - j
+        breakout_volume = round(burst_rvol, 2)
+        prior_compression = prior_hours
+        growth_since_level = float((close.iloc[-1] / level - 1) * 100)
+        intact = close.iloc[-1] >= level * 0.995
+        controlled_extension = -0.5 <= growth_since_level <= 8
+        healthy_rsi = 52 <= rsi <= 75
+        supporting_volume = rvol >= 0.65
+        continuation_score = int(min(100,
+            min(prior_hours, 24) / 24 * 25 +
+            min(burst_rvol / 3, 1) * 25 +
+            (20 if intact else 0) +
+            (15 if healthy_rsi else 0) +
+            (15 if supporting_volume else 0)))
+        if not intact or not controlled_extension or overheated:
+            continuation_score = min(continuation_score, 39)
+        if intact and controlled_extension and healthy_rsi and supporting_volume and not overheated and continuation_score >= 65:
+            phase = "VỪA BREAKOUT — CÓ THỂ TIẾP DIỄN"
+            reasons.append(f"Breakout {breakout_age}H trước, vol {burst_rvol:.1f}x")
+        else:
+            phase = "BREAKOUT CẦN XÁC NHẬN"
+            reasons.append("Đã breakout nhưng cần kiểm tra rủi ro")
 
-    return {"sàn": ex, "coin": f"{base}/USDT", "trạng thái 4H": phase,
-            "Tích lũy 4H /100": int(score),
-            "giá": price, "turnover 24h USDT": round(turnover, 2),
-            "RVOL 1H": round(rvol, 2),
-            "volume tăng tốc": round(vol_accel, 2),
-            "RSI 1H": round(rsi, 1), "BB percentile": round(bb_pct, 1),
-            "biên 8H %": round(recent_range, 2),
-            "cách kháng cự %": round(distance, 2),
-            "giá 4H %": round(change4h, 2),
-            "giá 24H %": round(price24, 2),
-            "lý do": ", ".join(reasons)}
+    if phase == "CHƯA XÁC NHẬN":
+        if overheated:
+            phase = "ĐÃ TĂNG NÓNG"
+        elif compressed_hours >= 12 and pre_score >= 70 and controlled and near_top and volume_waking:
+            phase = "NÉN LÂU — ƯU TIÊN 4H"
+        elif compressed_hours >= 6 and pre_score >= 50 and controlled:
+            phase = "ĐANG TÍCH LŨY"
+
+    score = continuation_score if phase.startswith(("VỪA BREAKOUT", "BREAKOUT")) else pre_score
+    return {
+        "sàn": ex, "coin": f"{base}/USDT", "trạng thái 4H": phase,
+        "điểm 4H /100": score, "điểm nén /100": pre_score,
+        "điểm tiếp diễn /100": continuation_score,
+        "thời gian nén liên tục (giờ)": compressed_hours,
+        "nén trước breakout (giờ)": prior_compression,
+        "breakout cách đây (giờ)": breakout_age,
+        "volume breakout / TB": breakout_volume,
+        "giá": price, "turnover 24h USDT": round(turnover, 2),
+        "RVOL 1H": round(rvol, 2), "volume tăng tốc": round(accel, 2),
+        "RSI 1H": round(rsi, 1), "BB percentile": round(bb_pct, 1),
+        "cách kháng cự %": round(distance, 2), "giá 4H %": round(change4, 2),
+        "giá 24H %": round(change24, 2), "lý do": ", ".join(reasons)
+    }
 
 def scan(selected, top, min_turnover):
     jobs, errors = [], []
@@ -254,7 +289,7 @@ def scan(selected, top, min_turnover):
         if status[ex].startswith("Đã lấy"):
             success = sum(x["sàn"] == ex for x in results)
             status[ex] = f"{success} có dữ liệu; {skipped[ex]} lỗi/không hỗ trợ"
-    results.sort(key=lambda x: (x["Tích lũy 4H /100"], x["volume tăng tốc"]), reverse=True)
+    results.sort(key=lambda x: (x["điểm 4H /100"], x["thời gian nén liên tục (giờ)"]), reverse=True)
     return pd.DataFrame(results), errors, status
 
 with st.sidebar:
@@ -263,14 +298,15 @@ with st.sidebar:
     top = st.slider("Hợp đồng mỗi sàn", 5, 60, 15, 5)
     minimum = st.number_input("Turnover 24h tối thiểu (USDT)", min_value=0,
                               value=10_000_000, step=1_000_000)
-    threshold = st.slider("Điểm tối thiểu tích lũy (/100)", 0, 100, 50, 5)
-    only_setups = st.checkbox("Chỉ hiển thị ứng viên tích lũy", value=False)
+    threshold = st.slider("Điểm tối thiểu (/100)", 0, 100, 50, 5)
+    minimum_compression = st.slider("Số giờ nén liên tục tối thiểu (nhóm tích lũy)", 0, 48, 6, 2)
+    only_setups = st.checkbox("Chỉ hiển thị tích lũy / breakout gần đây", value=False)
 
-st.info("Bộ lọc tích lũy và chuẩn bị breakout trong 4 giờ: dùng nến 1H đã đóng, "
-        "Bollinger squeeze, biên giá, tăng tốc volume, RSI và khoảng cách kháng cự. "
-        "Đây là HEURISTIC chưa backtest, KHÔNG phải xác suất pump, không đo Spot CVD/OI.")
-st.caption("ƯU TIÊN 4H = setup kỹ thuật phù hợp, không đảm bảo giá tăng. "
-           "Bộ lọc tài sản truyền thống theo ticker hiện chưa đầy đủ, không phải xác minh loại tài sản.")
+st.info("V2.2: Đo thời gian nén liên tục trên nến 1H và phát hiện breakout xảy ra trong 4 nến 1H đã đóng. "
+        "Hai nhóm: tích lũy lâu chưa breakout và vừa breakout có điều kiện tiếp diễn. "
+        "Đây là điểm quy tắc chưa backtest, KHÔNG phải xác suất pump hay lời khuyên mua bán.")
+st.caption("Dữ liệu giới hạn khoảng 100–130 nến gần nhất; thời gian nén dài hơn lịch sử có thể bị đánh giá thấp. "
+           "Chưa xác nhận dòng tiền Spot CVD hoặc OI; chưa bảo đảm lọc hết tài sản phi crypto.")
 if st.button("🔄 QUÉT NGAY", type="primary"):
     if not selected:
         st.warning("Hãy chọn ít nhất một sàn.")
@@ -294,29 +330,36 @@ if "frame" in st.session_state:
     a, b, c = st.columns(3)
     a.metric("Quan sát", len(frame))
     b.metric("Coin riêng biệt", frame["coin"].nunique() if not frame.empty else 0)
-    c.metric("Điểm tích lũy cao nhất (/100)", int(frame["Tích lũy 4H /100"].max()) if not frame.empty else 0)
-    filtered = frame[frame["Tích lũy 4H /100"] >= threshold] if not frame.empty else frame
+    c.metric("Điểm 4H cao nhất (/100)", int(frame["điểm 4H /100"].max()) if not frame.empty else 0)
+    filtered = frame[frame["điểm 4H /100"] >= threshold] if not frame.empty else frame
+    setup_names = ["NÉN LÂU — ƯU TIÊN 4H", "ĐANG TÍCH LŨY",
+                   "VỪA BREAKOUT — CÓ THỂ TIẾP DIỄN", "BREAKOUT CẦN XÁC NHẬN"]
     if only_setups and not filtered.empty:
-        filtered = filtered[filtered["trạng thái 4H"].isin(["ƯU TIÊN 4H", "THEO DÕI TÍCH LŨY"])]
-    st.subheader("Ứng viên có khả năng chuẩn bị breakout 4 giờ")
-    st.caption("Bảng chỉ hiện khi đủ cả cấu trúc tích lũy, volume tăng, giá chưa tăng nóng và gần kháng cự.")
+        filtered = filtered[filtered["trạng thái 4H"].isin(setup_names)]
+    st.subheader("🕒 Nén lâu — chuẩn bị breakout trong 4 giờ")
     if frame.empty:
-        st.warning("Không thu được dữ liệu. Xem trạng thái API ở trên.")
+        st.warning("Không có dữ liệu từ các sàn. Kiểm tra API.")
     else:
-        preferred = frame[frame["trạng thái 4H"] == "ƯU TIÊN 4H"]
-        st.metric("Setup ưu tiên 4H", len(preferred))
-        st.dataframe(preferred, use_container_width=True, hide_index=True)
-        if preferred.empty:
-            st.caption("Chưa có ứng viên vượt đầy đủ điều kiện. Không ép tạo tín hiệu mua.")
-        st.subheader("Ứng viên tích lũy cần quan sát thêm")
-        watchlist = filtered[filtered["trạng thái 4H"] == "THEO DÕI TÍCH LŨY"]
-        if not watchlist.empty:
-            st.dataframe(watchlist, use_container_width=True, hide_index=True)
-        else:
-            st.caption("Chưa có coin đang tích lũy đủ điểm theo dõi.")
+        compressed = frame[
+            frame["trạng thái 4H"].isin(["NÉN LÂU — ƯU TIÊN 4H", "ĐANG TÍCH LŨY"]) &
+            (frame["thời gian nén liên tục (giờ)"] >= minimum_compression)
+        ]
+        priority = compressed[compressed["trạng thái 4H"] == "NÉN LÂU — ƯU TIÊN 4H"]
+        st.metric("Ứng viên nén lâu ưu tiên", len(priority))
+        st.dataframe(compressed, use_container_width=True, hide_index=True)
+        if compressed.empty:
+            st.caption("Chưa có setup nén lâu đạt điều kiện. Không tự tạo tín hiệu.")
+        st.subheader("🚀 Vừa breakout — kiểm tra khả năng tiếp diễn")
+        continuation = frame[frame["trạng thái 4H"].isin(
+            ["VỪA BREAKOUT — CÓ THỂ TIẾP DIỄN", "BREAKOUT CẦN XÁC NHẬN"])]
+        st.metric("Breakout trong 4 nến 1H gần nhất", len(continuation))
+        st.dataframe(continuation, use_container_width=True, hide_index=True)
+        if continuation.empty:
+            st.caption("Chưa phát hiện breakout đạt định nghĩa kiểm thử.")
         st.subheader("Toàn bộ kết quả đã lọc")
         st.dataframe(filtered, use_container_width=True, hide_index=True)
-        st.caption("Cùng một coin trên hai sàn được ghi thành hai quan sát, chưa xác nhận Spot CVD hay OI.")
+        st.caption("Thời gian tính từ các nến đóng; không phải bằng chứng cá voi tích trữ. "
+                   "Hai sàn có thể ghi nhận cùng một coin dưới hai dòng khác nhau.")
     if not frame.empty:
         st.download_button("📥 Tải CSV", filtered.to_csv(index=False).encode("utf-8-sig"),
                            file_name="prepump_scanner.csv", mime="text/csv")
