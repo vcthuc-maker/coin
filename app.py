@@ -246,7 +246,7 @@ def aggregate_coin_signals(frame):
     """One row per pair. Never sum scores across exchanges or call this a probability."""
     columns = ["coin", "mức ưu tiên", "điểm tổng hợp /100", "trạng thái tổng hợp",
                "sàn có dữ liệu", "số sàn", "đồng thuận", "nén dài nhất (giờ)",
-               "breakout gần nhất (giờ)", "RVOL cao nhất", "giá 4H trung vị %",
+               "breakout gần nhất (giờ)", "RVOL cao nhất", "giá 4H trung vị %", "cảnh báo xu hướng",
                "chi tiết theo sàn"]
     if frame.empty:
         return pd.DataFrame(columns=columns)
@@ -292,6 +292,13 @@ def aggregate_coin_signals(frame):
         else:
             consensus = "Không đồng thuận"
             score = min(raw_score, 69)
+        trend_warnings = group["rủi ro xu hướng"].astype(str).str.startswith("DƯỚI EMA50")
+        downtrend_exchanges = int(trend_warnings.sum())
+        if downtrend_exchanges:
+            # Keep historical technical score untouched; downgrade presentation only.
+            consensus += f" / {downtrend_exchanges} sàn có EMA50 giảm"
+            grade = max(grade, 1)
+            status = "CẢNH BÁO XU HƯỚNG GIẢM — CHƯA XÁC NHẬN"
         if hot:
             consensus += " / có cảnh báo tăng nóng"
             score = min(score, 49)
@@ -310,6 +317,7 @@ def aggregate_coin_signals(frame):
             "breakout gần nhất (giờ)": int(recent.min()) if not recent.empty else None,
             "RVOL cao nhất": round(float(group["RVOL 1H"].max()), 2),
             "giá 4H trung vị %": round(float(group["giá 4H %"].median()), 2),
+            "cảnh báo xu hướng": f"{downtrend_exchanges}/{len(group)} sàn có xu hướng giảm EMA50" if downtrend_exchanges else "Không có cảnh báo giảm EMA50",
             "chi tiết theo sàn": details,
         })
     return pd.DataFrame(rows, columns=columns).sort_values(
