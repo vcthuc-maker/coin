@@ -16,6 +16,7 @@ from signal_core import signal as score_signal_core
 from signal_archive import load_signals, tracking_table
 from confirmation import confirmation_table
 from simple_view import three_state_view, DOWN, RECOVER, BREAK
+from mexc_fast import scan_fast
 from validation_v3 import (
     collect_events, temporal_split, report_rows, report_groups, evaluate, summarize,
 )
@@ -377,6 +378,42 @@ if "frame" in st.session_state:
                            file_name="prepump_3_states.csv", mime="text/csv")
     st.caption("Trạng thái 2 chỉ là ứng viên nghiên cứu, không phải đảo chiều đã xác nhận. "
                "Trạng thái 3 là xác nhận sơ bộ của bộ quy tắc, chưa được chứng minh lợi thế giao dịch.")
+    with st.expander("⚡ MEXC FAST-MOVER — Phát hiện biến động sớm 5–15 phút",
+                     expanded=False):
+        st.caption("Bộ quét độc lập với 3 trạng thái tích lũy. Tìm volume tăng tốc, "
+                   "giá bắt đầu phá vùng gần đây; coin tăng nóng được cảnh báo riêng. "
+                   "Điểm hoạt động KHÔNG phải xác suất pump.")
+        fm1, fm2 = st.columns(2)
+        with fm1:
+            fm_count = st.slider("Hợp đồng MEXC cần kiểm tra", 15, 70, 35, 5,
+                                 key="fast_count")
+        with fm2:
+            fm_liq = st.number_input("Turnover 24h tối thiểu (USDT)",
+                                     min_value=100000, max_value=10000000,
+                                     value=250000, step=250000, key="fast_liq")
+        if st.button("⚡ QUÉT BIẾN ĐỘNG NHANH MEXC", key="fast_run"):
+            with st.spinner("Đang kiểm tra nến 5 phút đã đóng..."):
+                fast_data, fast_errors, checked = scan_fast(
+                    min_turnover_usdt=fm_liq, max_candidates=fm_count)
+            st.session_state["fast_result"] = (fast_data, fast_errors, checked,
+                                              pd.Timestamp.now(tz="UTC"))
+        if "fast_result" in st.session_state:
+            data, errors, count, scanned_at = st.session_state["fast_result"]
+            st.caption(f"Đã kiểm tra {count} hợp đồng, lúc {scanned_at:%Y-%m-%d %H:%M UTC}. "
+                       "Kết quả chỉ cập nhật khi nhấn nút quét; không tự giám sát liên tục.")
+            if data.empty:
+                st.info("Chưa có hợp đồng thỏa điều kiện volume/giá trong mẫu đã quét.")
+            else:
+                st.dataframe(data, use_container_width=True, hide_index=True)
+                st.download_button("📥 Tải MEXC Fast-Mover CSV",
+                                   data.to_csv(index=False).encode("utf-8-sig"),
+                                   file_name="mexc_fast_mover.csv", mime="text/csv")
+            if errors:
+                with st.expander(f"Lỗi dữ liệu MEXC ({len(errors)})"):
+                    st.code("\n".join(errors[:30]))
+        st.caption("Nguồn: MEXC Futures ticker 24H + nến Min5. "
+                   "Không quét đủ toàn bộ hợp đồng khi giới hạn mẫu, "
+                   "không đo được giao dịch ẩn hoặc xác suất tăng giá.")
     with st.expander("⚙️ Phân tích nâng cao: dữ liệu sàn, OI, nhật ký, kiểm định, lỗi API",
                      expanded=False):
         st.subheader("Trạng thái kết nối 4 sàn")
