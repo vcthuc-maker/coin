@@ -10,6 +10,7 @@ import streamlit as st
 
 from accuracy import replay, metrics, breakdown
 from market_flow import run_samples
+from flow_history import read_archive, summarize_flow, historic_coverage
 from validation_v3 import (
     collect_events, temporal_split, report_rows, report_groups, evaluate, summarize,
 )
@@ -475,6 +476,35 @@ if "frame" in st.session_state:
         st.download_button("📥 Tải bảng Pre-Pump tổng hợp (CSV)",
                            ranked.drop(columns=["mức ưu tiên"]).to_csv(index=False).encode("utf-8-sig"),
                            file_name="prepump_4h_ranked.csv", mime="text/csv")
+    st.divider()
+    st.subheader("🕐 V3.1 — LỊCH SỬ DÒNG TIỀN (THU THẬP THEO GIỜ)")
+    st.caption("Kho dữ liệu được GitHub Actions cố gắng cập nhật mỗi giờ. "
+               "Tác vụ có thể trễ, thất bại hoặc bị tạm dừng; dữ liệu không liên tục "
+               "không được coi là Spot CVD. Lịch sử mới chỉ bắt đầu khi tác vụ chạy thành công.")
+    archived = read_archive()
+    cov = historic_coverage(archived)
+    if cov["rows"] == 0:
+        st.info("Chưa có bản ghi trên repository. Xem tab Actions → Archive public market-flow snapshots; "
+                "cần workflow chạy thành công và có quyền ghi nội dung.")
+    else:
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Số bản ghi OI/Spot mẫu", cov["rows"])
+        col2.metric("Số coin được lưu", cov["coins"])
+        col3.metric("Bản ghi cuối UTC", str(cov["last"])[:19])
+        summary = summarize_flow(archived)
+        fresh = summary[summary["độ trễ (giờ)"].between(0, 3)]
+        if fresh.empty:
+            st.error("Không có dữ liệu mới trong 3 giờ gần nhất. "
+                     "Không dùng OI thay đổi 4H cũ để giao dịch.")
+        else:
+            st.dataframe(fresh, use_container_width=True, hide_index=True)
+            st.caption("OI 4H chỉ xuất hiện khi đủ hai quan sát cùng sàn/coin/đơn vị cách nhau 3–5 giờ. "
+                       "Spot imbalance là mẫu giao dịch gần nhất của từng lần chụp, "
+                       "KHÔNG phải CVD 4 giờ.")
+        with st.expander("Lịch sử dữ liệu được lưu"):
+            st.dataframe(archived.tail(300), use_container_width=True, hide_index=True)
+        st.download_button("📥 Tải dữ liệu quan sát gần đây", archived.to_csv(index=False).encode("utf-8-sig"),
+                           file_name="market_flow_observations.csv", mime="text/csv")
     st.divider()
     st.subheader("🌊 DÒNG TIỀN HIỆN TẠI — OI và giao dịch Spot mẫu")
     st.caption("Dữ liệu này KHÔNG phải OI thay đổi 4H hoặc Spot CVD 4H. "
