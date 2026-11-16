@@ -2,6 +2,7 @@ import concurrent.futures
 import datetime as dt
 import math
 import time
+import threading
 
 import httpx
 import numpy as np
@@ -21,6 +22,9 @@ from validation_v3 import (
 st.set_page_config(page_title="Pre-Pump Scanner | 4 Exchanges", layout="wide")
 st.title("🔎 Pre-Pump Scanner — 4 sàn")
 st.caption("Binance • Bybit • OKX • MEXC | Rule-based, không phải AI đã huấn luyện. Chỉ dữ liệu công khai, không đặt lệnh.")
+_okx_lock = threading.Lock()
+_okx_last_request = [0.0]
+
 BASE = {"binance": "https://fapi.binance.com", "bybit": "https://api.bybit.com",
         "okx": "https://www.okx.com", "mexc": "https://contract.mexc.com"}
 # Block obvious traditional-asset derivatives; this is NOT a verified crypto-only registry.
@@ -42,8 +46,28 @@ def number(value, default=np.nan):
         return default
 
 def api(ex, path, params=None):
-    r = httpx.get(BASE[ex] + path, params=params, timeout=13.0,
-                  headers={"User-Agent": "PrePumpScanner/1.1"})
+    # Conservative, process-local OKX pacing. Streamlit hosts may share public IPs.
+    # No bypass of geographical restrictions.
+    for attempt in range(3):
+        if ex == "okx":
+            with _okx_lock:
+                pause = max(0.0, 0.24 - (time.monotonic() - _okx_last_request[0]))
+                if pause:
+                    time.sleep(pause)
+                _okx_last_request[0] = time.monotonic()
+        r = httpx.get(BASE[ex] + path, params=params, timeout=13.0,
+                      headers={"User-Agent": "PrePumpScanner/3.2"})
+        if r.status_code != 429:
+            break
+        if attempt == 2:
+            raise RuntimeError(f"{ex.upper()}: HTTP 429, API giới hạn tốc độ. "
+                               "Hãy thử quét ít hợp đồng hơn sau khi giới hạn hết hiệu lực.")
+        retry_after = r.headers.get("Retry-After", "")
+        try:
+            delay = min(max(float(retry_after), 1.0), 8.0)
+        except ValueError:
+            delay = float(2 ** attempt)
+        time.sleep(delay)
     if r.status_code in (403, 451):
         msg = ("Giới hạn khu vực/IP theo chính sách sàn (HTTP "
                + str(r.status_code) + "). Không thể truy cập từ hosting hiện tại.")
@@ -105,6 +129,7 @@ def find_markets(ex):
             and not any(x in r[0].upper() for x in EXCLUDE)
             and np.isfinite(r[2]) and r[2] > 0 and np.isfinite(r[3])]
 
+@st.cache_data(ttl=600, show_spinner=False)
 def history(ex, native, lookback=120):
     """Fetch only closed 1H candles. Longer backtests need extended history."""
     lookback = int(max(90, min(lookback, 1200)))
@@ -137,23 +162,28 @@ def history(ex, native, lookback=120):
             if len(x) < int(params["limit"]):
                 break
     elif ex == "okx":
-        # History endpoint paginates backward with after=earliest timestamp in ms.
+        # OKX history-candles: <=100 per request, paginate using "after".
+        # Cursor is the oldest timestamp returned; the endpoint excludes it.
         cursor = None
-        while len(out) < lookback:
+        pages = 0
+        while len(out) < lookback and pages < 14:
+            page_limit = min(100, lookback - len(out))
             params = {"instId": native, "bar": "1H",
-                      "limit": str(min(300, lookback - len(out)))}
+                      "limit": str(page_limit)}
             if cursor is not None:
                 params["after"] = str(cursor)
             x = api(ex, "/api/v5/market/history-candles", params)["data"]
             if not x:
                 break
-            out.extend([[int(v[0]), *map(float, [v[1], v[2], v[3], v[4], v[7]])]
-                        for v in x if len(v) > 8 and str(v[8]) == "1"])
+            parsed = [[int(v[0]), *map(float, [v[1], v[2], v[3], v[4], v[7]])]
+                      for v in x if len(v) > 8 and str(v[8]) == "1"]
+            out.extend(parsed)
             next_cursor = min(int(v[0]) for v in x)
             if cursor is not None and next_cursor >= cursor:
                 break
             cursor = next_cursor
-            if len(x) < int(params["limit"]):
+            pages += 1
+            if len(x) < page_limit:
                 break
     else:
         # MEXC Kline supports start/end Unix seconds and up to 2000 rows.
@@ -190,7 +220,7 @@ def scan(selected, top, min_turnover):
             errors.append(f"{ex}: không lấy được danh sách — {exc}")
     results = []
     skipped = {ex: 0 for ex in selected}
-    with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
         futures = {pool.submit(signal, *j): j for j in jobs}
         for fut in concurrent.futures.as_completed(futures):
             try:
@@ -466,7 +496,7 @@ if "frame" in st.session_state:
             events = collect_events(candles, signal, ex, pair, native, turnover)
             return len(candles), events
         with st.spinner("Đang kiểm định 24 giờ không chồng lấn theo từng cặp..."):
-            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
                 pending = {pool.submit(run_one, job): job for job in jobs}
                 for future in concurrent.futures.as_completed(pending):
                     job = pending[future]
