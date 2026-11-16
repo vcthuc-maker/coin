@@ -9,6 +9,9 @@ import pandas as pd
 import streamlit as st
 
 from accuracy import replay, metrics, breakdown
+from validation_v3 import (
+    collect_events, temporal_split, report_rows, report_groups, evaluate, summarize,
+)
 
 st.set_page_config(page_title="Pre-Pump Scanner | 4 Exchanges", layout="wide")
 st.title("🔎 Pre-Pump Scanner — 4 sàn")
@@ -471,6 +474,97 @@ if "frame" in st.session_state:
         st.download_button("📥 Tải bảng Pre-Pump tổng hợp (CSV)",
                            ranked.drop(columns=["mức ưu tiên"]).to_csv(index=False).encode("utf-8-sig"),
                            file_name="prepump_4h_ranked.csv", mime="text/csv")
+    st.divider()
+    st.subheader("🧪 V3.0 — KIỂM ĐỊNH 4H / 8H / 24H, MFE / MAE")
+    st.warning("Thử nghiệm theo thời gian, KHÔNG phải AI đã huấn luyện hoặc win rate đã xác nhận. "
+               "Dùng bộ quy tắc vốn đã được điều chỉnh trên dữ liệu trước đây; "
+               "phần kiểm định cuối kỳ chưa phải mẫu ngoài tập tuyệt đối. "
+               "Chưa dùng Spot CVD, OI lịch sử hoặc funding trong thuật toán.")
+    p1, p2, p3 = st.columns(3)
+    with p1:
+        v3_count = st.slider("V3: cặp sàn–coin", 5, 40, 20, 5, key="v3_pairs")
+    with p2:
+        v3_cost = st.number_input("V3: phí + trượt giá 2 chiều %", 0.0, 5.0,
+                                  0.25, 0.05, key="v3_cost")
+    with p3:
+        v3_stop = st.number_input("V3: cắt lỗ %", 0.5, 20.0,
+                                  2.0, 0.5, key="v3_stop")
+    if st.button("🔬 CHẠY KIỂM ĐỊNH V3", key="v3_run"):
+        chosen = (frame.sort_values("turnover 24h USDT", ascending=False)
+                       .drop_duplicates(["sàn", "coin"]).head(v3_count))
+        jobs = []
+        for _, item in chosen.iterrows():
+            ex = item["sàn"]
+            base = item["coin"].removesuffix("/USDT")
+            native = (base + "USDT" if ex in ("binance", "bybit") else
+                      base + "-USDT-SWAP" if ex == "okx" else base + "_USDT")
+            jobs.append((ex, item["coin"], native,
+                         float(item["turnover 24h USDT"])))
+        windows, cover, errors_v3 = [], [], []
+        def run_one(job):
+            ex, pair, native, turnover = job
+            candles = history(ex, native, lookback=900)
+            events = collect_events(candles, signal, ex, pair, native, turnover)
+            return len(candles), events
+        with st.spinner("Đang kiểm định 24 giờ không chồng lấn theo từng cặp..."):
+            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+                pending = {pool.submit(run_one, job): job for job in jobs}
+                for future in concurrent.futures.as_completed(pending):
+                    job = pending[future]
+                    try:
+                        count, events = future.result()
+                        windows.extend(events)
+                        cover.append({"sàn": job[0], "coin": job[1],
+                                      "nến lịch sử": count, "cửa sổ 24H": len(events),
+                                      "sự kiện Scanner": sum(e["nhóm"] is not None for e in events)})
+                    except Exception as exc:
+                        errors_v3.append(f"{job[0]} {job[1]}: {str(exc)[:140]}")
+        dev, hold, boundary = temporal_split(windows, .30, 24)
+        st.session_state["v3_data"] = {
+            "development": report_rows(dev, "Phát triển", v3_stop, v3_cost),
+            "holdout": report_rows(hold, "Cuối kỳ", v3_stop, v3_cost),
+            "groups": report_groups(hold, v3_stop, v3_cost),
+            "boundary": boundary,
+            "coverage": pd.DataFrame(cover),
+            "errors": errors_v3,
+            "dev_n": len(dev),
+            "hold_n": len(hold),
+            "dev_signals": sum(e["nhóm"] is not None for e in dev),
+            "hold_signals": sum(e["nhóm"] is not None for e in hold),
+            "hold_coins": len({e["coin"] for e in hold if e["nhóm"] is not None}),
+            "stop": v3_stop,
+            "cost": v3_cost,
+        }
+    if "v3_data" in st.session_state:
+        data = st.session_state["v3_data"]
+        st.caption(f"Cắt theo thời gian UTC tại: {data['boundary']}; "
+                   f"loại 24H quanh ranh giới ở phần phát triển. "
+                   "Mỗi cặp chỉ lấy một cửa sổ 24H để tránh tín hiệu chồng lấn trong cùng cặp.")
+        n1, n2, n3 = st.columns(3)
+        n1.metric("Tín hiệu phần phát triển", data["dev_signals"])
+        n2.metric("Tín hiệu phần cuối kỳ", data["hold_signals"])
+        n3.metric("Coin có tín hiệu cuối kỳ", data["hold_coins"])
+        if data["hold_signals"] < 200 or data["hold_coins"] < 10:
+            st.error("KHÔNG ĐỦ CƠ SỞ ĐÁNH GIÁ GIAO DỊCH THỰC: "
+                     "cần thêm tín hiệu độc lập và nhiều coin trên giai đoạn chưa dùng chỉnh tham số.")
+        st.markdown("**Đánh giá cuối kỳ (70/30 theo thời gian, có khoảng cách 24H)**")
+        st.dataframe(data["holdout"], use_container_width=True, hide_index=True)
+        st.markdown("**So sánh nhóm tín hiệu tại 4H / TP +4% / SL theo cấu hình**")
+        if data["groups"].empty:
+            st.info("Chưa có tín hiệu đủ điều kiện ở phần cuối kỳ.")
+        else:
+            st.dataframe(data["groups"], use_container_width=True, hide_index=True)
+        with st.expander("Xem kết quả phần phát triển và độ phủ dữ liệu"):
+            st.dataframe(data["development"], use_container_width=True, hide_index=True)
+            st.dataframe(data["coverage"], use_container_width=True, hide_index=True)
+        if data["errors"]:
+            with st.expander(f"Lỗi dữ liệu kiểm định V3 ({len(data['errors'])})"):
+                st.code("\n".join(data["errors"][:40]))
+        if not data["holdout"].empty:
+            st.download_button("📥 Tải báo cáo V3 (CSV)",
+                               data["holdout"].to_csv(index=False).encode("utf-8-sig"),
+                               file_name="pre_pump_v3_temporal_validation.csv",
+                               mime="text/csv")
     st.divider()
     st.subheader("📊 PRE-PUMP ACCURACY TRACKER — Kiểm định lịch sử 4H")
     st.warning("KIỂM ĐỊNH HỒI TƯỞNG, CHƯA PHẢI WIN RATE THỰC TẾ. "
