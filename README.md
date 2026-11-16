@@ -67,3 +67,30 @@ Chọn **Kiểm tra dòng tiền top 8 quan sát** để thử lấy:
 GitHub Actions được cấu hình để biên dịch cú pháp và chạy test không dùng Internet trên Python 3.12 mỗi khi có push lên main. Cần kiểm tra tab **Actions** để xác nhận đã chạy xanh; mã nguồn cập nhật không có nghĩa là deploy hay kiểm thử đã thành công.
 
 **V3 không phải AI đã huấn luyện hay chiến lược đã kiểm chứng lợi nhuận. Không tự động đặt lệnh.**
+
+
+## V3.1 — Lưu tín hiệu và dữ liệu dòng tiền theo giờ
+
+**Thiết kế đã thêm, chưa xác nhận workflow đã chạy thành công trên GitHub Actions.**
+Bản Streamlit Cloud không có ổ đĩa bền vững, nên workflow riêng trên GitHub cố gắng chạy mỗi giờ (phút 13 UTC), thu thập dữ liệu công khai trên OKX và MEXC cho 15 coin theo danh sách cố định.
+
+- Dữ liệu OI hiện tại được lưu vào data/flow/YYYY-MM.jsonl, khóa duy nhất theo giờ UTC + sàn + coin, không ghi đè lần đầu trong cùng giờ.
+- OI OKX sử dụng oiUsd khi có; MEXC ước tính USD = số hợp đồng * contractSize * giá. Đơn vị được ghi trong bản ghi, không cộng trực tiếp giữa sàn.
+- Mẫu mua/bán Spot mỗi lần chụp sử dụng tập giao dịch gần nhất, ghi rõ số lượng và khoảng thời gian. **Đây không phải CVD đầy đủ cho giờ đó**.
+- Dữ liệu tín hiệu của cùng bộ quy tắc dashboard được ghi vào data/signals/YYYY-MM.jsonl cùng lúc, sử dụng nến 1H đã đóng. Không tự động đặt lệnh.
+- Dashboard hiển thị OI thay đổi xấp xỉ 4 giờ chỉ khi có hai quan sát cùng sàn/cặp/đơn vị cách nhau 3–5 giờ. Giá sau khoảng 4H là giá snapshot, không dùng để chứng minh chạm TP trước SL.
+- Tín hiệu, dữ liệu, hoặc API lỗi được bỏ qua và ghi lại trong GitHub Actions; không thay dữ liệu thiếu bằng 0.
+- GitHub Actions schedule có thể bị trễ, tạm dừng, hoặc thất bại do IP API. Workflow chạy ở github-hosted runner có thể khác IP so với Streamlit Cloud. Nếu không có dữ liệu mới trong 3 giờ, Dashboard cảnh báo dữ liệu cũ.
+- Repo public lưu các mẫu **dữ liệu thị trường công khai**, không lưu API key hay tài khoản giao dịch.
+
+### Bật lịch ghi tự động
+
+1. Mở GitHub -> repository -> **Actions** -> workflow **Archive public market-flow snapshots**.
+2. Chọn **Run workflow** thủ công lần đầu để thử kết nối và ghi file. Quan sát run xanh, phần log WARN nếu API lỗi.
+3. Nếu push dữ liệu thất bại do không có quyền, vào **Settings -> Actions -> General -> Workflow permissions**, cho phép **Read and write permissions** (nếu tổ chức cho phép).
+4. Kiểm tra đã xuất hiện các file data/flow/YYYY-MM.jsonl và data/signals/YYYY-MM.jsonl. Sau 4–5 lần chạy thành công mới có thể thấy OI ~4H.
+5. Mỗi lần thêm file lên main có thể khiến Streamlit Cloud cập nhật/redeploy lại.
+
+### Kiểm thử
+
+Workflow **Validate Pre-Pump Scanner V3** chạy compileall và unittest đối với các thư viện V3.1. Chỉ coi hoạt động ổn định khi có workflow xanh và quan sát các giờ lưu thực tế. Dữ liệu lịch sử mới bắt đầu từ lần thu thập thành công đầu tiên, không hồi tố.
