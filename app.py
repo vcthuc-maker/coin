@@ -97,27 +97,71 @@ def find_markets(ex):
             and not any(x in r[0].upper() for x in EXCLUDE)
             and np.isfinite(r[2]) and r[2] > 0 and np.isfinite(r[3])]
 
-def history(ex, native):
+def history(ex, native, lookback=120):
+    """Fetch only closed 1H candles. Longer backtests need extended history."""
+    lookback = int(max(90, min(lookback, 1200)))
+    out = []
     if ex == "binance":
-        x = api(ex, "/fapi/v1/klines", {"symbol": native, "interval": "1h", "limit": 130})
-        out = [[int(v[0]), *map(float, [v[1], v[2], v[3], v[4], v[7]])] for v in x]
+        cursor = None
+        while len(out) < lookback:
+            params = {"symbol": native, "interval": "1h", "limit": min(1000, lookback - len(out))}
+            if cursor is not None:
+                params["endTime"] = cursor
+            x = api(ex, "/fapi/v1/klines", params)
+            if not x:
+                break
+            out.extend([[int(v[0]), *map(float, [v[1], v[2], v[3], v[4], v[7]])] for v in x])
+            cursor = int(x[0][0]) - 1
+            if len(x) < params["limit"]:
+                break
     elif ex == "bybit":
-        x = api(ex, "/v5/market/kline", {"category": "linear", "symbol": native,
-                                         "interval": "60", "limit": "130"})["result"]["list"]
-        out = [[int(v[0]), *map(float, [v[1], v[2], v[3], v[4], v[6]])] for v in x]
+        cursor = None
+        while len(out) < lookback:
+            params = {"category": "linear", "symbol": native, "interval": "60",
+                      "limit": str(min(1000, lookback - len(out)))}
+            if cursor is not None:
+                params["end"] = str(cursor)
+            x = api(ex, "/v5/market/kline", params)["result"]["list"]
+            if not x:
+                break
+            out.extend([[int(v[0]), *map(float, [v[1], v[2], v[3], v[4], v[6]])] for v in x])
+            cursor = min(int(v[0]) for v in x) - 1
+            if len(x) < int(params["limit"]):
+                break
     elif ex == "okx":
-        x = api(ex, "/api/v5/market/candles", {"instId": native, "bar": "1H", "limit": "100"})["data"]
-        out = [[int(v[0]), *map(float, [v[1], v[2], v[3], v[4], v[7]])]
-               for v in x if len(v) > 8 and str(v[8]) == "1"]
+        # History endpoint paginates backward with after=earliest timestamp in ms.
+        cursor = None
+        while len(out) < lookback:
+            params = {"instId": native, "bar": "1H",
+                      "limit": str(min(300, lookback - len(out)))}
+            if cursor is not None:
+                params["after"] = str(cursor)
+            x = api(ex, "/api/v5/market/history-candles", params)["data"]
+            if not x:
+                break
+            out.extend([[int(v[0]), *map(float, [v[1], v[2], v[3], v[4], v[7]])]
+                        for v in x if len(v) > 8 and str(v[8]) == "1"])
+            next_cursor = min(int(v[0]) for v in x)
+            if cursor is not None and next_cursor >= cursor:
+                break
+            cursor = next_cursor
+            if len(x) < int(params["limit"]):
+                break
     else:
-        x = api(ex, f"/api/v1/contract/kline/{native}", {"interval": "Min60"})["data"]
-        out = [[int(t) * 1000, *[float(x[k][i]) for k in ("open", "high", "low", "close", "amount")]]
+        # MEXC Kline supports start/end Unix seconds and up to 2000 rows.
+        x = api(ex, f"/api/v1/contract/kline/{native}",
+                {"interval": "Min60",
+                 "start": int(time.time() - (lookback + 3) * 3600),
+                 "end": int(time.time())})["data"]
+        out = [[int(t) * 1000, *[float(x[k][i]) for k in
+               ("open", "high", "low", "close", "amount")]]
                for i, t in enumerate(x["time"])]
     df = pd.DataFrame(out, columns=["t", "open", "high", "low", "close", "turnover"])
+    if df.empty:
+        return df
     df = df.drop_duplicates("t").sort_values("t")
-    # Exclude the current unclosed hour, whose volume would bias RVOL lower.
     current_hour = int(time.time() // 3600 * 3600000)
-    return df[df["t"] < current_hour].tail(120).reset_index(drop=True)
+    return df[df["t"] < current_hour].tail(lookback).reset_index(drop=True)
 
 def signal(ex, base, native, price, turnover, candles=None):
     df = history(ex, native) if candles is None else candles
@@ -458,19 +502,23 @@ if "frame" in st.session_state:
                       else base + "-USDT-SWAP" if ex == "okx"
                       else base + "_USDT")
             jobs.append((ex, item["coin"], native, float(item["turnover 24h USDT"])))
-        parts, errors_bt = [], []
+        parts, errors_bt, coverage = [], [], []
         with st.spinner("Đang tải nến đóng, phát lại các tín hiệu lịch sử và kiểm tra 4H..."):
             def one_test(job):
                 ex, pair, native, turnover = job
-                candles = history(ex, native)
-                return replay(candles, signal, ex, pair, turnover,
+                candles = history(ex, native, lookback=600)
+                out = replay(candles, signal, ex, pair, turnover,
                               take_pct=take_pct, stop_pct=stop_pct,
                               roundtrip_cost_pct=costs_pct, stride=4)
+                return out, len(candles)
             with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
                 futures = {pool.submit(one_test, job): job for job in jobs}
                 for future in concurrent.futures.as_completed(futures):
                     try:
-                        result = future.result()
+                        result, candle_count = future.result()
+                        coverage.append({"sàn": futures[future][0], "coin": futures[future][1],
+                                         "nến 1H đóng": candle_count,
+                                         "tín hiệu lịch sử": len(result)})
                         if not result.empty:
                             parts.append(result)
                     except Exception as err:
@@ -479,11 +527,18 @@ if "frame" in st.session_state:
         st.session_state["accuracy_trades"] = (
             pd.concat(parts, ignore_index=True) if parts else pd.DataFrame())
         st.session_state["accuracy_errors"] = errors_bt
+        st.session_state["accuracy_coverage"] = pd.DataFrame(coverage)
         st.session_state["accuracy_params"] = (take_pct, stop_pct, costs_pct)
     if "accuracy_trades" in st.session_state:
         trades = st.session_state["accuracy_trades"]
+        coverage = st.session_state.get("accuracy_coverage", pd.DataFrame())
+        if not coverage.empty:
+            st.caption(f"Đã tải {len(coverage)} cặp sàn-coin; "
+                       f"trung vị {int(coverage['nến 1H đóng'].median())} nến 1H đóng mỗi cặp.")
+            with st.expander("Kiểm tra độ phủ dữ liệu kiểm định"):
+                st.dataframe(coverage, use_container_width=True, hide_index=True)
         if trades.empty:
-            st.info("Không tìm được tín hiệu lịch sử đủ điều kiện trong dữ liệu hiện có. "
+            st.info("Không tìm được tín hiệu lịch sử đủ điều kiện theo bộ quy tắc hiện tại. "
                     "Không thể tính tỷ lệ dự đoán đúng.")
         else:
             distinct_assets = trades["coin"].nunique()
