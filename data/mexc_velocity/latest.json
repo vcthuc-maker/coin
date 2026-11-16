@@ -1,47 +1,57 @@
 {
-  "collected_at_utc": "2026-11-16T11:04:56+00:00",
-  "universe_size": 851,
+  "collected_at_utc": "2026-11-16T12:08:22+00:00",
+  "universe_size": 872,
   "history_intervals": 3,
   "rows": [
     {
       "coin": "EVAA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 3.6786,
+      "giá": 3.4294,
       "5m %": null,
       "15m %": null,
-      "1H %": 6.93,
-      "24H %": 37.47,
-      "turnover 24H USDT": 22886897
+      "1H %": -6.77,
+      "24H %": 28.16,
+      "turnover 24H USDT": 24982444
     },
     {
       "coin": "RARE/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.01466,
+      "giá": 0.01511,
       "5m %": null,
       "15m %": null,
-      "1H %": -5.78,
-      "24H %": 72.06,
-      "turnover 24H USDT": 12147095
+      "1H %": 3.07,
+      "24H %": 77.34,
+      "turnover 24H USDT": 13611748
     },
     {
       "coin": "BLESS/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.011682,
+      "giá": 0.012777,
       "5m %": null,
       "15m %": null,
-      "1H %": 6.65,
-      "24H %": 29.18,
-      "turnover 24H USDT": 3401741
+      "1H %": 9.37,
+      "24H %": 41.29,
+      "turnover 24H USDT": 5066819
+    },
+    {
+      "coin": "GANG/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.00313,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 4.4,
+      "24H %": 30.09,
+      "turnover 24H USDT": 306125
     },
     {
       "coin": "CASHCAT/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.04993,
+      "giá": 0.05502,
       "5m %": null,
       "15m %": null,
-      "1H %": -0.2,
-      "24H %": 26.69,
-      "turnover 24H USDT": 661719
+      "1H %": 10.19,
+      "24H %": 39.6,
+      "turnover 24H USDT": 798447
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
