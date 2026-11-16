@@ -8,6 +8,8 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+from accuracy import replay, metrics, breakdown
+
 st.set_page_config(page_title="Pre-Pump Scanner | 4 Exchanges", layout="wide")
 st.title("🔎 Pre-Pump Scanner — 4 sàn")
 st.caption("Binance • Bybit • OKX • MEXC | Rule-based, không phải AI đã huấn luyện. Chỉ dữ liệu công khai, không đặt lệnh.")
@@ -117,8 +119,8 @@ def history(ex, native):
     current_hour = int(time.time() // 3600 * 3600000)
     return df[df["t"] < current_hour].tail(120).reset_index(drop=True)
 
-def signal(ex, base, native, price, turnover):
-    df = history(ex, native)
+def signal(ex, base, native, price, turnover, candles=None):
+    df = history(ex, native) if candles is None else candles
     if len(df) < 75:
         return None
     close = df["close"]
@@ -425,6 +427,88 @@ if "frame" in st.session_state:
         st.download_button("📥 Tải bảng Pre-Pump tổng hợp (CSV)",
                            ranked.drop(columns=["mức ưu tiên"]).to_csv(index=False).encode("utf-8-sig"),
                            file_name="prepump_4h_ranked.csv", mime="text/csv")
+    st.divider()
+    st.subheader("📊 PRE-PUMP ACCURACY TRACKER — Kiểm định lịch sử 4H")
+    st.warning("KIỂM ĐỊNH HỒI TƯỞNG, CHƯA PHẢI WIN RATE THỰC TẾ. "
+               "Chỉ dùng dữ liệu nến 1H gần đây và bộ quy tắc hiện tại. "
+               "Kết quả có thể sai lệch do chọn mẫu, quá ít dữ liệu, phí ước tính "
+               "và chưa tính funding. Không dùng như lời khuyên mua.")
+    h1, h2, h3, h4 = st.columns(4)
+    with h1:
+        take_pct = st.number_input("Chốt lời (%)", min_value=0.5, max_value=30.0,
+                                   value=4.0, step=0.5, key="bt_take")
+    with h2:
+        stop_pct = st.number_input("Cắt lỗ (%)", min_value=0.5, max_value=20.0,
+                                   value=2.0, step=0.5, key="bt_stop")
+    with h3:
+        costs_pct = st.number_input("Phí + trượt giá hai chiều (%)",
+                                    min_value=0.0, max_value=5.0,
+                                    value=0.25, step=0.05, key="bt_cost")
+    with h4:
+        sample_count = st.slider("Số quan sát để thử", 5, 40, 20, 5, key="bt_symbols")
+    if st.button("🧪 CHẠY KIỂM ĐỊNH 4H", type="secondary"):
+        to_test = (frame.drop_duplicates(["sàn", "coin"])
+                       .sort_values("turnover 24h USDT", ascending=False)
+                       .head(sample_count))
+        jobs = []
+        for _, item in to_test.iterrows():
+            ex = item["sàn"]
+            base = item["coin"].removesuffix("/USDT")
+            native = (base + "USDT" if ex in ("binance", "bybit")
+                      else base + "-USDT-SWAP" if ex == "okx"
+                      else base + "_USDT")
+            jobs.append((ex, item["coin"], native, float(item["turnover 24h USDT"])))
+        parts, errors_bt = [], []
+        with st.spinner("Đang tải nến đóng, phát lại các tín hiệu lịch sử và kiểm tra 4H..."):
+            def one_test(job):
+                ex, pair, native, turnover = job
+                candles = history(ex, native)
+                return replay(candles, signal, ex, pair, turnover,
+                              take_pct=take_pct, stop_pct=stop_pct,
+                              roundtrip_cost_pct=costs_pct, stride=4)
+            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+                futures = {pool.submit(one_test, job): job for job in jobs}
+                for future in concurrent.futures.as_completed(futures):
+                    try:
+                        result = future.result()
+                        if not result.empty:
+                            parts.append(result)
+                    except Exception as err:
+                        job = futures[future]
+                        errors_bt.append(f"{job[0]} {job[1]}: {str(err)[:130]}")
+        st.session_state["accuracy_trades"] = (
+            pd.concat(parts, ignore_index=True) if parts else pd.DataFrame())
+        st.session_state["accuracy_errors"] = errors_bt
+        st.session_state["accuracy_params"] = (take_pct, stop_pct, costs_pct)
+    if "accuracy_trades" in st.session_state:
+        trades = st.session_state["accuracy_trades"]
+        if trades.empty:
+            st.info("Không tìm được tín hiệu lịch sử đủ điều kiện trong dữ liệu hiện có. "
+                    "Không thể tính tỷ lệ dự đoán đúng.")
+        else:
+            m = metrics(trades)
+            a, b, c, d = st.columns(4)
+            a.metric("Tín hiệu mẫu", str(m["số tín hiệu"]))
+            b.metric("Đạt +4% trước -2%*" if st.session_state["accuracy_params"][:2] == (4.0, 2.0)
+                     else "Đạt take-profit trước stop", f'{m["tỷ lệ đạt mục tiêu %"]:.1f}%')
+            c.metric("Lợi nhuận TB sau phí*", f'{m["lợi nhuận TB sau chi phí %"]:.3f}%')
+            d.metric("Profit factor", str(m["profit factor"]) if m["profit factor"] is not None else "N/A")
+            if len(trades) < 200:
+                st.warning(f"Chỉ {len(trades)} tín hiệu lịch sử: mẫu nhỏ, không đủ để kết luận hiệu quả dự báo.")
+            st.caption("*Giả định: giá vào = mở cửa nến sau tín hiệu, kiểm tra tối đa 4 nến 1H đã đóng; "
+                       "TP/SL theo cấu hình; nếu nến chạm cả TP và SL thì tính SL trước. "
+                       "Các sự kiện không chồng lấn trong cùng hợp đồng, nhưng cùng coin đa sàn có tương quan. "
+                       "Chưa tính funding; không có dữ liệu lệnh khớp thực.")
+            st.dataframe(breakdown(trades), use_container_width=True, hide_index=True)
+            with st.expander("Xem từng tín hiệu đã kiểm định"):
+                st.dataframe(trades, use_container_width=True, hide_index=True)
+            st.download_button("📥 Xuất CSV kiểm định 4H",
+                               trades.to_csv(index=False).encode("utf-8-sig"),
+                               file_name="accuracy_4h_exploratory.csv",
+                               mime="text/csv")
+        if st.session_state.get("accuracy_errors"):
+            with st.expander("Lỗi lấy dữ liệu kiểm định"):
+                st.code("\n".join(st.session_state["accuracy_errors"][:25]))
     st.divider()
     filtered = frame[frame["điểm 4H /100"] >= threshold] if not frame.empty else frame
     setup_names = ["NÉN LÂU — ƯU TIÊN 4H", "ĐANG TÍCH LŨY",
