@@ -13,6 +13,7 @@ from market_flow import run_samples
 from flow_history import read_archive, summarize_flow, historic_coverage
 from signal_core import signal as score_signal_core
 from signal_archive import load_signals, tracking_table
+from confirmation import confirmation_table
 from validation_v3 import (
     collect_events, temporal_split, report_rows, report_groups, evaluate, summarize,
 )
@@ -325,6 +326,27 @@ if "frame" in st.session_state:
     a.metric("Quan sát", len(frame))
     b.metric("Coin riêng biệt", frame["coin"].nunique() if not frame.empty else 0)
     c.metric("Điểm 4H cao nhất (/100)", int(frame["điểm 4H /100"].max()) if not frame.empty else 0)
+    st.subheader("✅ V3.2 — PRE-PUMP CONFIRMATION (SƠ BỘ)")
+    st.caption("Điều kiện: setup nén hoặc breakout sớm, dữ liệu OI lưu mới, OI tăng "
+               "ít nhất 3% trong khoảng 3–5 giờ, mẫu giao dịch Spot có mua chủ động "
+               "ít nhất +10%, cùng đạt trên TỐI THIỂU 2 sàn. Đây KHÔNG phải CVD 4H, "
+               "không phải xác suất pump hay tín hiệu vào lệnh.")
+    archive_for_confirm = read_archive()
+    confirm = confirmation_table(frame, archive_for_confirm)
+    if confirm.empty:
+        st.info("Chưa có coin hoặc chưa có dữ liệu để đánh giá.")
+    else:
+        verified = confirm[confirm["xác nhận sơ bộ"].str.startswith("ĐỒNG THUẬN")]
+        if verified.empty:
+            st.info("Chưa có coin nào đủ xác nhận sơ bộ từ 2 sàn. "
+                    "Các trường hợp không đạt được ghi rõ lý do bên dưới.")
+        else:
+            st.dataframe(verified, use_container_width=True, hide_index=True)
+        with st.expander("Xem tất cả coin và lý do chưa xác nhận", expanded=False):
+            st.dataframe(confirm, use_container_width=True, hide_index=True)
+        st.download_button("📥 Tải kết quả xác nhận", confirm.to_csv(index=False).encode("utf-8-sig"),
+                           file_name="pre_pump_confirmation_v32.csv", mime="text/csv")
+    st.divider()
     st.subheader("🔥 TOP COIN CÓ TÍN HIỆU PRE-PUMP 4H")
     st.caption("Mỗi coin một dòng. Nhóm ưu tiên được đưa lên đầu; điểm tổng hợp là điểm kỹ thuật, KHÔNG phải xác suất pump. Dữ liệu khác sàn có thể chưa đồng thuận.")
     ranked = aggregate_coin_signals(frame)
