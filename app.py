@@ -292,6 +292,81 @@ def scan(selected, top, min_turnover):
     results.sort(key=lambda x: (x["điểm 4H /100"], x["thời gian nén liên tục (giờ)"]), reverse=True)
     return pd.DataFrame(results), errors, status
 
+
+def aggregate_coin_signals(frame):
+    """One row per pair. Never sum scores across exchanges or call this a probability."""
+    columns = ["coin", "mức ưu tiên", "điểm tổng hợp /100", "trạng thái tổng hợp",
+               "sàn có dữ liệu", "số sàn", "đồng thuận", "nén dài nhất (giờ)",
+               "breakout gần nhất (giờ)", "RVOL cao nhất", "giá 4H trung vị %",
+               "chi tiết theo sàn"]
+    if frame.empty:
+        return pd.DataFrame(columns=columns)
+    rows = []
+    strongest = {"NÉN LÂU — ƯU TIÊN 4H", "VỪA BREAKOUT — CÓ THỂ TIẾP DIỄN"}
+    watch = {"ĐANG TÍCH LŨY", "BREAKOUT CẦN XÁC NHẬN"}
+    for coin, group in frame.groupby("coin", sort=False):
+        statuses = set(group["trạng thái 4H"])
+        qualifying = group[group["trạng thái 4H"].isin(strongest)]
+        watching = group[group["trạng thái 4H"].isin(watch)]
+        hot = bool("ĐÃ TĂNG NÓNG" in statuses)
+        if not qualifying.empty:
+            grade = 0
+            status = "ỨNG VIÊN PRE-PUMP 4H"
+            candidate = qualifying
+        elif not watching.empty:
+            grade = 1
+            status = "THEO DÕI — CẦN XÁC NHẬN"
+            candidate = watching
+        else:
+            grade = 2
+            status = "CHƯA CÓ TÍN HIỆU"
+            candidate = group
+        # Score = best observed setup, NOT additive independent proof.
+        raw_score = int(candidate["điểm 4H /100"].max())
+        # A single exchange is unverified; cap confidence of the rank display.
+        # Two exchanges may be discordant despite both having observations.
+        modes = set()
+        for label in statuses:
+            if label in {"NÉN LÂU — ƯU TIÊN 4H", "ĐANG TÍCH LŨY"}:
+                modes.add("nén")
+            elif label in {"VỪA BREAKOUT — CÓ THỂ TIẾP DIỄN", "BREAKOUT CẦN XÁC NHẬN"}:
+                modes.add("breakout")
+            else:
+                modes.add("khác")
+        n = group["sàn"].nunique()
+        if n == 1:
+            consensus = "1 sàn — chưa xác nhận đa sàn"
+            score = min(raw_score, 79)
+        elif len(modes) == 1:
+            consensus = "Cùng nhóm tín hiệu"
+            score = raw_score
+        else:
+            consensus = "Không đồng thuận"
+            score = min(raw_score, 69)
+        if hot:
+            consensus += " / có cảnh báo tăng nóng"
+            score = min(score, 49)
+            grade = max(grade, 1)
+            status = "CẦN KIỂM TRA RỦI RO"
+        details = " | ".join(
+            f'{r["sàn"].upper()}: {r["trạng thái 4H"]} ({r["điểm 4H /100"]})'
+            for _, r in group.sort_values("sàn").iterrows())
+        recent = group["breakout cách đây (giờ)"].dropna()
+        rows.append({
+            "coin": coin, "mức ưu tiên": grade, "điểm tổng hợp /100": score,
+            "trạng thái tổng hợp": status,
+            "sàn có dữ liệu": ", ".join(sorted(group["sàn"].unique())),
+            "số sàn": n, "đồng thuận": consensus,
+            "nén dài nhất (giờ)": int(group["thời gian nén liên tục (giờ)"].max()),
+            "breakout gần nhất (giờ)": int(recent.min()) if not recent.empty else None,
+            "RVOL cao nhất": round(float(group["RVOL 1H"].max()), 2),
+            "giá 4H trung vị %": round(float(group["giá 4H %"].median()), 2),
+            "chi tiết theo sàn": details,
+        })
+    return pd.DataFrame(rows, columns=columns).sort_values(
+        ["mức ưu tiên", "điểm tổng hợp /100", "số sàn"],
+        ascending=[True, False, False]).reset_index(drop=True)
+
 with st.sidebar:
     st.header("Cấu hình quét")
     selected = st.multiselect("Sàn", list(BASE), default=list(BASE))
@@ -305,8 +380,9 @@ with st.sidebar:
 st.info("V2.2: Đo thời gian nén liên tục trên nến 1H và phát hiện breakout xảy ra trong 4 nến 1H đã đóng. "
         "Hai nhóm: tích lũy lâu chưa breakout và vừa breakout có điều kiện tiếp diễn. "
         "Đây là điểm quy tắc chưa backtest, KHÔNG phải xác suất pump hay lời khuyên mua bán.")
-st.caption("Dữ liệu giới hạn khoảng 100–130 nến gần nhất; thời gian nén dài hơn lịch sử có thể bị đánh giá thấp. "
-           "Chưa xác nhận dòng tiền Spot CVD hoặc OI; chưa bảo đảm lọc hết tài sản phi crypto.")
+st.caption("V2.3: bảng đầu tiên xếp hạng theo coin, gộp quan sát đa sàn và đánh dấu bất đồng. "
+           "Dữ liệu giới hạn 100–130 nến; chưa đo Spot CVD, OI hay xác suất 4H. "
+           "Chưa bảo đảm lọc hết tài sản phi crypto.")
 if st.button("🔄 QUÉT NGAY", type="primary"):
     if not selected:
         st.warning("Hãy chọn ít nhất một sàn.")
@@ -331,6 +407,25 @@ if "frame" in st.session_state:
     a.metric("Quan sát", len(frame))
     b.metric("Coin riêng biệt", frame["coin"].nunique() if not frame.empty else 0)
     c.metric("Điểm 4H cao nhất (/100)", int(frame["điểm 4H /100"].max()) if not frame.empty else 0)
+    st.subheader("🔥 TOP COIN CÓ TÍN HIỆU PRE-PUMP 4H")
+    st.caption("Mỗi coin một dòng. Nhóm ưu tiên được đưa lên đầu; điểm tổng hợp là điểm kỹ thuật, KHÔNG phải xác suất pump. Dữ liệu khác sàn có thể chưa đồng thuận.")
+    ranked = aggregate_coin_signals(frame)
+    if ranked.empty:
+        st.warning("Chưa có dữ liệu để xếp hạng.")
+    else:
+        candidates = ranked[ranked["mức ưu tiên"] <= 1].copy()
+        if only_setups:
+            candidates = candidates[candidates["mức ưu tiên"] == 0]
+        candidates = candidates[candidates["điểm tổng hợp /100"] >= threshold]
+        if candidates.empty:
+            st.info("Chưa có coin đạt mức điểm và điều kiện ưu tiên hiện tại. Có thể hạ bộ lọc để xem nhóm theo dõi, nhưng không coi đó là lệnh mua.")
+        else:
+            st.dataframe(candidates.drop(columns=["mức ưu tiên"]), use_container_width=True,
+                         hide_index=True)
+        st.download_button("📥 Tải bảng Pre-Pump tổng hợp (CSV)",
+                           ranked.drop(columns=["mức ưu tiên"]).to_csv(index=False).encode("utf-8-sig"),
+                           file_name="prepump_4h_ranked.csv", mime="text/csv")
+    st.divider()
     filtered = frame[frame["điểm 4H /100"] >= threshold] if not frame.empty else frame
     setup_names = ["NÉN LÂU — ƯU TIÊN 4H", "ĐANG TÍCH LŨY",
                    "VỪA BREAKOUT — CÓ THỂ TIẾP DIỄN", "BREAKOUT CẦN XÁC NHẬN"]
