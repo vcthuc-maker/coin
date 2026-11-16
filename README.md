@@ -118,3 +118,14 @@ Không đủ nguồn OI, Spot, thiếu lịch sử, dữ liệu cũ, lỗi API, 
 - HTTP 451/403 của Binance/Bybit là chặn truy cập tại máy chủ và không được né chặn. Các endpoint lỗi được ghi rõ, không giả mạo dữ liệu.
 - Bộ điểm gốc giữ nguyên để so sánh các nghiên cứu đã thực hiện. Thêm cảnh báo **giá dưới EMA50 đang giảm** (EMA50 hiện dưới EMA50 cách 12 nến 1H) để nhận diện trường hợp nén giá sau giảm mạnh; bảng tổng hợp hạ nhóm ưu tiên trình bày, và Pre-Pump Confirmation không xác nhận các sàn có cảnh báo này. EMA50 không chứng minh đáy thị trường.
 - Nếu thiếu dữ liệu để xác định xu hướng, không được kết luận chắc chắn có pump. Không sử dụng để giao dịch tự động.
+
+
+## Giao diện đơn giản — 3 trạng thái (V3.2.2)
+
+Màn hình chính hiển thị **một bảng coin**, gộp theo mã, với đúng ba trạng thái dễ quan sát:
+
+1. **Nén trong xu hướng giảm:** Có cảnh báo giá dưới EMA50 và EMA50 đang đi xuống. Không coi đây là Pre-Pump đã xác nhận.
+2. **Tích lũy — có dấu hiệu đảo chiều:** Setup tích lũy hoặc breakout sớm không có cảnh báo xu hướng giảm; **mới là nhóm theo dõi**, chưa chứng minh đảo chiều.
+3. **Breakout — dòng tiền xác nhận:** Có breakout kỹ thuật tiếp diễn, và bộ kiểm tra V3.2 xác nhận sơ bộ OI + Spot mẫu đồng thuận tối thiểu hai sàn. Không phải dự báo chắc chắn hay xác suất thắng.
+
+Những coin chưa đủ điều kiện lọc không xuất hiện ở bảng chính. Phần trạng thái kết nối, bảng Pre-Pump cũ, OI, nhật ký, kiểm định và lỗi API vẫn có thể xem tại **Phân tích nâng cao**, mặc định đóng. Giữ nguyên bộ điểm và dữ liệu nghiên cứu; đây chỉ là thay đổi giao diện và phân loại theo quy tắc.
