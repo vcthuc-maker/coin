@@ -1,18 +1,7 @@
 {
-  "collected_at_utc": "2026-11-16T21:10:31+00:00",
-  "universe_size": 971,
+  "collected_at_utc": "2026-11-16T21:54:05+00:00",
+  "universe_size": 1042,
   "history_intervals": 3,
-  "rows": [
-    {
-      "coin": "HUMA/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.010217,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 29.14,
-      "turnover 24H USDT": 1721540
-    }
-  ],
+  "rows": [],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
 }
