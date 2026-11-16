@@ -59,12 +59,18 @@ def universe(min_turnover_usdt=250_000, max_candidates=45):
     df = pd.DataFrame(rows)
     # Diversify discovery: strong liquidity, early moderate movers,
     # plus some active gainers; do not inspect solely already-pumped coins.
-    liquid = df.sort_values("turnover24", ascending=False).head(max_candidates // 2)
+    n_liquid = max(1, max_candidates // 3)
+    n_gainers = max(1, max_candidates // 5)
+    n_warming = max(1, max_candidates - n_liquid - n_gainers)
+    liquid = df.sort_values("turnover24", ascending=False).head(n_liquid)
     warming = df[(df["change24"] >= -3) & (df["change24"] <= 12)]
-    warming = warming.sort_values(["change24", "turnover24"], ascending=False).head(max_candidates)
+    warming = warming.sort_values(["change24", "turnover24"], ascending=False).head(n_warming)
     gainers = df[(df["change24"] > 12) & (df["change24"] <= 80)]
-    gainers = gainers.sort_values("change24", ascending=False).head(max_candidates // 3)
-    pool = pd.concat([liquid, warming, gainers]).drop_duplicates("native")
+    gainers = gainers.sort_values("change24", ascending=False).head(n_gainers)
+    pool = pd.concat([warming, liquid, gainers]).drop_duplicates("native")
+    if len(pool) < max_candidates:
+        extra = df.sort_values("turnover24", ascending=False)
+        pool = pd.concat([pool, extra]).drop_duplicates("native")
     return pool.head(max_candidates).to_dict("records")
 
 
