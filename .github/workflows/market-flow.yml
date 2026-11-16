@@ -32,6 +32,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/flow/*.jsonl
+          if ls data/signals/*.jsonl >/dev/null 2>&1; then git add data/signals/*.jsonl; fi
           if ! git diff --cached --quiet; then
             git commit -m "data: market flow hourly snapshot"
             git push
