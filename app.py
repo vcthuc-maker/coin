@@ -17,6 +17,7 @@ from signal_archive import load_signals, tracking_table
 from confirmation import confirmation_table
 from simple_view import three_state_view, DOWN, RECOVER, BREAK
 from mexc_fast import scan_fast
+from mexc_velocity import read_latest, MAX_LAG_SECONDS
 from validation_v3 import (
     collect_events, temporal_split, report_rows, report_groups, evaluate, summarize,
 )
@@ -356,6 +357,40 @@ if st.button("🔄 QUÉT NGAY", type="primary"):
 if "frame" in st.session_state:
     frame = st.session_state["frame"]
     st.caption("Quét gần nhất (UTC): " + st.session_state["scan_time"])
+    st.subheader("⚡ MEXC — COIN ĐANG TĂNG TỐC 5–15 PHÚT")
+    velocity = read_latest()
+    if velocity is None:
+        st.info("Chưa có dữ liệu từ bộ quét MEXC theo chu kỳ 5 phút. "
+                "Mở GitHub Actions → MEXC five-minute price acceleration watch → Run workflow. "
+                "Cần ít nhất 2–4 lần quan sát hợp lệ để đo biến động 5–15 phút.")
+    else:
+        timestamp = pd.to_datetime(velocity.get("collected_at_utc"), utc=True, errors="coerce")
+        age = ((pd.Timestamp.now(tz="UTC") - timestamp).total_seconds()
+               if pd.notna(timestamp) else float("inf"))
+        st.caption(f"Đã theo dõi {velocity.get('universe_size', 0)} hợp đồng MEXC; "
+                   f"{velocity.get('history_intervals', 0)} lần chụp giá; "
+                   f"bản ghi UTC: {str(timestamp)[:19]}. "
+                   "Dữ liệu có thể chậm do lịch GitHub Actions.")
+        if age < 0 or age > MAX_LAG_SECONDS:
+            st.warning("Dữ liệu MEXC đã cũ (>11 phút) hoặc đồng hồ không hợp lệ. "
+                       "Không sử dụng các trạng thái như tín hiệu đang xảy ra lúc này.")
+        ticks = pd.DataFrame(velocity.get("rows", []))
+        if ticks.empty:
+            st.info("Chưa xuất hiện coin đạt tiêu chí tăng tốc trong các lần chụp hợp lệ.")
+        else:
+            new_burst = ticks[ticks["trạng thái"] == "MỚI TĂNG TỐC — THEO DÕI"]
+            st.metric("Coin mới tăng tốc (quan sát, không phải dự báo)", len(new_burst))
+            if not new_burst.empty:
+                st.dataframe(new_burst.head(15), use_container_width=True, hide_index=True)
+            with st.expander("Xem cả coin đang nhích lên và đã tăng nóng", expanded=False):
+                st.dataframe(ticks, use_container_width=True, hide_index=True)
+                st.download_button("📥 Tải dữ liệu tăng tốc MEXC",
+                                   ticks.to_csv(index=False).encode("utf-8-sig"),
+                                   file_name="mexc_velocity.csv", mime="text/csv")
+    st.caption("Biến động 5/15/60 phút so sánh các giá snapshot đã lưu; "
+               "không phải chứng cứ lệnh mua, không tính volume 5m toàn thị trường, "
+               "không chứng minh khả năng phát hiện pump tương lai.")
+    st.divider()
     st.subheader("🎯 3 TRẠNG THÁI COIN — DỄ THEO DÕI")
     st.caption("Tín hiệu kỹ thuật, không phải xác suất pump. Breakout chỉ được xác nhận khi "
                "có dữ liệu OI + Spot mẫu đồng thuận ít nhất 2 sàn. Dữ liệu thiếu sẽ không được xác nhận.")
