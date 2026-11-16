@@ -14,6 +14,11 @@ def signal(ex, base, native, price, turnover, candles):
     low = df["low"]
     vol = df["turnover"]
     ema20 = close.ewm(span=20, adjust=False).mean()
+    ema50 = close.ewm(span=50, adjust=False).mean()
+    downtrend_risk = (close.iloc[-1] < ema50.iloc[-1] and
+                      ema50.iloc[-1] < ema50.iloc[-13])
+    trend_label = ("DƯỚI EMA50, EMA50 ĐANG GIẢM — CHƯA XÁC NHẬN ĐẢO CHIỀU"
+                   if downtrend_risk else "KHÔNG CÓ CẢNH BÁO GIẢM THEO EMA50")
     delta = close.diff()
     gain = delta.clip(lower=0).ewm(alpha=1 / 14, adjust=False).mean()
     loss = (-delta.clip(upper=0)).ewm(alpha=1 / 14, adjust=False).mean()
@@ -138,7 +143,7 @@ def signal(ex, base, native, price, turnover, candles):
         "nén trước breakout (giờ)": prior_compression,
         "breakout cách đây (giờ)": breakout_age,
         "volume breakout / TB": breakout_volume,
-        "giá": price, "turnover 24h USDT": round(turnover, 2),
+        "giá": price, "rủi ro xu hướng": trend_label, "turnover 24h USDT": round(turnover, 2),
         "RVOL 1H": round(rvol, 2), "volume tăng tốc": round(accel, 2),
         "RSI 1H": round(rsi, 1), "BB percentile": round(bb_pct, 1),
         "cách kháng cự %": round(distance, 2), "giá 4H %": round(change4, 2),
