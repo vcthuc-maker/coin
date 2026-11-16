@@ -14,6 +14,8 @@ from pathlib import Path
 import time
 import httpx
 
+from signal_capture import capture
+
 BASES = ("BTC", "ETH", "SOL", "DOGE", "SUI", "LINK", "TAO", "WLD",
          "NEAR", "INJ", "AVAX", "XRP", "ADA", "BNB", "PEPE")
 EXCHANGES = ("okx", "mexc")
@@ -164,6 +166,7 @@ def run():
     hour = now.strftime("%Y-%m-%dT%H:00:00Z")
     month = now.strftime("%Y-%m")
     rows = []
+    signals = []
     errors = []
     with httpx.Client(headers={"User-Agent": "PrePumpScanner-Public-Research/3.1"}) as client:
         for exchange in EXCHANGES:
@@ -172,13 +175,22 @@ def run():
                     data = collect_okx(client, coin) if exchange == "okx" else collect_mexc(client, coin)
                     rows.append({"hour_utc": hour, "collected_at_utc": now.isoformat(),
                                  "exchange": exchange, "coin": coin, **data})
+                    try:
+                        observed = capture(client, get, exchange, coin, data)
+                        signals.append({
+                            "hour_utc": hour, "collected_at_utc": now.isoformat(),
+                            "exchange": exchange, "coin": coin, **observed
+                        })
+                    except Exception as signal_err:
+                        errors.append(f"signal {exchange} {coin}: {str(signal_err)[:100]}")
                 except Exception as err:
                     errors.append(f"{exchange} {coin}: {str(err)[:120]}")
                 time.sleep(0.08)
     path = ROOT / f"{month}.jsonl"
     written = dedupe_append(path, rows)
+    signal_written = dedupe_append(ROOT.parent / "signals" / f"{month}.jsonl", signals)
     # Failure logs are emitted to the Actions job, not invented as zeros.
-    print(f"hour={hour}; collected={len(rows)}; new_rows={written}; errors={len(errors)}; file={path}")
+    print(f"hour={hour}; flow={len(rows)}; signals={len(signals)}; new_flow={written}; new_signals={signal_written}; errors={len(errors)}")
     for err in errors:
         print("WARN", err)
     if not rows:
