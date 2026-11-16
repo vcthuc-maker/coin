@@ -58,6 +58,9 @@ def confirmation_table(scan_frame, archived, now=None, *, oi_min=3.0, spot_min=1
         for _, technical in g.iterrows():
             ex = technical["sàn"]
             phase = technical["trạng thái 4H"]
+            if str(technical.get("rủi ro xu hướng", "")).startswith("DƯỚI EMA50"):
+                detail.append(f"{ex}: EMA50 giảm, chưa xác nhận đảo chiều")
+                continue
             if phase not in TECHNICAL_PHASES:
                 detail.append(f"{ex}: chưa có setup kỹ thuật")
                 continue
