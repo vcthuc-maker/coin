@@ -1,48 +1,7 @@
 {
-  "collected_at_utc": "2026-11-16T15:08:44+00:00",
-  "universe_size": 934,
-  "history_intervals": 1,
-  "rows": [
-    {
-      "coin": "RARE/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.01537,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 80.39,
-      "turnover 24H USDT": 17538103
-    },
-    {
-      "coin": "BLESS/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.017924,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 98.2,
-      "turnover 24H USDT": 15364026
-    },
-    {
-      "coin": "SPACE/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.003518,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 28.25,
-      "turnover 24H USDT": 408161
-    },
-    {
-      "coin": "CASHCAT/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.05206,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 32.09,
-      "turnover 24H USDT": 895728
-    }
-  ],
+  "collected_at_utc": "2026-11-16T16:44:25+00:00",
+  "universe_size": 1039,
+  "history_intervals": 2,
+  "rows": [],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
 }
