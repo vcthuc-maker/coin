@@ -9,6 +9,7 @@ import pandas as pd
 import streamlit as st
 
 from accuracy import replay, metrics, breakdown
+from market_flow import run_samples
 from validation_v3 import (
     collect_events, temporal_split, report_rows, report_groups, evaluate, summarize,
 )
@@ -474,6 +475,28 @@ if "frame" in st.session_state:
         st.download_button("📥 Tải bảng Pre-Pump tổng hợp (CSV)",
                            ranked.drop(columns=["mức ưu tiên"]).to_csv(index=False).encode("utf-8-sig"),
                            file_name="prepump_4h_ranked.csv", mime="text/csv")
+    st.divider()
+    st.subheader("🌊 DÒNG TIỀN HIỆN TẠI — OI và giao dịch Spot mẫu")
+    st.caption("Dữ liệu này KHÔNG phải OI thay đổi 4H hoặc Spot CVD 4H. "
+               "OI là snapshot hiện tại, Spot chỉ là mẫu giao dịch gần nhất. "
+               "Không được sử dụng để tính tỷ lệ thành công lịch sử.")
+    if st.button("🔍 Kiểm tra dòng tiền top 8 quan sát", key="flow_probe"):
+        with st.spinner("Đang kiểm tra nguồn dữ liệu công khai OKX/MEXC..."):
+            flow_frame, flow_errors = run_samples(frame, limit=8)
+            st.session_state["flow_frame"] = flow_frame
+            st.session_state["flow_errors"] = flow_errors
+    if "flow_frame" in st.session_state:
+        flow_frame = st.session_state["flow_frame"]
+        if flow_frame.empty:
+            st.warning("Không có dữ liệu flow hỗ trợ từ nguồn hiện tại.")
+        else:
+            st.dataframe(flow_frame, use_container_width=True, hide_index=True)
+            st.caption("OI OKX có thể hiển thị theo USD hoặc base coin; MEXC theo hợp đồng. "
+                       "KHÔNG so sánh/cộng trực tiếp OI giữa sàn. "
+                       "Spot imbalance dương là mua chủ động trội trong tập trades được trả về, không phải tín hiệu mua.")
+        if st.session_state.get("flow_errors"):
+            with st.expander("Nguồn dữ liệu flow không khả dụng"):
+                st.code("\n".join(st.session_state["flow_errors"]))
     st.divider()
     st.subheader("🧪 V3.0 — KIỂM ĐỊNH 4H / 8H / 24H, MFE / MAE")
     st.warning("Thử nghiệm theo thời gian, KHÔNG phải AI đã huấn luyện hoặc win rate đã xác nhận. "
