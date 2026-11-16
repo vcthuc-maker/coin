@@ -12,6 +12,7 @@ from accuracy import replay, metrics, breakdown
 from market_flow import run_samples
 from flow_history import read_archive, summarize_flow, historic_coverage
 from signal_core import signal as score_signal_core
+from signal_archive import load_signals, tracking_table
 from validation_v3 import (
     collect_events, temporal_split, report_rows, report_groups, evaluate, summarize,
 )
@@ -371,6 +372,23 @@ if "frame" in st.session_state:
             st.dataframe(archived.tail(300), use_container_width=True, hide_index=True)
         st.download_button("📥 Tải dữ liệu quan sát gần đây", archived.to_csv(index=False).encode("utf-8-sig"),
                            file_name="market_flow_observations.csv", mime="text/csv")
+    st.divider()
+    st.subheader("📓 V3.1 — NHẬT KÝ TÍN HIỆU SAU KHI PHÁT")
+    st.caption("Tín hiệu được tác vụ GitHub Actions ghi theo giờ khi chạy thành công. "
+               "Kết quả ~4H là chênh lệch giữa hai giá snapshot cách nhau gần 4 giờ, "
+               "KHÔNG phải backtest TP/SL hoặc tỷ lệ giao dịch khớp thật.")
+    log = load_signals()
+    if log.empty:
+        st.info("Chưa có tín hiệu nào được lưu trên GitHub. Kiểm tra workflow theo giờ. "
+                "Dữ liệu sẽ chỉ xuất hiện kể từ lần thu thập thành công đầu tiên.")
+    else:
+        st.metric("Số lần chụp tín hiệu được lưu", len(log))
+        followed = tracking_table(log, archived)
+        st.dataframe(followed, use_container_width=True, hide_index=True)
+        st.download_button("📥 Xuất nhật ký tín hiệu", followed.to_csv(index=False).encode("utf-8-sig"),
+                           file_name="prepump_31_live_signal_log.csv", mime="text/csv")
+        st.caption("Chỉ những bản ghi có giá sau khoảng 4 giờ mới hiện biến động 4H; "
+                   "dữ liệu chưa có được để trống. Không suy ra tỷ lệ pump từ các snapshot chưa đủ mẫu.")
     st.divider()
     st.subheader("🌊 DÒNG TIỀN HIỆN TẠI — OI và giao dịch Spot mẫu")
     st.caption("Dữ liệu này KHÔNG phải OI thay đổi 4H hoặc Spot CVD 4H. "
