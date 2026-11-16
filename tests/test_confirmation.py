@@ -54,6 +54,16 @@ class ConfirmationTests(unittest.TestCase):
         r = confirmation_table(technical(), old, now=self.now)
         self.assertEqual(r.iloc[0]["xác nhận sơ bộ"], "CHƯA XÁC NHẬN")
 
+    def test_downtrend_warning_blocks_confirmation(self):
+        tech = technical()
+        tech["rủi ro xu hướng"] = [
+            "DƯỚI EMA50, EMA50 ĐANG GIẢM — CHƯA XÁC NHẬN ĐẢO CHIỀU",
+            "KHÔNG CÓ CẢNH BÁO GIẢM THEO EMA50",
+        ]
+        r = confirmation_table(tech, flow(self.now), now=self.now)
+        self.assertEqual(r.iloc[0]["xác nhận sơ bộ"], "CHƯA XÁC NHẬN")
+        self.assertIn("EMA50 giảm", r.iloc[0]["lý do chưa xác nhận"])
+
     def test_missing_archive_never_confirmed(self):
         r = confirmation_table(technical(), pd.DataFrame(), now=self.now)
         self.assertEqual(r.iloc[0]["xác nhận sơ bộ"], "CHƯA XÁC NHẬN")
