@@ -143,3 +143,21 @@ Giao diện giữ nguyên một bảng chính với 3 trạng thái. Mở mục 
 - Chỉ hiện các hợp đồng có ít nhất 40 nến Min5 hợp lệ; lỗi API xuất hiện trong mục chẩn đoán, không tạo dữ liệu giả. Điểm hoạt động 0–100 là quy tắc thủ công chưa hiệu chỉnh, không phải xác suất pump.
 - **Quan trọng:** Fast-Mover hiện **quét thủ công** khi bạn nhấn nút, không tự giám sát liên tục hay gửi thông báo đẩy. Nếu MEXC đổi API / chặn hosting thì có thể không có kết quả. API có giới hạn tốc độ; chọn 35 hợp đồng lúc đầu.
 - Danh sách loại trừ tài sản cổ phiếu theo mã còn hạn chế; không có bảo đảm 100% hợp đồng là crypto.
+
+
+## V3.3 — Toàn thị trường MEXC: gia tốc giá 5/15/60 phút
+
+Bộ theo dõi mới dùng một yêu cầu ticker MEXC Futures toàn sàn mỗi lần thu thập và một yêu cầu metadata; không giới hạn top 15 coin trước khi phân tích. Giữ hợp đồng USDT được phép và turnover 24H >= 100.000 USDT, trừ một số mã cổ phiếu trong danh sách loại trừ sơ bộ (không phải phân loại tài sản chính thức).
+
+GitHub Actions workflow **MEXC five-minute price acceleration watch** (.github/workflows/mexc-velocity.yml) lên lịch mỗi 5 phút và có nút Run workflow chạy tay. GitHub Actions có thể chạy trễ, bỏ lượt hoặc bị giới hạn theo IP; không phải hệ thống live từng giây.
+
+Lưu snapshot tại data/mexc_velocity/history.json (tối đa 28 mốc gần nhất) và bảng kết quả tại data/mexc_velocity/latest.json. Cần đủ snapshot theo thời gian để tính đúng biến động 5 phút, 15 phút và 1 giờ. Khi thiếu mốc, để trống, không tự suy đoán.
+
+Trạng thái:
+- MỚI TĂNG TỐC — THEO DÕI: giá 5m tăng >=0,35%; 15m tăng 0,7–4%; 24h chưa tăng quá 18%; 1H chưa quá +8% nếu đủ dữ liệu.
+- ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN: tăng tối thiểu 0,4% trong 15 phút nhưng chưa đủ tiêu chuẩn tăng tốc.
+- ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI: 24H >=+25%, 15m >+7% hoặc 1H >=+12%. Không phải tín hiệu bán khống.
+
+Chỉ dùng giá ở các lần chụp, không dùng CVD, không thể biết đỉnh/đáy giữa các lần. Tín hiệu chưa backtest và điểm không phải xác suất pump. Màn hình chính hiển thị tối đa 15 coin mới tăng tốc; các nhóm khác được thu gọn. Nếu dữ liệu cũ hơn 11 phút, báo cảnh báo và không nên coi là tín hiệu đang diễn ra.
+
+Repo có thể phình to và Streamlit có thể redeploy nhiều lần nếu commit mỗi 5 phút. Khi sử dụng lâu dài nên chuyển việc lưu trữ sang database/dịch vụ nền riêng.
