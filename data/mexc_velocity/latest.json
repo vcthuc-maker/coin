@@ -1,27 +1,37 @@
 {
-  "collected_at_utc": "2026-11-17T04:30:08+00:00",
-  "universe_size": 1031,
+  "collected_at_utc": "2026-11-17T05:28:30+00:00",
+  "universe_size": 1029,
   "history_intervals": 3,
   "rows": [
     {
       "coin": "CLAUDIA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.0085,
+      "giá": 0.008141,
       "5m %": null,
       "15m %": null,
-      "1H %": 104.33,
-      "24H %": 87.59,
-      "turnover 24H USDT": 240996
+      "1H %": -4.22,
+      "24H %": 79.67,
+      "turnover 24H USDT": 453549
     },
     {
       "coin": "JAGENT/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 2.623e-06,
+      "giá": 2.65e-06,
       "5m %": null,
       "15m %": null,
-      "1H %": 0.31,
-      "24H %": 26.47,
-      "turnover 24H USDT": 165440
+      "1H %": 1.03,
+      "24H %": 27.77,
+      "turnover 24H USDT": 188753
+    },
+    {
+      "coin": "LONGXIA/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.01591,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 24.78,
+      "24H %": 20.71,
+      "turnover 24H USDT": 519240
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
