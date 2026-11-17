@@ -1,0 +1,42 @@
+name: Build Windows Portable ZIP
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'packaging/build-windows-portable.ps1'
+      - '.github/workflows/build-windows-portable.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build-portable:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up build Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          architecture: x64
+      - name: Build Windows portable bundle
+        shell: pwsh
+        run: ./packaging/build-windows-portable.ps1
+      - name: Verify portable runtime and application syntax
+        shell: pwsh
+        run: |
+          & "dist/PrePumpScanner_Portable/python/python.exe" -c "import streamlit, pandas, numpy, pyarrow, httpx; print('Dependencies OK')"
+          & "dist/PrePumpScanner_Portable/python/python.exe" -m compileall -q "dist/PrePumpScanner_Portable/app"
+          if ($LASTEXITCODE -ne 0) { throw "Source compile failed" }
+          if (!(Test-Path "dist/PrePumpScanner_Portable/START.bat")) { throw "START.bat missing" }
+      - name: Upload complete ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: PrePumpScanner_Windows_x64_Portable
+          path: dist/PrePumpScanner_Windows_x64_Portable.zip
+          if-no-files-found: error
+          retention-days: 30
