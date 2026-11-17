@@ -123,7 +123,8 @@ def classify_early(market, candles, *, now=None):
     # a strong early alert requires first or second positive candle.
     activity = rvol >= 1.5 and recent_turnover >= 3_000
     late = (rise_from_low >= 5 or change15 >= 6 or
-            change3 >= 3 or market["change24"] >= 25 or green >= 4)
+            change3 >= 3 or market["change24"] >= 25 or
+            (green >= 4 and rise_from_low >= 2.0))
     early = (
         activity and 1 <= green <= 2
         and .2 <= change1 <= 1.5 and .3 <= change3 <= 2.
