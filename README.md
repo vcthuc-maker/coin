@@ -171,3 +171,17 @@ Có hai cách:
 2. **Bản ZIP khởi tạo (bootstrap):** file ZIP nhỏ tạo bên ngoài GitHub Actions, lần chạy START.bat đầu tiên sẽ tải code từ nhánh main, Python Windows embedded và thư viện Python về cùng thư mục. Bản này cần Internet khi chạy lần đầu, nhưng sau khi hoàn tất có thể sao chép toàn bộ thư mục sang máy Windows 64-bit khác mà không cần cài Python.
 
 **Lưu ý:** Không coi bản ZIP đã đóng hoàn chỉnh cho tới khi workflow chạy xanh. Công cụ còn cần mạng để lấy dữ liệu thị trường, và API các sàn có thể chặn IP. File ZIP của GitHub Actions có thời hạn lưu trữ, nên tải về máy để lưu lâu dài. Các file dữ liệu GitHub mới phát sinh sau ngày build không tự đồng bộ vào bản portable.
+
+
+## V3.4 — Early-Pump 1M/3M, tránh phát hiện sau bốn cây nến
+
+**Tín hiệu quan sát, không phải dự đoán đã kiểm chứng.**
+GitHub Actions MEXC five-minute price acceleration watch chạy thêm module mexc_early.py sau khi lấy ticker toàn sàn. Từ vũ trụ hợp đồng USDT có thanh khoản phù hợp, chỉ kiểm tra tối đa **24 cặp** có biến động snapshot 5m vừa xuất hiện, volume 24H cao hoặc đang tăng vừa phải; không thể phát hiện mọi coin trên MEXC. Mỗi cặp cần >=40 nến Min1 **đã đóng**, còn mới, liên tục. Lịch 5 phút vẫn có thể bỏ lỡ cú tăng xảy ra và kết thúc giữa hai lần chạy.
+
+- Mới bật lên — 1–2 nến: nến xanh gần nhất 1 hoặc 2, giá 1M tăng 0,2–1,5%; 3M tăng 0,3–2%; RVOL 1M >=1,5; turnover 3M >=3.000 USDT; giá cách kháng cự trước (đỉnh cũ 30 phút) từ -1% đến +1,8%, tăng từ đáy 30 phút **không quá 2,5%**; 15M tăng không quá 3%, 24H chưa tăng quá 15%.
+- Dòng tiền nhích lên — theo dõi: có RVOL + biến động 3M nhưng chưa đủ điều kiện sớm. **RVOL Futures không chứng minh có lực mua Spot.**
+- Đã chạy xa — không mua đuổi: tăng >=5% từ đáy 30m, 15M >=6%, 3M >=3%, 24H >=25%, hoặc >=4 nến xanh liên tiếp.
+
+Đáy và đỉnh gần đây chỉ tính từ nến đã đóng ở thời điểm phát tín hiệu, không có dùng dữ liệu tương lai. Tín hiệu chụp thời gian thực được lưu ở data/mexc_velocity/latest_early.json, hiển thị tại đầu website. Không có AI đã hiệu chỉnh xác suất. Để đánh giá hiệu quả thực cần lưu tín hiệu đầu tiên và theo dõi giá 15M, 1H, 4H sau khi ghi nhận, tránh chỉ phân tích coin đã pump.
+
+**Vận hành:** Lịch GitHub Actions 5 phút không bảo đảm thực thi đúng giờ. Nếu xuất hiện HTTP 429 hoặc bộ quét 1M không lấy được nến hợp lệ, website báo lỗi rõ; phiên quét không tạo tín hiệu giả. Workflow Build Windows Portable ZIP cần chạy lại để chứa module mới.
