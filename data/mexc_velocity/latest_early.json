@@ -1,22 +1,22 @@
 {
-  "collected_at_utc": "2026-11-17T11:26:52+00:00",
-  "universe_size": 1026,
+  "collected_at_utc": "2026-11-17T12:16:45+00:00",
+  "universe_size": 1009,
   "scanned_1m": 24,
   "rows": [
     {
-      "coin": "ZEC/USDT",
+      "coin": "MVLL/USDT",
       "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 934.41,
-      "nến xanh liên tiếp": 4,
-      "1m %": 0.145,
-      "3m %": 0.347,
-      "15m %": 0.985,
-      "RVOL 1m": 1.24,
-      "tăng từ đáy 30m %": 2.11,
-      "so với đỉnh trước %": 0.13,
-      "turnover 3m USDT": 5341081.24,
-      "24h %": 6.99,
-      "nến cuối UTC": "2026-11-17 11:25"
+      "giá": 10.07,
+      "nến xanh liên tiếp": 3,
+      "1m %": 1.308,
+      "3m %": 2.13,
+      "15m %": 2.965,
+      "RVOL 1m": 0.22,
+      "tăng từ đáy 30m %": 5.01,
+      "so với đỉnh trước %": 1.0,
+      "turnover 3m USDT": 1781.04,
+      "24h %": 8.02,
+      "nến cuối UTC": "2026-11-17 12:15"
     }
   ],
   "errors": [],
