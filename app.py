@@ -17,7 +17,7 @@ from signal_archive import load_signals, tracking_table
 from confirmation import confirmation_table
 from simple_view import three_state_view, DOWN, RECOVER, BREAK
 from mexc_fast import scan_fast
-from mexc_velocity import read_latest, MAX_LAG_SECONDS
+from mexc_velocity import read_latest, read_early_latest, MAX_LAG_SECONDS
 from validation_v3 import (
     collect_events, temporal_split, report_rows, report_groups, evaluate, summarize,
 )
@@ -353,6 +353,45 @@ if st.button("🔄 QUÉT NGAY", type="primary"):
         st.session_state["errors"] = errors
         st.session_state["status"] = status
         st.session_state["scan_time"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+
+st.subheader("🚀 MEXC EARLY-PUMP — NẾN 1M / 3M")
+st.caption("Ưu tiên 1–2 nến xanh đầu, khối lượng mới tăng và giá chưa xa đáy gần nhất. "
+           "Không phải xác suất pump; lịch quét mỗi 5 phút có thể bỏ lỡ biến động dưới 5 phút.")
+early_payload = read_early_latest()
+if early_payload is None:
+    st.info("Chưa có lần quét MEXC 1M hoàn tất. Chạy workflow MEXC five-minute "
+            "price acceleration watch trên GitHub Actions.")
+else:
+    e_time = pd.to_datetime(early_payload.get("collected_at_utc"), utc=True, errors="coerce")
+    e_age = ((pd.Timestamp.now(tz="UTC") - e_time).total_seconds()
+             if pd.notna(e_time) else float("inf"))
+    st.caption(f"Đã kiểm tra {early_payload.get('scanned_1m', 0)}/"
+               f"{early_payload.get('universe_size', 0)} hợp đồng (danh sách chọn mẫu); "
+               f"lúc {str(e_time)[:19]} UTC.")
+    if e_age < 0 or e_age > MAX_LAG_SECONDS:
+        st.warning("Lần quét 1M đã cũ hoặc đồng hồ không hợp lệ. "
+                   "Dữ liệu dưới đây chỉ để xem lại, không phải tín hiệu đang hoạt động.")
+    early_df = pd.DataFrame(early_payload.get("rows", []))
+    if early_df.empty:
+        st.info("Chưa có mẫu 1–2 nến xanh đầu đạt các bộ lọc giá/volume tại thời điểm quét.")
+    else:
+        first_candles = early_df[early_df["trạng thái"] == "MỚI BẬT LÊN — 1–2 NẾN"]
+        st.metric("Mới bật lên 1–2 nến (quan sát)", len(first_candles))
+        if not first_candles.empty:
+            st.dataframe(first_candles.head(20), use_container_width=True, hide_index=True)
+        with st.expander("Các mã đang nhích lên hoặc đã tăng quá xa", expanded=False):
+            st.dataframe(early_df, use_container_width=True, hide_index=True)
+            st.download_button("📥 Tải kết quả Early-Pump 1M",
+                               early_df.to_csv(index=False).encode("utf-8-sig"),
+                               file_name="mexc_early_1m.csv", mime="text/csv")
+    err = early_payload.get("errors", [])
+    if err:
+        with st.expander(f"API / dữ liệu Min1 thiếu ({len(err)})"):
+            st.code("\n".join(err[:20]))
+st.caption("Bộ lọc thử nghiệm: 1M +0,2–1,5%, 3M +0,3–2%, RVOL >=1,5; "
+           "không tăng quá 2,5% từ đáy 30 phút đã quan sát, số nến xanh 1–2. "
+           "Đáy 30 phút chỉ tính từ dữ liệu đã xảy ra; không dùng đáy tương lai.")
+st.divider()
 
 st.subheader("⚡ MEXC — COIN ĐANG TĂNG TỐC 5–15 PHÚT")
 velocity = read_latest()
