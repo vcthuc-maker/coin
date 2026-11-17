@@ -16,6 +16,7 @@ from mexc_fast import EXCLUDE, get_json
 ROOT = Path(__file__).resolve().parent / "data" / "mexc_velocity"
 HISTORY = ROOT / "history.json"
 LATEST = ROOT / "latest.json"
+EARLY_LATEST = ROOT / "latest_early.json"
 MAX_SNAPSHOTS = 28
 MAX_LAG_SECONDS = 11 * 60
 
@@ -126,6 +127,23 @@ def run():
         prior = json.loads(HISTORY.read_text(encoding="utf-8")).get("snapshots", [])
     history = apply_snapshot(prior, now, markets)
     alerts = compute(history)
+    # Short-horizon detector only checks a bounded, diverse subset of markets.
+    # Keep its failures separate: market-wide snapshot must not be lost.
+    early_rows, early_errors, early_count = [], [], 0
+    try:
+        from mexc_early import scan_early
+        early_rows, early_errors, early_count = scan_early(
+            markets, history, limit=24, now=now)
+    except Exception as exc:
+        early_errors.append("1m scan: " + str(exc)[:180])
+    payload_early = {
+        "collected_at_utc": datetime.fromtimestamp(now, timezone.utc).isoformat(),
+        "universe_size": len(markets),
+        "scanned_1m": early_count,
+        "rows": early_rows[:60],
+        "errors": early_errors[:25],
+        "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
+    }
     payload = {
         "collected_at_utc": datetime.fromtimestamp(now, timezone.utc).isoformat(),
         "universe_size": len(markets),
@@ -137,8 +155,10 @@ def run():
     HISTORY.write_text(json.dumps({"snapshots": history}, ensure_ascii=False, separators=(",", ":")),
                        encoding="utf-8")
     LATEST.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    EARLY_LATEST.write_text(json.dumps(payload_early, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"mexc_velocity: markets={len(markets)} snapshots={len(history)} alerts={len(alerts)}")
     print(f"early={sum(x['_rank']==0 for x in alerts)} late={sum(x['_rank']==2 for x in alerts)}")
+    print(f"1m_scanned={early_count} 1m_alerts={len(early_rows)} 1m_errors={len(early_errors)}")
 
 
 def read_latest():
@@ -153,3 +173,13 @@ def read_latest():
 
 if __name__ == "__main__":
     run()
+
+
+def read_early_latest():
+    if not EARLY_LATEST.exists():
+        return None
+    try:
+        data = json.loads(EARLY_LATEST.read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else None
+    except (ValueError, OSError):
+        return None
