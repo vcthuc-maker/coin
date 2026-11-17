@@ -161,3 +161,13 @@ Trạng thái:
 Chỉ dùng giá ở các lần chụp, không dùng CVD, không thể biết đỉnh/đáy giữa các lần. Tín hiệu chưa backtest và điểm không phải xác suất pump. Màn hình chính hiển thị tối đa 15 coin mới tăng tốc; các nhóm khác được thu gọn. Nếu dữ liệu cũ hơn 11 phút, báo cảnh báo và không nên coi là tín hiệu đang diễn ra.
 
 Repo có thể phình to và Streamlit có thể redeploy nhiều lần nếu commit mỗi 5 phút. Khi sử dụng lâu dài nên chuyển việc lưu trữ sang database/dịch vụ nền riêng.
+
+
+## Windows Portable ZIP (không cần cài Python)
+
+Có hai cách:
+
+1. **Bản Portable hoàn chỉnh:** mở GitHub Actions > Build Windows Portable ZIP > chọn lần chạy thành công > trong phần Artifacts tải **PrePumpScanner_Windows_x64_Portable**. File ZIP được tạo trực tiếp bởi Windows runner, có sẵn Python 3.12 nhúng, packages, mã nguồn, START.bat, HUONG_DAN.txt. Giải nén vào Windows 10/11 x64 rồi nhấp đúp START.bat. Không cần cài Python riêng. Workflow có nút Run workflow và cũng tự chạy khi script đóng gói hoặc workflow thay đổi.
+2. **Bản ZIP khởi tạo (bootstrap):** file ZIP nhỏ tạo bên ngoài GitHub Actions, lần chạy START.bat đầu tiên sẽ tải code từ nhánh main, Python Windows embedded và thư viện Python về cùng thư mục. Bản này cần Internet khi chạy lần đầu, nhưng sau khi hoàn tất có thể sao chép toàn bộ thư mục sang máy Windows 64-bit khác mà không cần cài Python.
+
+**Lưu ý:** Không coi bản ZIP đã đóng hoàn chỉnh cho tới khi workflow chạy xanh. Công cụ còn cần mạng để lấy dữ liệu thị trường, và API các sàn có thể chặn IP. File ZIP của GitHub Actions có thời hạn lưu trữ, nên tải về máy để lưu lâu dài. Các file dữ liệu GitHub mới phát sinh sau ngày build không tự đồng bộ vào bản portable.
