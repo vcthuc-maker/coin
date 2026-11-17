@@ -1,18 +1,7 @@
 {
-  "collected_at_utc": "2026-11-17T17:25:10+00:00",
-  "universe_size": 1018,
+  "collected_at_utc": "2026-11-17T18:17:06+00:00",
+  "universe_size": 996,
   "history_intervals": 3,
-  "rows": [
-    {
-      "coin": "MMT/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.146,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 16.24,
-      "24H %": 21.46,
-      "turnover 24H USDT": 1016217
-    }
-  ],
+  "rows": [],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
 }
