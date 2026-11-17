@@ -1,47 +1,37 @@
 {
-  "collected_at_utc": "2026-11-17T06:27:30+00:00",
-  "universe_size": 1029,
-  "history_intervals": 3,
+  "collected_at_utc": "2026-11-17T07:48:35+00:00",
+  "universe_size": 1042,
+  "history_intervals": 2,
   "rows": [
+    {
+      "coin": "EVAA/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 4.0828,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 25.96,
+      "turnover 24H USDT": 36690855
+    },
     {
       "coin": "CLAUDIA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.006868,
+      "giá": 0.007285,
       "5m %": null,
       "15m %": null,
-      "1H %": -15.64,
-      "24H %": 51.57,
-      "turnover 24H USDT": 615391
-    },
-    {
-      "coin": "FLOAT/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.00261,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 13.73,
-      "24H %": 5.58,
-      "turnover 24H USDT": 170244
-    },
-    {
-      "coin": "JAGENT/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 2.692e-06,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 1.58,
-      "24H %": 29.79,
-      "turnover 24H USDT": 194733
+      "1H %": null,
+      "24H %": 60.78,
+      "turnover 24H USDT": 709129
     },
     {
       "coin": "LONGXIA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.01956,
+      "giá": 0.02091,
       "5m %": null,
       "15m %": null,
-      "1H %": 22.94,
-      "24H %": 48.4,
-      "turnover 24H USDT": 1132386
+      "1H %": null,
+      "24H %": 58.64,
+      "turnover 24H USDT": 2720441
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
