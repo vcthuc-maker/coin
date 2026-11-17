@@ -1,17 +1,27 @@
 {
-  "collected_at_utc": "2026-11-17T03:32:08+00:00",
-  "universe_size": 1038,
+  "collected_at_utc": "2026-11-17T04:30:08+00:00",
+  "universe_size": 1031,
   "history_intervals": 3,
   "rows": [
     {
-      "coin": "JAGENT/USDT",
+      "coin": "CLAUDIA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 2.615e-06,
+      "giá": 0.0085,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 26.08,
-      "turnover 24H USDT": 151266
+      "1H %": 104.33,
+      "24H %": 87.59,
+      "turnover 24H USDT": 240996
+    },
+    {
+      "coin": "JAGENT/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 2.623e-06,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 0.31,
+      "24H %": 26.47,
+      "turnover 24H USDT": 165440
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
