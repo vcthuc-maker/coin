@@ -1,7 +1,18 @@
 {
-  "collected_at_utc": "2026-11-17T02:43:07+00:00",
-  "universe_size": 1042,
+  "collected_at_utc": "2026-11-17T03:32:08+00:00",
+  "universe_size": 1038,
   "history_intervals": 3,
-  "rows": [],
+  "rows": [
+    {
+      "coin": "JAGENT/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 2.615e-06,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 26.08,
+      "turnover 24H USDT": 151266
+    }
+  ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
 }
