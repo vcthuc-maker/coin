@@ -1,24 +1,8 @@
 {
-  "collected_at_utc": "2026-11-17T12:16:45+00:00",
-  "universe_size": 1009,
+  "collected_at_utc": "2026-11-17T13:28:16+00:00",
+  "universe_size": 1030,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "MVLL/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 10.07,
-      "nến xanh liên tiếp": 3,
-      "1m %": 1.308,
-      "3m %": 2.13,
-      "15m %": 2.965,
-      "RVOL 1m": 0.22,
-      "tăng từ đáy 30m %": 5.01,
-      "so với đỉnh trước %": 1.0,
-      "turnover 3m USDT": 1781.04,
-      "24h %": 8.02,
-      "nến cuối UTC": "2026-11-17 12:15"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
