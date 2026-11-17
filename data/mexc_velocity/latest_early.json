@@ -1,24 +1,8 @@
 {
-  "collected_at_utc": "2026-11-17T07:58:17+00:00",
-  "universe_size": 1044,
+  "collected_at_utc": "2026-11-17T08:43:17+00:00",
+  "universe_size": 1041,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "PREDICT/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 1.1182,
-      "nến xanh liên tiếp": 0,
-      "1m %": -0.551,
-      "3m %": 1.25,
-      "15m %": 5.75,
-      "RVOL 1m": 3.07,
-      "tăng từ đáy 30m %": 7.43,
-      "so với đỉnh trước %": 1.25,
-      "turnover 3m USDT": 4905.3,
-      "24h %": 9.34,
-      "nến cuối UTC": "2026-11-17 07:57"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
