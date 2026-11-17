@@ -1,27 +1,27 @@
 {
-  "collected_at_utc": "2026-11-17T13:28:16+00:00",
-  "universe_size": 1030,
-  "history_intervals": 3,
+  "collected_at_utc": "2026-11-17T14:32:40+00:00",
+  "universe_size": 1031,
+  "history_intervals": 2,
   "rows": [
     {
       "coin": "CLAUDIA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.006896,
+      "giá": 0.006432,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 52.19,
-      "turnover 24H USDT": 1302890
+      "1H %": -6.73,
+      "24H %": 41.95,
+      "turnover 24H USDT": 1401800
     },
     {
       "coin": "BREV/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.07636,
+      "giá": 0.08626,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 33.0,
-      "turnover 24H USDT": 368988
+      "1H %": 12.96,
+      "24H %": 50.25,
+      "turnover 24H USDT": 1471743
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
