@@ -1,22 +1,22 @@
 {
-  "collected_at_utc": "2026-11-18T00:24:12+00:00",
-  "universe_size": 1016,
+  "collected_at_utc": "2026-11-18T01:46:01+00:00",
+  "universe_size": 1035,
   "scanned_1m": 24,
   "rows": [
     {
-      "coin": "PHAROS/USDT",
+      "coin": "SOXL/USDT",
       "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
-      "giá": 0.5356,
+      "giá": 51.58,
       "nến xanh liên tiếp": 2,
-      "1m %": 0.093,
-      "3m %": 0.243,
-      "15m %": 3.879,
-      "RVOL 1m": 5.84,
-      "tăng từ đáy 30m %": 3.92,
-      "so với đỉnh trước %": -0.74,
-      "turnover 3m USDT": 4221.79,
-      "24h %": 8.76,
-      "nến cuối UTC": "2026-11-18 00:23"
+      "1m %": 0.155,
+      "3m %": 0.782,
+      "15m %": -1.715,
+      "RVOL 1m": 3.88,
+      "tăng từ đáy 30m %": 0.96,
+      "so với đỉnh trước %": -3.57,
+      "turnover 3m USDT": 2150785.68,
+      "24h %": 10.94,
+      "nến cuối UTC": "2026-11-18 01:45"
     }
   ],
   "errors": [],
