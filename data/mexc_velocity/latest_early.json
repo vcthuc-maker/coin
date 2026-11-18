@@ -1,22 +1,22 @@
 {
-  "collected_at_utc": "2026-11-18T01:46:01+00:00",
-  "universe_size": 1035,
+  "collected_at_utc": "2026-11-18T02:38:00+00:00",
+  "universe_size": 1029,
   "scanned_1m": 24,
   "rows": [
     {
-      "coin": "SOXL/USDT",
+      "coin": "AKT/USDT",
       "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
-      "giá": 51.58,
-      "nến xanh liên tiếp": 2,
-      "1m %": 0.155,
-      "3m %": 0.782,
-      "15m %": -1.715,
-      "RVOL 1m": 3.88,
-      "tăng từ đáy 30m %": 0.96,
-      "so với đỉnh trước %": -3.57,
-      "turnover 3m USDT": 2150785.68,
-      "24h %": 10.94,
-      "nến cuối UTC": "2026-11-18 01:45"
+      "giá": 0.5276,
+      "nến xanh liên tiếp": 3,
+      "1m %": 0.076,
+      "3m %": 0.629,
+      "15m %": 0.649,
+      "RVOL 1m": 2.23,
+      "tăng từ đáy 30m %": 1.83,
+      "so với đỉnh trước %": 0.13,
+      "turnover 3m USDT": 3708.69,
+      "24h %": 9.43,
+      "nến cuối UTC": "2026-11-18 02:37"
     }
   ],
   "errors": [],
