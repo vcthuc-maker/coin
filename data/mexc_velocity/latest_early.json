@@ -1,39 +1,8 @@
 {
-  "collected_at_utc": "2026-11-18T19:14:12+00:00",
-  "universe_size": 1001,
+  "collected_at_utc": "2026-11-18T20:08:56+00:00",
+  "universe_size": 986,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "SNDKSTOCK/USDT",
-      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
-      "giá": 766.44,
-      "nến xanh liên tiếp": 0,
-      "1m %": -0.005,
-      "3m %": 0.5,
-      "15m %": -1.201,
-      "RVOL 1m": 2.03,
-      "tăng từ đáy 30m %": 0.74,
-      "so với đỉnh trước %": -2.04,
-      "turnover 3m USDT": 664384.58,
-      "24h %": -0.84,
-      "nến cuối UTC": "2026-11-18 19:13"
-    },
-    {
-      "coin": "BLESS/USDT",
-      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
-      "giá": 0.011887,
-      "nến xanh liên tiếp": 0,
-      "1m %": -0.876,
-      "3m %": 0.355,
-      "15m %": 0.219,
-      "RVOL 1m": 1.59,
-      "tăng từ đáy 30m %": 2.1,
-      "so với đỉnh trước %": -1.22,
-      "turnover 3m USDT": 94473.3,
-      "24h %": 6.3,
-      "nến cuối UTC": "2026-11-18 19:13"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
