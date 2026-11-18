@@ -1,47 +1,47 @@
 {
-  "collected_at_utc": "2026-11-18T07:51:56+00:00",
-  "universe_size": 1035,
+  "collected_at_utc": "2026-11-18T08:46:10+00:00",
+  "universe_size": 1033,
   "history_intervals": 2,
   "rows": [
     {
       "coin": "MMT/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.2351,
+      "giá": 0.2366,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 95.59,
-      "turnover 24H USDT": 4414102
+      "1H %": 0.64,
+      "24H %": 96.83,
+      "turnover 24H USDT": 4963739
     },
     {
       "coin": "ICNT/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.2995,
+      "giá": 0.2966,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 28.54,
-      "turnover 24H USDT": 3127830
-    },
-    {
-      "coin": "RT/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.001665,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 26.9,
-      "turnover 24H USDT": 117131
+      "1H %": -0.97,
+      "24H %": 27.29,
+      "turnover 24H USDT": 3604419
     },
     {
       "coin": "PIPPIN/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.01522,
+      "giá": 0.0176,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 39.5,
-      "turnover 24H USDT": 230421
+      "1H %": 15.64,
+      "24H %": 61.31,
+      "turnover 24H USDT": 886982
+    },
+    {
+      "coin": "RT/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.001895,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 13.81,
+      "24H %": 44.43,
+      "turnover 24H USDT": 128682
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
