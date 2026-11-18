@@ -1,7 +1,28 @@
 {
-  "collected_at_utc": "2026-11-18T04:31:53+00:00",
-  "universe_size": 1028,
+  "collected_at_utc": "2026-11-18T05:32:27+00:00",
+  "universe_size": 1026,
   "history_intervals": 3,
-  "rows": [],
+  "rows": [
+    {
+      "coin": "MMT/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.1828,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 22.93,
+      "24H %": 52.07,
+      "turnover 24H USDT": 2656472
+    },
+    {
+      "coin": "BULLA/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.01572,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 19.09,
+      "24H %": 18.73,
+      "turnover 24H USDT": 612423
+    }
+  ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
 }
