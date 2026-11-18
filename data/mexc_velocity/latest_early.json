@@ -1,8 +1,24 @@
 {
-  "collected_at_utc": "2026-11-18T14:35:22+00:00",
-  "universe_size": 1042,
+  "collected_at_utc": "2026-11-18T15:29:43+00:00",
+  "universe_size": 1040,
   "scanned_1m": 24,
-  "rows": [],
+  "rows": [
+    {
+      "coin": "SNDKSTOCK/USDT",
+      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
+      "giá": 779.17,
+      "nến xanh liên tiếp": 2,
+      "1m %": 0.658,
+      "3m %": 0.695,
+      "15m %": 0.129,
+      "RVOL 1m": 6.08,
+      "tăng từ đáy 30m %": 1.29,
+      "so với đỉnh trước %": -1.25,
+      "turnover 3m USDT": 14035094.59,
+      "24h %": 0.62,
+      "nến cuối UTC": "2026-11-18 15:28"
+    }
+  ],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
