@@ -1,39 +1,8 @@
 {
-  "collected_at_utc": "2026-11-18T13:44:19+00:00",
-  "universe_size": 1045,
+  "collected_at_utc": "2026-11-18T14:35:22+00:00",
+  "universe_size": 1042,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "JAGENT/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 2.598e-06,
-      "nến xanh liên tiếp": 1,
-      "1m %": 0.039,
-      "3m %": -0.269,
-      "15m %": 4.589,
-      "RVOL 1m": 0.72,
-      "tăng từ đáy 30m %": 5.27,
-      "so với đỉnh trước %": -0.73,
-      "turnover 3m USDT": 196.96,
-      "24h %": 8.45,
-      "nến cuối UTC": "2026-11-18 13:43"
-    },
-    {
-      "coin": "EVAA/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 3.7107,
-      "nến xanh liên tiếp": 2,
-      "1m %": 0.341,
-      "3m %": 0.403,
-      "15m %": 5.616,
-      "RVOL 1m": 0.35,
-      "tăng từ đáy 30m %": 15.7,
-      "so với đỉnh trước %": -0.26,
-      "turnover 3m USDT": 25236.1,
-      "24h %": 9.29,
-      "nến cuối UTC": "2026-11-18 13:43"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
