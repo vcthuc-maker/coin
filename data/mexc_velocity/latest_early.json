@@ -1,8 +1,39 @@
 {
-  "collected_at_utc": "2026-11-18T11:32:19+00:00",
-  "universe_size": 1031,
+  "collected_at_utc": "2026-11-18T12:27:05+00:00",
+  "universe_size": 1029,
   "scanned_1m": 24,
-  "rows": [],
+  "rows": [
+    {
+      "coin": "IBIDENSTOCK/USDT",
+      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
+      "giá": 36.1,
+      "nến xanh liên tiếp": 1,
+      "1m %": 0.278,
+      "3m %": -4.975,
+      "15m %": -1.15,
+      "RVOL 1m": 4.84,
+      "tăng từ đáy 30m %": 6.18,
+      "so với đỉnh trước %": -6.21,
+      "turnover 3m USDT": 16882.56,
+      "24h %": 9.38,
+      "nến cuối UTC": "2026-11-18 12:26"
+    },
+    {
+      "coin": "EVAA/USDT",
+      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
+      "giá": 3.7018,
+      "nến xanh liên tiếp": 1,
+      "1m %": 0.073,
+      "3m %": 0.543,
+      "15m %": 4.932,
+      "RVOL 1m": 0.85,
+      "tăng từ đáy 30m %": 11.13,
+      "so với đỉnh trước %": -0.39,
+      "turnover 3m USDT": 36513.5,
+      "24h %": 8.97,
+      "nến cuối UTC": "2026-11-18 12:26"
+    }
+  ],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
