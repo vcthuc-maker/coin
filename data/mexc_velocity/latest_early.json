@@ -1,22 +1,22 @@
 {
-  "collected_at_utc": "2026-11-19T04:18:24+00:00",
-  "universe_size": 1016,
+  "collected_at_utc": "2026-11-19T05:24:02+00:00",
+  "universe_size": 1030,
   "scanned_1m": 24,
   "rows": [
     {
-      "coin": "IDOL/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 0.021632,
-      "nến xanh liên tiếp": 3,
-      "1m %": 0.82,
-      "3m %": 3.339,
-      "15m %": -0.998,
-      "RVOL 1m": 0.35,
-      "tăng từ đáy 30m %": 4.84,
-      "so với đỉnh trước %": -1.71,
-      "turnover 3m USDT": 4242.86,
-      "24h %": 9.19,
-      "nến cuối UTC": "2026-11-19 04:17"
+      "coin": "BULLA/USDT",
+      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
+      "giá": 0.01613,
+      "nến xanh liên tiếp": 0,
+      "1m %": -0.309,
+      "3m %": 0.311,
+      "15m %": 0.561,
+      "RVOL 1m": 2.18,
+      "tăng từ đáy 30m %": 3.93,
+      "so với đỉnh trước %": -0.92,
+      "turnover 3m USDT": 4213.49,
+      "24h %": 8.27,
+      "nến cuối UTC": "2026-11-19 05:23"
     }
   ],
   "errors": [],
