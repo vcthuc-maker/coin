@@ -1,67 +1,77 @@
 {
-  "collected_at_utc": "2026-11-19T13:44:48+00:00",
-  "universe_size": 1047,
+  "collected_at_utc": "2026-11-19T14:37:46+00:00",
+  "universe_size": 1044,
   "history_intervals": 2,
   "rows": [
     {
       "coin": "VELVET/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.07998,
+      "giá": 0.07947,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 35.65,
-      "turnover 24H USDT": 9395297
+      "1H %": -0.64,
+      "24H %": 34.78,
+      "turnover 24H USDT": 9903791
     },
     {
       "coin": "IRYS/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.02288,
+      "giá": 0.022,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 32.63,
-      "turnover 24H USDT": 10880011
+      "1H %": -3.85,
+      "24H %": 27.53,
+      "turnover 24H USDT": 11006851
     },
     {
       "coin": "EVAA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 4.7623,
+      "giá": 4.9568,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 26.9,
-      "turnover 24H USDT": 15237198
+      "1H %": 4.08,
+      "24H %": 32.08,
+      "turnover 24H USDT": 17079131
+    },
+    {
+      "coin": "ICNT/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.401,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 13.82,
+      "24H %": 20.89,
+      "turnover 24H USDT": 4807473
     },
     {
       "coin": "BITO/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 16.79,
+      "giá": 16.92,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 100.59,
-      "turnover 24H USDT": 1997488
-    },
-    {
-      "coin": "NAORIS/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.03289,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 47.95,
-      "turnover 24H USDT": 1421344
+      "1H %": 0.77,
+      "24H %": 102.15,
+      "turnover 24H USDT": 2193001
     },
     {
       "coin": "DCTY/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.02033,
+      "giá": 0.02014,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 69.13,
-      "turnover 24H USDT": 523775
+      "1H %": -0.93,
+      "24H %": 67.55,
+      "turnover 24H USDT": 703635
+    },
+    {
+      "coin": "NAORIS/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.03286,
+      "5m %": null,
+      "15m %": null,
+      "1H %": -0.09,
+      "24H %": 47.81,
+      "turnover 24H USDT": 1452136
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
