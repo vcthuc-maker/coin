@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parent / "data" / "mexc_velocity"
 HISTORY = ROOT / "history.json"
 LATEST = ROOT / "latest.json"
 EARLY_LATEST = ROOT / "latest_early.json"
+QUALITY_LATEST = ROOT / "latest_quality.json"
 MAX_SNAPSHOTS = 28
 MAX_LAG_SECONDS = 11 * 60
 
@@ -136,6 +137,29 @@ def run():
             markets, history, limit=24, now=now)
     except Exception as exc:
         early_errors.append("1m scan: " + str(exc)[:180])
+    quality_rows, quality_errors, quality_checked = [], [], 0
+    try:
+        from mexc_quality import scan_quality
+        quality_rows, quality_errors, quality_checked = scan_quality(
+            markets, history, now, limit=30)
+    except Exception as exc:
+        quality_errors.append("5m preparation scan: " + str(exc)[:180])
+    quality_payload = {
+        "collected_at_utc": datetime.fromtimestamp(now, timezone.utc).isoformat(),
+        "universe_size": len(markets),
+        "scanned_5m": quality_checked,
+        "rows": quality_rows,
+        "errors": quality_errors[:30],
+        "note": "Watchlist nén trước breakout + breakout giữ nền; không phải xác suất pump."
+    }
+    try:
+        from mexc_outcomes import read_events, update_events, write_events, simple_summary
+        event_history = update_events(read_events(), quality_rows, now, markets)
+        write_events(event_history)
+        quality_payload["evaluation"] = simple_summary(event_history)
+        quality_payload["saved_signals"] = len(event_history)
+    except Exception as exc:
+        quality_payload["evaluation_error"] = str(exc)[:160]
     payload_early = {
         "collected_at_utc": datetime.fromtimestamp(now, timezone.utc).isoformat(),
         "universe_size": len(markets),
@@ -156,6 +180,7 @@ def run():
                        encoding="utf-8")
     LATEST.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     EARLY_LATEST.write_text(json.dumps(payload_early, ensure_ascii=False, indent=2), encoding="utf-8")
+    QUALITY_LATEST.write_text(json.dumps(quality_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"mexc_velocity: markets={len(markets)} snapshots={len(history)} alerts={len(alerts)}")
     print(f"early={sum(x['_rank']==0 for x in alerts)} late={sum(x['_rank']==2 for x in alerts)}")
     print(f"1m_scanned={early_count} 1m_alerts={len(early_rows)} 1m_errors={len(early_errors)}")
@@ -182,4 +207,13 @@ def read_early_latest():
         data = json.loads(EARLY_LATEST.read_text(encoding="utf-8"))
         return data if isinstance(data, dict) else None
     except (ValueError, OSError):
+        return None
+
+def read_quality_latest():
+    if not QUALITY_LATEST.exists():
+        return None
+    try:
+        obj = json.loads(QUALITY_LATEST.read_text(encoding="utf-8"))
+        return obj if isinstance(obj, dict) else None
+    except (OSError, ValueError):
         return None
