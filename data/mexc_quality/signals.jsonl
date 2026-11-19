@@ -7,3 +7,5 @@
 {"ts": 1795058288, "coin": "SNDKSTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 780.38, "entry_snapshot_price": 779.36, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
 {"ts": 1795058288, "coin": "MUSTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 710.95, "entry_snapshot_price": 711.33, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
 {"ts": 1795058288, "coin": "ARIA/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.24222, "entry_snapshot_price": 0.24247, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795058611, "coin": "BTC/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 62576.5, "entry_snapshot_price": 62670.9, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795058611, "coin": "ZRO/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 1.4039, "entry_snapshot_price": 1.4029, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
