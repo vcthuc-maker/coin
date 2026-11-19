@@ -33,3 +33,4 @@
 {"ts": 1795087702, "coin": "SKHYNIXSTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 893.14, "entry_snapshot_price": 894.25, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -0.2661}, "stale": false}
 {"ts": 1795087702, "coin": "USOIL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 82.53, "entry_snapshot_price": 82.17, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 1.071}, "stale": false}
 {"ts": 1795087702, "coin": "GTC/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.14867, "entry_snapshot_price": 0.14883, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -0.3763}, "stale": false}
+{"ts": 1795095888, "coin": "TESLA/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 391.03, "entry_snapshot_price": 391.0, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
