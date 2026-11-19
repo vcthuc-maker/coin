@@ -23,4 +23,6 @@
 {"ts": 1795077935, "coin": "BTC/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 63562.4, "entry_snapshot_price": 63586.2, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 0.4095}, "stale": false}
 {"ts": 1795077935, "coin": "SILVER/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 45.28, "entry_snapshot_price": 45.28, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 0.2208}, "stale": false}
 {"ts": 1795077935, "coin": "XRP/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.9798, "entry_snapshot_price": 0.98, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 0.7347}, "stale": false}
-{"ts": 1795081352, "coin": "USOIL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 82.28, "entry_snapshot_price": 82.32, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795081352, "coin": "USOIL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 82.28, "entry_snapshot_price": 82.32, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 0.6924}, "stale": false}
+{"ts": 1795084562, "coin": "SOL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 74.51, "entry_snapshot_price": 74.52, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795084562, "coin": "ZEC/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 947.57, "entry_snapshot_price": 947.98, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
