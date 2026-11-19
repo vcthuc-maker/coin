@@ -1,17 +1,37 @@
 {
-  "collected_at_utc": "2026-11-19T07:45:34+00:00",
-  "universe_size": 1048,
+  "collected_at_utc": "2026-11-19T08:45:35+00:00",
+  "universe_size": 1050,
   "history_intervals": 2,
   "rows": [
     {
-      "coin": "IRYS/USDT",
+      "coin": "VELVET/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.02361,
+      "giá": 0.07384,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 36.86,
-      "turnover 24H USDT": 10164606
+      "1H %": 0.33,
+      "24H %": 25.23,
+      "turnover 24H USDT": 5477754
+    },
+    {
+      "coin": "IRYS/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.02342,
+      "5m %": null,
+      "15m %": null,
+      "1H %": -0.8,
+      "24H %": 35.76,
+      "turnover 24H USDT": 10878403
+    },
+    {
+      "coin": "ICNT/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.3947,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 12.48,
+      "24H %": 18.99,
+      "turnover 24H USDT": 5282295
     },
     {
       "coin": "BITO/USDT",
@@ -19,29 +39,39 @@
       "giá": 16.77,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
+      "1H %": 0.0,
       "24H %": 100.35,
-      "turnover 24H USDT": 981068
+      "turnover 24H USDT": 1134869
     },
     {
       "coin": "BTW/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.64,
+      "giá": 0.6385,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 26.68,
-      "turnover 24H USDT": 4537962
+      "1H %": -0.23,
+      "24H %": 26.38,
+      "turnover 24H USDT": 5513739
     },
     {
       "coin": "JAGENT/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 3.468e-06,
+      "giá": 3.344e-06,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 30.76,
-      "turnover 24H USDT": 215962
+      "1H %": -3.58,
+      "24H %": 26.09,
+      "turnover 24H USDT": 220712
+    },
+    {
+      "coin": "NAORIS/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.03196,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 33.95,
+      "24H %": 43.76,
+      "turnover 24H USDT": 294204
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."

@@ -1,24 +1,8 @@
 {
-  "collected_at_utc": "2026-11-19T07:45:34+00:00",
-  "universe_size": 1048,
+  "collected_at_utc": "2026-11-19T08:45:35+00:00",
+  "universe_size": 1050,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "EVAA/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 4.126,
-      "nến xanh liên tiếp": 2,
-      "1m %": 0.185,
-      "3m %": 0.455,
-      "15m %": -0.872,
-      "RVOL 1m": 0.81,
-      "tăng từ đáy 30m %": 5.85,
-      "so với đỉnh trước %": -1.53,
-      "turnover 3m USDT": 38429.32,
-      "24h %": 9.31,
-      "nến cuối UTC": "2026-11-19 07:44"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
