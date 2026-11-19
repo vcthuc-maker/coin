@@ -1,87 +1,17 @@
 {
-  "collected_at_utc": "2026-11-19T15:34:18+00:00",
-  "universe_size": 1042,
+  "collected_at_utc": "2026-11-19T16:37:09+00:00",
+  "universe_size": 1048,
   "history_intervals": 3,
   "rows": [
     {
-      "coin": "MMT/USDT",
+      "coin": "FLOAT/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.2904,
+      "giá": 0.001592,
       "5m %": null,
       "15m %": null,
-      "1H %": 21.71,
-      "24H %": 19.8,
-      "turnover 24H USDT": 6929840
-    },
-    {
-      "coin": "VELVET/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.07677,
-      "5m %": null,
-      "15m %": null,
-      "1H %": -3.4,
-      "24H %": 30.2,
-      "turnover 24H USDT": 10451437
-    },
-    {
-      "coin": "EVAA/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 4.9861,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 0.59,
-      "24H %": 32.87,
-      "turnover 24H USDT": 17463516
-    },
-    {
-      "coin": "DCTY/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.01539,
-      "5m %": null,
-      "15m %": null,
-      "1H %": -23.58,
-      "24H %": 28.03,
-      "turnover 24H USDT": 856333
-    },
-    {
-      "coin": "BITO/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 16.66,
-      "5m %": null,
-      "15m %": null,
-      "1H %": -1.54,
-      "24H %": 99.04,
-      "turnover 24H USDT": 2351361
-    },
-    {
-      "coin": "NAORIS/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.0331,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 0.73,
-      "24H %": 48.89,
-      "turnover 24H USDT": 1490903
-    },
-    {
-      "coin": "YB/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.0654,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 32.5,
-      "24H %": 44.14,
-      "turnover 24H USDT": 370498
-    },
-    {
-      "coin": "INSMSTOCK/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 137.61,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 14.08,
-      "24H %": 14.9,
-      "turnover 24H USDT": 386186
+      "1H %": 39.16,
+      "24H %": 5.36,
+      "turnover 24H USDT": 188872
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
