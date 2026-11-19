@@ -1,24 +1,8 @@
 {
-  "collected_at_utc": "2026-11-19T21:14:10+00:00",
-  "universe_size": 996,
+  "collected_at_utc": "2026-11-19T21:59:44+00:00",
+  "universe_size": 1055,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "BLESS/USDT",
-      "trạng thái": "MỚI BẬT LÊN — 1–2 NẾN",
-      "giá": 0.011726,
-      "nến xanh liên tiếp": 1,
-      "1m %": 0.325,
-      "3m %": 0.308,
-      "15m %": 0.964,
-      "RVOL 1m": 1.51,
-      "tăng từ đáy 30m %": 2.29,
-      "so với đỉnh trước %": -0.31,
-      "turnover 3m USDT": 21040.31,
-      "24h %": 7.39,
-      "nến cuối UTC": "2026-11-19 21:13"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
