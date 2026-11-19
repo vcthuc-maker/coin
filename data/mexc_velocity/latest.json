@@ -1,7 +1,18 @@
 {
-  "collected_at_utc": "2026-11-19T00:14:02+00:00",
-  "universe_size": 1003,
+  "collected_at_utc": "2026-11-19T01:25:20+00:00",
+  "universe_size": 1031,
   "history_intervals": 3,
-  "rows": [],
+  "rows": [
+    {
+      "coin": "IRYS/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.0231,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 33.91,
+      "turnover 24H USDT": 5330447
+    }
+  ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
 }
