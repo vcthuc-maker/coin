@@ -185,3 +185,21 @@ GitHub Actions MEXC five-minute price acceleration watch chạy thêm module mex
 Đáy và đỉnh gần đây chỉ tính từ nến đã đóng ở thời điểm phát tín hiệu, không có dùng dữ liệu tương lai. Tín hiệu chụp thời gian thực được lưu ở data/mexc_velocity/latest_early.json, hiển thị tại đầu website. Không có AI đã hiệu chỉnh xác suất. Để đánh giá hiệu quả thực cần lưu tín hiệu đầu tiên và theo dõi giá 15M, 1H, 4H sau khi ghi nhận, tránh chỉ phân tích coin đã pump.
 
 **Vận hành:** Lịch GitHub Actions 5 phút không bảo đảm thực thi đúng giờ. Nếu xuất hiện HTTP 429 hoặc bộ quét 1M không lấy được nến hợp lệ, website báo lỗi rõ; phiên quét không tạo tín hiệu giả. Workflow Build Windows Portable ZIP cần chạy lại để chứa module mới.
+
+
+## V3.5 — Thiết kế lại để tránh tín hiệu pump rồi giảm mạnh sau 15 phút
+
+**Lý do thay đổi:** Tốc độ giá và RVOL trong nến hiện tại không đủ để phân biệt lực mua bền vững với một cú đẩy giá/xả ngắn. Bộ Fast-Mover cũ giữ làm đối chứng, không tự sửa số liệu kiểm định trước.
+
+Module mới mexc_quality.py dùng **nến 5 phút đã đóng** của tối đa 30 cặp được chọn (chưa phải toàn bộ sàn). Những hợp đồng thiếu >=70 nến liên tục, dữ liệu cũ hoặc lỗi API được bỏ qua, không điền tín hiệu giả.
+
+Bảng chính hiển thị ngắn gọn:
+1. **NÉN GIÁ — CHỜ DÒNG TIỀN:** một vùng nén trước 3 nến gần nhất, biên độ nền hẹp so với lịch sử, volume nền giảm, giá gần kháng cự, xu hướng EMA20 không còn giảm mạnh. Đây là nhóm theo dõi, **KHÔNG phải lời khuyên mua trước pump**.
+2. **BREAKOUT GIỮ GIÁ — CHƯA ĐUỔI:** nến đóng giữ trên kháng cự cũ tối thiểu hai lần, RVOL vừa phải, râu trên nhỏ và không tăng xa từ đáy 1H. Xác nhận kỹ thuật trên nến 5m, **không chứng minh sẽ tăng tiếp 15m**.
+3. **XẢ / TĂNG NÓNG — LOẠI:** râu nến trên lớn, volume bùng nổ trong nến giảm, giá bị kéo quá xa trong 15m/1H hoặc tăng nóng trong 24H. Danh sách này được đặt trong expander chẩn đoán, không coi là tín hiệu short.
+
+Cùng lúc, module mexc_outcomes.py lưu tín hiệu quan sát tại giá ticker thực ở thời điểm phát, có **cooldown 60 phút theo coin và trạng thái**, theo dõi giá mới tại 15, 30 và 60 phút bằng các lần chụp ở TƯƠNG LAI. Khoảng cho phép 15m=12–22 phút, 30m=25–40 phút, 60m=52–73 phút. Lỗi/không có đúng mốc được đánh dấu thiếu, không tính vào tỷ lệ. Báo cáo tỷ lệ giá tăng sau 15m, trung bình thay đổi sau 15m và tỷ lệ **giảm >=2% sau 15m**, tách theo loại tín hiệu.
+
+**Rất quan trọng:** các kết quả theo dõi là giá ticker chụp gần mốc tương lai, KHÔNG đo đường đi giá giữa các snapshot, chưa tính phí, funding hay khả năng khớp lệnh. Các chỉ báo vẫn là bộ quy tắc thử nghiệm, chưa huấn luyện mô hình xác suất. Chưa thể nói bản mới tốt hơn trước khi tích lũy đủ kết quả kiểm chứng độc lập.
+
+MEXC five-minute price acceleration watch tiếp tục chạy theo lịch GitHub Actions. Lịch 5 phút không đảm bảo đúng giờ và có thể bỏ các cú biến động nhanh; các mẫu nến 5m cần ~5–6 giờ dữ liệu lịch sử trả về từ API cho mỗi cặp. Muốn giám sát liên tục/thực sự theo thời gian thực nên chạy worker hoặc websocket trên máy chủ luôn hoạt động, lưu database bền vững và có retry/rate-limit toàn ứng dụng. Bản ZIP Windows Portable đóng trước phiên bản này không tự cập nhật mã nguồn; cần build lại.
