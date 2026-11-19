@@ -372,6 +372,26 @@ else:
     if lag < 0 or lag > MAX_LAG_SECONDS:
         st.error("Dữ liệu quá cũ (>11 phút) hoặc thời gian không hợp lệ. "
                  "Không coi trạng thái đang hiển thị là tín hiệu hiện hành.")
+    # Preserve first alerts for up to 15 minutes even if subsequent scans
+    # no longer show the one-candle breakout pattern.
+    from mexc_fresh import FRESH
+    recent_alerts = []
+    if 0 <= lag <= MAX_LAG_SECONDS:
+        for ev in read_events():
+            event_age = (pd.Timestamp.now(tz="UTC") -
+                         pd.to_datetime(ev["ts"], unit="s", utc=True)).total_seconds()
+            if ev.get("trạng thái") == FRESH and 0 <= event_age <= 15*60:
+                recent_alerts.append({
+                    "coin":ev["coin"],
+                    "báo lần đầu UTC":pd.to_datetime(ev["ts"],unit="s",utc=True),
+                    "giá lúc báo":ev["entry_snapshot_price"],
+                    "phút từ lúc báo":round(event_age/60,1),
+                    "trạng thái":"MỚI PHÁ NỀN — CHƯA XÁC NHẬN TIẾP DIỄN",
+                })
+    if recent_alerts:
+        st.caption("Cảnh báo mới trong 15 phút gần nhất (giữ lại từ nhật ký, không gửi lệnh).")
+        st.dataframe(pd.DataFrame(recent_alerts).drop_duplicates("coin").head(15),
+                     hide_index=True, use_container_width=True)
     qr = pd.DataFrame(quality_state.get("rows", []))
     if qr.empty:
         st.info("Chưa có đồng nào đạt nền nén / breakout giữ giá; "
