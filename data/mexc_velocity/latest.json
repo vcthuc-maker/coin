@@ -1,18 +1,7 @@
 {
-  "collected_at_utc": "2026-11-19T16:37:09+00:00",
-  "universe_size": 1048,
+  "collected_at_utc": "2026-11-19T17:32:25+00:00",
+  "universe_size": 1045,
   "history_intervals": 3,
-  "rows": [
-    {
-      "coin": "FLOAT/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.001592,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 39.16,
-      "24H %": 5.36,
-      "turnover 24H USDT": 188872
-    }
-  ],
+  "rows": [],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
 }
