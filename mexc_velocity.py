@@ -156,6 +156,20 @@ def run():
         from mexc_outcomes import read_events, update_events, write_events, simple_summary
         event_history = update_events(read_events(), quality_rows, now, markets)
         write_events(event_history)
+        # Label first observation, not just a repeated screening match.
+        # A new "0." alert must be emitted at the current collection time.
+        for row in quality_rows:
+            hits = [e for e in event_history
+                    if e["coin"] == row["coin"] and e["trạng thái"] == row["trạng thái"]]
+            if hits:
+                first = max(hits, key=lambda e:int(e["ts"]))
+                row["phát hiện đầu UTC"] = datetime.fromtimestamp(
+                    int(first["ts"]), timezone.utc).strftime("%Y-%m-%d %H:%M")
+                row["mới phát"] = (row["trạng thái"].startswith("0.") and
+                                     int(first["ts"]) == now)
+            else:
+                row["mới phát"] = False
+        quality_payload["rows"] = quality_rows
         quality_payload["evaluation"] = simple_summary(event_history)
         quality_payload["saved_signals"] = len(event_history)
     except Exception as exc:
