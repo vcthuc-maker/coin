@@ -1,8 +1,24 @@
 {
-  "collected_at_utc": "2026-11-19T18:24:42+00:00",
-  "universe_size": 1034,
+  "collected_at_utc": "2026-11-19T19:27:37+00:00",
+  "universe_size": 1037,
   "scanned_1m": 24,
-  "rows": [],
+  "rows": [
+    {
+      "coin": "SKY/USDT",
+      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
+      "giá": 0.04297,
+      "nến xanh liên tiếp": 0,
+      "1m %": -0.394,
+      "3m %": 1.97,
+      "15m %": 0.023,
+      "RVOL 1m": 1.3,
+      "tăng từ đáy 30m %": 9.03,
+      "so với đỉnh trước %": -1.17,
+      "turnover 3m USDT": 10702.39,
+      "24h %": 3.42,
+      "nến cuối UTC": "2026-11-19 19:26"
+    }
+  ],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
