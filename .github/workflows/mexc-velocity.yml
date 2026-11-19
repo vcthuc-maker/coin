@@ -31,7 +31,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/mexc_velocity/history.json data/mexc_velocity/latest.json data/mexc_velocity/latest_early.json
+          git add data/mexc_velocity/history.json data/mexc_velocity/latest.json data/mexc_velocity/latest_early.json data/mexc_velocity/latest_quality.json
+          if ls data/mexc_quality/*.jsonl >/dev/null 2>&1; then git add data/mexc_quality/*.jsonl; fi
           if ! git diff --cached --quiet; then
             git commit -m "data: refresh MEXC fast movers"
             git pull --rebase origin main
