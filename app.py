@@ -377,10 +377,16 @@ else:
         st.info("Chưa có đồng nào đạt nền nén / breakout giữ giá; "
                 "không tạo tín hiệu chỉ vì volume tăng đột biến.")
     else:
+        newly = qr[(qr["trạng thái"].astype(str).str.startswith("0.")) &
+                   (qr["mới phát"].fillna(False) == True)] if "mới phát" in qr else qr.iloc[:0]
+        st.metric("Phá nền MỚI phát trong lượt quét", len(newly))
+        if not newly.empty:
+            st.dataframe(newly.head(10), hide_index=True, use_container_width=True)
         good = qr[qr["trạng thái"].astype(str).str.startswith(("1.", "2."))]
-        if good.empty:
-            st.info("Chưa có ứng viên đạt tiêu chí nén/giữ giá, chỉ có cảnh báo tăng nóng.")
-        else:
+        if good.empty and newly.empty:
+            st.info("Chưa có coin vừa phá nền hoặc tích lũy/giữ giá đạt điều kiện.")
+        elif not good.empty:
+            st.caption("Theo dõi nền nén / xác nhận giữ giá (không phải tín hiệu mua)")
             st.dataframe(good.head(15), hide_index=True, use_container_width=True)
         with st.expander("Xem những coin có cảnh báo xả / dữ liệu quét", expanded=False):
             st.dataframe(qr, hide_index=True, use_container_width=True)
@@ -409,7 +415,8 @@ else:
     if quality_state.get("evaluation_error"):
         st.warning("Chưa lưu được báo cáo kiểm chứng: " +
                    quality_state["evaluation_error"])
-st.caption("Các ngưỡng là giả thuyết chưa kiểm định. Quét 5 phút có thể bỏ lỡ "
+st.caption("Tín hiệu phá nền mới yêu cầu 48H lịch sử hợp lệ, chỉ cảnh báo lần đầu. "
+           "Các ngưỡng là giả thuyết chưa kiểm định. Quét 5 phút có thể bỏ lỡ "
            "các biến động ngắn; tiêu chuẩn nghiêm ngặt làm giảm cả tín hiệu giả lẫn số tín hiệu.")
 st.divider()
 
