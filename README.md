@@ -203,3 +203,15 @@ Cùng lúc, module mexc_outcomes.py lưu tín hiệu quan sát tại giá ticker
 **Rất quan trọng:** các kết quả theo dõi là giá ticker chụp gần mốc tương lai, KHÔNG đo đường đi giá giữa các snapshot, chưa tính phí, funding hay khả năng khớp lệnh. Các chỉ báo vẫn là bộ quy tắc thử nghiệm, chưa huấn luyện mô hình xác suất. Chưa thể nói bản mới tốt hơn trước khi tích lũy đủ kết quả kiểm chứng độc lập.
 
 MEXC five-minute price acceleration watch tiếp tục chạy theo lịch GitHub Actions. Lịch 5 phút không đảm bảo đúng giờ và có thể bỏ các cú biến động nhanh; các mẫu nến 5m cần ~5–6 giờ dữ liệu lịch sử trả về từ API cho mỗi cặp. Muốn giám sát liên tục/thực sự theo thời gian thực nên chạy worker hoặc websocket trên máy chủ luôn hoạt động, lưu database bền vững và có retry/rate-limit toàn ứng dụng. Bản ZIP Windows Portable đóng trước phiên bản này không tự cập nhật mã nguồn; cần build lại.
+
+
+## V3.6 — Cảnh báo ngay khi nến 5M đầu phá nền và chống mua đuổi sau 48 giờ
+
+Đáp ứng phản hồi với SENT/USDT: biến động phút gần nhất không đồng nghĩa coin mới bắt đầu tăng; nếu giá đã hồi mạnh từ đáy trong 1–2 ngày, Scanner phải chặn nhãn sớm.
+
+- Module mới **mexc_fresh.py** lấy **nến 1H đã đóng trong ít nhất 48 giờ** qua MEXC Futures cho các mã được chọn và xác định: phần trăm tăng 48H, phần trăm tăng từ đáy 48H, biến động 24H từ nến. Khi 48H tăng >=10%, 24H tăng >=9% hoặc giá cao hơn đáy 48H >=15%, tín hiệu bị chuyển thành **ĐÃ TĂNG XA TRONG 48H — LOẠI**. Ngưỡng nghiên cứu, chưa có xác nhận tối ưu.
+- **MỚI PHÁ NỀN — QUAN SÁT:** từ dữ liệu 5M đã đóng, phát hiện *nến đầu* đóng cao hơn đỉnh vùng nền 12 nến trước đó, mức vượt đỉnh vừa phải, RVOL có cải thiện nhưng không quá nóng, râu trên ngắn và nền trước đó có biên hẹp/volume hạ nhiệt. Không cần chờ 2 nến giữ giá mới báo lần đầu. Vẫn có thể bị false breakout sau 5 phút.
+- Bộ lọc **48H bắt buộc** cho cảnh báo mới; thiếu dữ liệu, nến không liên tục hoặc API lỗi sẽ bỏ qua, KHÔNG tự suy đoán phần trăm tăng quá khứ.
+- Khi tín hiệu loại 0. xuất hiện, ghi giá chụp và thời điểm trong **data/mexc_quality/signals.jsonl**. Bộ theo dõi đặt cooldown **48 giờ** cho cùng coin + tín hiệu phá nền, tránh gắn nhãn “mới” lặp lại trong một xu hướng đã kéo dài. Bảng chính chỉ nhấn mạnh những cảnh báo phát đúng ở lượt quét hiện tại; các loại nén/giữ giá nằm bên dưới.
+- Vẫn chỉ quét tối đa khoảng 30 hợp đồng/chu kỳ, chọn một phần coin thanh khoản cao, tiền tăng nhẹ và nhóm tăng 24h để phát hiện cảnh báo trễ. Chưa bao phủ toàn bộ MEXC; GitHub Actions 5 phút có thể chậm hoặc bỏ lượt. Tín hiệu này **không thể báo chính xác tại từng giây giá bắt đầu tăng**. Cần worker liên tục/WebSocket + database để làm được mức độ gần thời gian thực hơn.
+- Lưu kết quả giá 15/30/60 phút sau báo để đánh giá khách quan, chưa tính khả năng khớp lệnh, phí hoặc funding. Đây KHÔNG phải mô hình AI dự đoán pump đã kiểm chứng.
