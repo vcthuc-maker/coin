@@ -395,7 +395,11 @@ else:
         st.write(f"Tín hiệu đã đủ quan sát sau 15 phút: {evaluation['evaluated_15']}.")
         if evaluation["evaluated_15"]:
             st.write(f"Tỷ lệ giá cao hơn sau ~15 phút: {evaluation['positive_15_pct']}%; "
-                     f"biến động trung bình: {evaluation['avg_15_pct']}%.")
+                     f"biến động trung bình: {evaluation['avg_15_pct']}%; "
+                     f"tỷ lệ giảm sâu từ 2%: {evaluation.get('dump_15_pct')}%.")
+            by_state = pd.DataFrame(evaluation.get("by_state", []))
+            if not by_state.empty:
+                st.dataframe(by_state, use_container_width=True, hide_index=True)
         detail = outcomes_table(events)
         if not detail.empty:
             st.dataframe(detail, hide_index=True, use_container_width=True)
