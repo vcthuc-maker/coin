@@ -1,8 +1,24 @@
 {
-  "collected_at_utc": "2026-11-19T03:38:29+00:00",
-  "universe_size": 1042,
+  "collected_at_utc": "2026-11-19T04:18:24+00:00",
+  "universe_size": 1016,
   "scanned_1m": 24,
-  "rows": [],
+  "rows": [
+    {
+      "coin": "IDOL/USDT",
+      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
+      "giá": 0.021632,
+      "nến xanh liên tiếp": 3,
+      "1m %": 0.82,
+      "3m %": 3.339,
+      "15m %": -0.998,
+      "RVOL 1m": 0.35,
+      "tăng từ đáy 30m %": 4.84,
+      "so với đỉnh trước %": -1.71,
+      "turnover 3m USDT": 4242.86,
+      "24h %": 9.19,
+      "nến cuối UTC": "2026-11-19 04:17"
+    }
+  ],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
