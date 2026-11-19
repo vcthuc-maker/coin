@@ -1,37 +1,37 @@
 {
-  "collected_at_utc": "2026-11-19T05:24:02+00:00",
-  "universe_size": 1030,
-  "history_intervals": 5,
+  "collected_at_utc": "2026-11-19T06:23:34+00:00",
+  "universe_size": 1029,
+  "history_intervals": 3,
   "rows": [
     {
       "coin": "IRYS/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.02245,
+      "giá": 0.02306,
       "5m %": null,
       "15m %": null,
-      "1H %": -0.97,
-      "24H %": 30.14,
-      "turnover 24H USDT": 9421227
+      "1H %": 2.72,
+      "24H %": 33.68,
+      "turnover 24H USDT": 9740971
     },
     {
       "coin": "BITO/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 16.52,
+      "giá": 16.72,
       "5m %": null,
       "15m %": null,
-      "1H %": -0.06,
-      "24H %": 97.37,
-      "turnover 24H USDT": 678029
+      "1H %": 1.21,
+      "24H %": 99.76,
+      "turnover 24H USDT": 772617
     },
     {
       "coin": "JAGENT/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 3.484e-06,
+      "giá": 3.51e-06,
       "5m %": null,
       "15m %": null,
-      "1H %": -0.94,
-      "24H %": 31.37,
-      "turnover 24H USDT": 193372
+      "1H %": 0.75,
+      "24H %": 32.35,
+      "turnover 24H USDT": 206961
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
