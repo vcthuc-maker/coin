@@ -1,317 +1,217 @@
 {
-  "collected_at_utc": "2026-11-19T03:35:54+00:00",
+  "collected_at_utc": "2026-11-19T03:38:29+00:00",
   "universe_size": 1042,
   "history_intervals": 4,
   "rows": [
     {
-      "coin": "KORU/USDT",
+      "coin": "KMISTOCK/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 6.87,
+      "giá": 31.04,
       "5m %": null,
       "15m %": 2.58,
       "1H %": null,
-      "24H %": 3.68,
-      "turnover 24H USDT": 44210000
+      "24H %": -1.64,
+      "turnover 24H USDT": 105864
     },
     {
       "coin": "CSOPSKHYNIX2L/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 1.76,
+      "giá": 1.756,
       "5m %": null,
-      "15m %": 2.5,
+      "15m %": 2.27,
       "1H %": null,
-      "24H %": 5.26,
-      "turnover 24H USDT": 1122810
+      "24H %": 5.02,
+      "turnover 24H USDT": 1149874
     },
     {
       "coin": "KEYENCESTOCK/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 90.7,
+      "giá": 90.6,
       "5m %": null,
-      "15m %": 2.37,
+      "15m %": 2.26,
       "1H %": null,
-      "24H %": -80.36,
-      "turnover 24H USDT": 156763
+      "24H %": -80.38,
+      "turnover 24H USDT": 157650
     },
     {
-      "coin": "NIUBI/USDT",
+      "coin": "KORU/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.000989,
-      "5m %": null,
-      "15m %": 2.28,
-      "1H %": null,
-      "24H %": 1.43,
-      "turnover 24H USDT": 394268
-    },
-    {
-      "coin": "WINBONDSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 3.052,
-      "5m %": null,
-      "15m %": 2.11,
-      "1H %": null,
-      "24H %": -6.23,
-      "turnover 24H USDT": 124184
-    },
-    {
-      "coin": "MSTU/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 12.73,
+      "giá": 6.837,
       "5m %": null,
       "15m %": 2.09,
       "1H %": null,
-      "24H %": -3.26,
-      "turnover 24H USDT": 396498
+      "24H %": 3.18,
+      "turnover 24H USDT": 44210327
     },
     {
       "coin": "CSOPSAMSUNG2L/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 4.589,
+      "giá": 4.588,
       "5m %": null,
-      "15m %": 2.07,
-      "1H %": null,
-      "24H %": 2.22,
-      "turnover 24H USDT": 140480
-    },
-    {
-      "coin": "TOSTSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 34.65,
-      "5m %": null,
-      "15m %": 1.97,
-      "1H %": null,
-      "24H %": 2.24,
-      "turnover 24H USDT": 103100
-    },
-    {
-      "coin": "KIMCHI/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.001697,
-      "5m %": null,
-      "15m %": 1.92,
-      "1H %": null,
-      "24H %": -15.82,
-      "turnover 24H USDT": 223905
-    },
-    {
-      "coin": "MVLL/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 9.25,
-      "5m %": null,
-      "15m %": 1.87,
+      "15m %": 2.05,
       "1H %": null,
       "24H %": 2.2,
-      "turnover 24H USDT": 2737885
-    },
-    {
-      "coin": "AKESOSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 7.69,
-      "5m %": null,
-      "15m %": 1.85,
-      "1H %": null,
-      "24H %": -6.44,
-      "turnover 24H USDT": 321964
-    },
-    {
-      "coin": "ZHENDINGSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 10.63,
-      "5m %": null,
-      "15m %": 1.82,
-      "1H %": null,
-      "24H %": -8.36,
-      "turnover 24H USDT": 108140
-    },
-    {
-      "coin": "SKUU/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 11.451,
-      "5m %": null,
-      "15m %": 1.79,
-      "1H %": null,
-      "24H %": 4.89,
-      "turnover 24H USDT": 115710
-    },
-    {
-      "coin": "RAM/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 5.152,
-      "5m %": null,
-      "15m %": 1.78,
-      "1H %": null,
-      "24H %": 4.05,
-      "turnover 24H USDT": 255625
-    },
-    {
-      "coin": "KMISTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 30.8,
-      "5m %": null,
-      "15m %": 1.78,
-      "1H %": null,
-      "24H %": -2.4,
-      "turnover 24H USDT": 105681
-    },
-    {
-      "coin": "ASESTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 15.65,
-      "5m %": null,
-      "15m %": 1.76,
-      "1H %": null,
-      "24H %": -3.69,
-      "turnover 24H USDT": 118097
-    },
-    {
-      "coin": "PYBOBO/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.0004192,
-      "5m %": null,
-      "15m %": 1.72,
-      "1H %": null,
-      "24H %": 6.82,
-      "turnover 24H USDT": 110425
-    },
-    {
-      "coin": "UMCSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 2.737,
-      "5m %": null,
-      "15m %": 1.71,
-      "1H %": null,
-      "24H %": -2.52,
-      "turnover 24H USDT": 102025
-    },
-    {
-      "coin": "SOXL/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 50.81,
-      "5m %": null,
-      "15m %": 1.7,
-      "1H %": null,
-      "24H %": 3.18,
-      "turnover 24H USDT": 1009947972
-    },
-    {
-      "coin": "SNXX/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 2.799,
-      "5m %": null,
-      "15m %": 1.67,
-      "1H %": null,
-      "24H %": 4.09,
-      "turnover 24H USDT": 39525800
+      "turnover 24H USDT": 140637
     },
     {
       "coin": "KBLAMSTOCK/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 3.06,
+      "giá": 3.07,
+      "5m %": null,
+      "15m %": 1.99,
+      "1H %": null,
+      "24H %": -10.75,
+      "turnover 24H USDT": 187173
+    },
+    {
+      "coin": "KOR/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.0001449,
+      "5m %": null,
+      "15m %": 1.83,
+      "1H %": null,
+      "24H %": 2.18,
+      "turnover 24H USDT": 377012
+    },
+    {
+      "coin": "WINBONDSTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 3.042,
+      "5m %": null,
+      "15m %": 1.77,
+      "1H %": null,
+      "24H %": -6.54,
+      "turnover 24H USDT": 124371
+    },
+    {
+      "coin": "SKUU/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 11.442,
+      "5m %": null,
+      "15m %": 1.71,
+      "1H %": null,
+      "24H %": 4.8,
+      "turnover 24H USDT": 115901
+    },
+    {
+      "coin": "DOS/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.1758,
+      "5m %": null,
+      "15m %": 1.68,
+      "1H %": null,
+      "24H %": 9.19,
+      "turnover 24H USDT": 148612
+    },
+    {
+      "coin": "MSTU/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 12.68,
+      "5m %": null,
+      "15m %": 1.68,
+      "1H %": null,
+      "24H %": -3.64,
+      "turnover 24H USDT": 397107
+    },
+    {
+      "coin": "RAM/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 5.146,
       "5m %": null,
       "15m %": 1.66,
       "1H %": null,
-      "24H %": -11.04,
-      "turnover 24H USDT": 187005
+      "24H %": 3.93,
+      "turnover 24H USDT": 261581
+    },
+    {
+      "coin": "AKESOSTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 7.67,
+      "5m %": null,
+      "15m %": 1.59,
+      "1H %": null,
+      "24H %": -6.69,
+      "turnover 24H USDT": 322133
+    },
+    {
+      "coin": "PYBOBO/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.0004186,
+      "5m %": null,
+      "15m %": 1.58,
+      "1H %": null,
+      "24H %": 6.67,
+      "turnover 24H USDT": 110605
+    },
+    {
+      "coin": "CP/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.006186,
+      "5m %": null,
+      "15m %": 1.53,
+      "1H %": null,
+      "24H %": 1.74,
+      "turnover 24H USDT": 102727
+    },
+    {
+      "coin": "TOSTSTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 34.48,
+      "5m %": null,
+      "15m %": 1.47,
+      "1H %": null,
+      "24H %": 1.74,
+      "turnover 24H USDT": 103294
+    },
+    {
+      "coin": "ASESTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 15.6,
+      "5m %": null,
+      "15m %": 1.43,
+      "1H %": null,
+      "24H %": -4.0,
+      "turnover 24H USDT": 119250
     },
     {
       "coin": "BREV/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.08037,
+      "giá": 0.08022,
       "5m %": null,
-      "15m %": 1.57,
+      "15m %": 1.38,
       "1H %": null,
-      "24H %": -5.42,
-      "turnover 24H USDT": 2752460
+      "24H %": -5.6,
+      "turnover 24H USDT": 2753357
     },
     {
-      "coin": "SOPH/USDT",
+      "coin": "SOXL/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.001023,
-      "5m %": null,
-      "15m %": 1.49,
-      "1H %": null,
-      "24H %": 1.48,
-      "turnover 24H USDT": 779168
-    },
-    {
-      "coin": "DELTAELECSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 30.93,
-      "5m %": null,
-      "15m %": 1.44,
-      "1H %": null,
-      "24H %": -6.24,
-      "turnover 24H USDT": 191060
-    },
-    {
-      "coin": "NANYATECHSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 9.14,
-      "5m %": null,
-      "15m %": 1.44,
-      "1H %": null,
-      "24H %": -6.73,
-      "turnover 24H USDT": 295284
-    },
-    {
-      "coin": "MINIMAXSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 14.27,
-      "5m %": null,
-      "15m %": 1.42,
-      "1H %": null,
-      "24H %": -4.09,
-      "turnover 24H USDT": 151036
-    },
-    {
-      "coin": "TRUMPOFFICIAL/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.965,
-      "5m %": null,
-      "15m %": 1.37,
-      "1H %": null,
-      "24H %": 2.33,
-      "turnover 24H USDT": 1848430
-    },
-    {
-      "coin": "STX/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.2754,
+      "giá": 50.64,
       "5m %": null,
       "15m %": 1.36,
       "1H %": null,
-      "24H %": 3.33,
-      "turnover 24H USDT": 721948
+      "24H %": 2.84,
+      "turnover 24H USDT": 1010268947
     },
     {
-      "coin": "KNTQ/USDT",
+      "coin": "AIA/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.2343,
+      "giá": 0.07163,
       "5m %": null,
-      "15m %": 1.34,
+      "15m %": 1.36,
       "1H %": null,
-      "24H %": 5.73,
-      "turnover 24H USDT": 109533
+      "24H %": 1.47,
+      "turnover 24H USDT": 116513
     },
     {
-      "coin": "RECRUITSTOCK/USDT",
+      "coin": "JUP/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 112.58,
+      "giá": 0.2664,
       "5m %": null,
-      "15m %": 1.32,
+      "15m %": 1.33,
       "1H %": null,
-      "24H %": 2.03,
-      "turnover 24H USDT": 104044
-    },
-    {
-      "coin": "PONS/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.116,
-      "5m %": null,
-      "15m %": 1.31,
-      "1H %": null,
-      "24H %": 3.66,
-      "turnover 24H USDT": 1118197
+      "24H %": 6.81,
+      "turnover 24H USDT": 3261704
     },
     {
       "coin": "GENSCRIPTSTOCK/USDT",
@@ -321,447 +221,287 @@
       "15m %": 1.31,
       "1H %": null,
       "24H %": -1.78,
-      "turnover 24H USDT": 107521
+      "turnover 24H USDT": 107721
     },
     {
-      "coin": "STONK/USDT",
+      "coin": "RECRUITSTOCK/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.04096,
+      "giá": 112.56,
+      "5m %": null,
+      "15m %": 1.31,
+      "1H %": null,
+      "24H %": 2.02,
+      "turnover 24H USDT": 104238
+    },
+    {
+      "coin": "STX/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.2752,
       "5m %": null,
       "15m %": 1.29,
       "1H %": null,
-      "24H %": -5.94,
-      "turnover 24H USDT": 136625
-    },
-    {
-      "coin": "SOLV/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.004105,
-      "5m %": null,
-      "15m %": 1.28,
-      "1H %": null,
-      "24H %": -1.53,
-      "turnover 24H USDT": 116091
-    },
-    {
-      "coin": "PARTI/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.03488,
-      "5m %": null,
-      "15m %": 1.28,
-      "1H %": null,
-      "24H %": 0.6,
-      "turnover 24H USDT": 155445
-    },
-    {
-      "coin": "HYUNDAISTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 199.15,
-      "5m %": null,
-      "15m %": 1.28,
-      "1H %": null,
-      "24H %": 0.11,
-      "turnover 24H USDT": 149870
-    },
-    {
-      "coin": "SENT/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.02242,
-      "5m %": null,
-      "15m %": 1.26,
-      "1H %": null,
-      "24H %": 14.15,
-      "turnover 24H USDT": 347923
-    },
-    {
-      "coin": "HANWHAAEROSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 459.78,
-      "5m %": null,
-      "15m %": 1.23,
-      "1H %": null,
-      "24H %": -1.66,
-      "turnover 24H USDT": 110136
-    },
-    {
-      "coin": "GLOBALWFRSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 15.02,
-      "5m %": null,
-      "15m %": 1.21,
-      "1H %": null,
-      "24H %": -15.66,
-      "turnover 24H USDT": 472831
-    },
-    {
-      "coin": "CASHCAT/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.0445,
-      "5m %": null,
-      "15m %": 1.21,
-      "1H %": null,
-      "24H %": 4.75,
-      "turnover 24H USDT": 227083
-    },
-    {
-      "coin": "FLOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.03256,
-      "5m %": null,
-      "15m %": 1.21,
-      "1H %": null,
-      "24H %": 1.49,
-      "turnover 24H USDT": 114946
-    },
-    {
-      "coin": "SKHYNIXSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 860.34,
-      "5m %": null,
-      "15m %": 1.19,
-      "1H %": null,
-      "24H %": 2.63,
-      "turnover 24H USDT": 365203622
-    },
-    {
-      "coin": "AIA/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.07151,
-      "5m %": null,
-      "15m %": 1.19,
-      "1H %": null,
-      "24H %": 1.3,
-      "turnover 24H USDT": 116325
-    },
-    {
-      "coin": "JUP/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.266,
-      "5m %": null,
-      "15m %": 1.18,
-      "1H %": null,
-      "24H %": 6.65,
-      "turnover 24H USDT": 3260731
-    },
-    {
-      "coin": "MEDIATEKSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 114.28,
-      "5m %": null,
-      "15m %": 1.18,
-      "1H %": null,
-      "24H %": -4.24,
-      "turnover 24H USDT": 158529
-    },
-    {
-      "coin": "CP/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.006165,
-      "5m %": null,
-      "15m %": 1.18,
-      "1H %": null,
-      "24H %": 1.39,
-      "turnover 24H USDT": 102538
-    },
-    {
-      "coin": "PYTH/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.05447,
-      "5m %": null,
-      "15m %": 1.17,
-      "1H %": null,
-      "24H %": 2.73,
-      "turnover 24H USDT": 589454
-    },
-    {
-      "coin": "MEGA/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.05692,
-      "5m %": null,
-      "15m %": 1.16,
-      "1H %": null,
-      "24H %": 7.82,
-      "turnover 24H USDT": 307562
-    },
-    {
-      "coin": "GRASS/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.4109,
-      "5m %": null,
-      "15m %": 1.16,
-      "1H %": null,
-      "24H %": 3.55,
-      "turnover 24H USDT": 495530
-    },
-    {
-      "coin": "ONDO/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.2992,
-      "5m %": null,
-      "15m %": 1.15,
-      "1H %": null,
-      "24H %": -0.23,
-      "turnover 24H USDT": 11304712
-    },
-    {
-      "coin": "HMSTR/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.0001403,
-      "5m %": null,
-      "15m %": 1.15,
-      "1H %": null,
-      "24H %": -2.43,
-      "turnover 24H USDT": 120005
-    },
-    {
-      "coin": "KAT/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.003162,
-      "5m %": null,
-      "15m %": 1.15,
-      "1H %": null,
-      "24H %": 2.49,
-      "turnover 24H USDT": 113546
-    },
-    {
-      "coin": "CHIP/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.03025,
-      "5m %": null,
-      "15m %": 1.14,
-      "1H %": null,
-      "24H %": 5.03,
-      "turnover 24H USDT": 258620
-    },
-    {
-      "coin": "GIGADEVSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 32.32,
-      "5m %": null,
-      "15m %": 1.13,
-      "1H %": null,
-      "24H %": 1.15,
-      "turnover 24H USDT": 134842
-    },
-    {
-      "coin": "MUU/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 14.44,
-      "5m %": null,
-      "15m %": 1.12,
-      "1H %": null,
-      "24H %": 4.03,
-      "turnover 24H USDT": 26746553
-    },
-    {
-      "coin": "BOME/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.0005019,
-      "5m %": null,
-      "15m %": 1.11,
-      "1H %": null,
-      "24H %": 0.17,
-      "turnover 24H USDT": 248821
-    },
-    {
-      "coin": "INTW/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 5.125,
-      "5m %": null,
-      "15m %": 1.1,
-      "1H %": null,
-      "24H %": 4.18,
-      "turnover 24H USDT": 802902
-    },
-    {
-      "coin": "SAMSUNGSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 145.56,
-      "5m %": null,
-      "15m %": 1.08,
-      "1H %": null,
-      "24H %": 1.3,
-      "turnover 24H USDT": 38247517
-    },
-    {
-      "coin": "UB/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.10831,
-      "5m %": null,
-      "15m %": 1.08,
-      "1H %": null,
-      "24H %": 0.29,
-      "turnover 24H USDT": 252164
-    },
-    {
-      "coin": "Q/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.02539,
-      "5m %": null,
-      "15m %": 1.07,
-      "1H %": null,
-      "24H %": 2.5,
-      "turnover 24H USDT": 366391
-    },
-    {
-      "coin": "EWT/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 86.24,
-      "5m %": null,
-      "15m %": 1.07,
-      "1H %": null,
-      "24H %": -2.64,
-      "turnover 24H USDT": 235414
-    },
-    {
-      "coin": "ORDER/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.02857,
-      "5m %": null,
-      "15m %": 1.06,
-      "1H %": null,
-      "24H %": 1.24,
-      "turnover 24H USDT": 122439
-    },
-    {
-      "coin": "AXTISTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 36.07,
-      "5m %": null,
-      "15m %": 1.06,
-      "1H %": null,
-      "24H %": 0.41,
-      "turnover 24H USDT": 1073757
-    },
-    {
-      "coin": "DRAM/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 39.89,
-      "5m %": null,
-      "15m %": 1.06,
-      "1H %": null,
-      "24H %": 2.17,
-      "turnover 24H USDT": 14338232
-    },
-    {
-      "coin": "AMDSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 534.88,
-      "5m %": null,
-      "15m %": 1.05,
-      "1H %": null,
-      "24H %": 4.41,
-      "turnover 24H USDT": 15392857
-    },
-    {
-      "coin": "LIT/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 2.7455,
-      "5m %": null,
-      "15m %": 1.05,
-      "1H %": null,
-      "24H %": -0.17,
-      "turnover 24H USDT": 6450144
-    },
-    {
-      "coin": "FARTCOIN/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.087,
-      "5m %": null,
-      "15m %": 1.05,
-      "1H %": null,
-      "24H %": 0.69,
-      "turnover 24H USDT": 5174176
-    },
-    {
-      "coin": "BEAT/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.07978,
-      "5m %": null,
-      "15m %": 1.05,
-      "1H %": null,
-      "24H %": -3.76,
-      "turnover 24H USDT": 1085899
-    },
-    {
-      "coin": "MET/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.2725,
-      "5m %": null,
-      "15m %": 1.04,
-      "1H %": null,
-      "24H %": 2.28,
-      "turnover 24H USDT": 321768
-    },
-    {
-      "coin": "HLSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 11.64,
-      "5m %": null,
-      "15m %": 1.04,
-      "1H %": null,
-      "24H %": -0.51,
-      "turnover 24H USDT": 130779
-    },
-    {
-      "coin": "ZEC/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 910.76,
-      "5m %": null,
-      "15m %": 1.03,
-      "1H %": null,
-      "24H %": -1.78,
-      "turnover 24H USDT": 1195829592
+      "24H %": 3.26,
+      "turnover 24H USDT": 722144
     },
     {
       "coin": "BTW/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.5297,
+      "giá": 0.5309,
+      "5m %": null,
+      "15m %": 1.26,
+      "1H %": null,
+      "24H %": 5.08,
+      "turnover 24H USDT": 4164460
+    },
+    {
+      "coin": "MEGA/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.05698,
+      "5m %": null,
+      "15m %": 1.26,
+      "1H %": null,
+      "24H %": 7.93,
+      "turnover 24H USDT": 307979
+    },
+    {
+      "coin": "CASHCAT/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.04452,
+      "5m %": null,
+      "15m %": 1.25,
+      "1H %": null,
+      "24H %": 4.8,
+      "turnover 24H USDT": 227250
+    },
+    {
+      "coin": "GRASS/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.4111,
+      "5m %": null,
+      "15m %": 1.21,
+      "1H %": null,
+      "24H %": 3.6,
+      "turnover 24H USDT": 495925
+    },
+    {
+      "coin": "MVLL/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 9.19,
+      "5m %": null,
+      "15m %": 1.21,
+      "1H %": null,
+      "24H %": 1.54,
+      "turnover 24H USDT": 2738015
+    },
+    {
+      "coin": "HANWHAAEROSTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 459.62,
+      "5m %": null,
+      "15m %": 1.2,
+      "1H %": null,
+      "24H %": -1.69,
+      "turnover 24H USDT": 110280
+    },
+    {
+      "coin": "SKSQUARESTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 526.3,
+      "5m %": null,
+      "15m %": 1.19,
+      "1H %": null,
+      "24H %": -2.87,
+      "turnover 24H USDT": 442646
+    },
+    {
+      "coin": "SKHYNIXSTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 860.1,
+      "5m %": null,
+      "15m %": 1.16,
+      "1H %": null,
+      "24H %": 2.6,
+      "turnover 24H USDT": 365206523
+    },
+    {
+      "coin": "TRUMPOFFICIAL/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.963,
+      "5m %": null,
+      "15m %": 1.16,
+      "1H %": null,
+      "24H %": 2.12,
+      "turnover 24H USDT": 1858695
+    },
+    {
+      "coin": "Q/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.0254,
+      "5m %": null,
+      "15m %": 1.11,
+      "1H %": null,
+      "24H %": 2.54,
+      "turnover 24H USDT": 366592
+    },
+    {
+      "coin": "BR/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.4652,
+      "5m %": null,
+      "15m %": 1.09,
+      "1H %": null,
+      "24H %": 1.79,
+      "turnover 24H USDT": 488939
+    },
+    {
+      "coin": "KNTQ/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.2337,
+      "5m %": null,
+      "15m %": 1.08,
+      "1H %": null,
+      "24H %": 5.46,
+      "turnover 24H USDT": 109711
+    },
+    {
+      "coin": "HYUNDAISTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 198.77,
+      "5m %": null,
+      "15m %": 1.08,
+      "1H %": null,
+      "24H %": -0.08,
+      "turnover 24H USDT": 150033
+    },
+    {
+      "coin": "USELESS/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.09742,
+      "5m %": null,
+      "15m %": 1.07,
+      "1H %": null,
+      "24H %": 3.07,
+      "turnover 24H USDT": 1513155
+    },
+    {
+      "coin": "GIGADEVSTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 32.3,
+      "5m %": null,
+      "15m %": 1.06,
+      "1H %": null,
+      "24H %": 1.09,
+      "turnover 24H USDT": 135005
+    },
+    {
+      "coin": "TLM/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.00097,
+      "5m %": null,
+      "15m %": 1.04,
+      "1H %": null,
+      "24H %": 5.2,
+      "turnover 24H USDT": 128875
+    },
+    {
+      "coin": "BOME/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.0005015,
       "5m %": null,
       "15m %": 1.03,
       "1H %": null,
-      "24H %": 4.84,
-      "turnover 24H USDT": 4160284
+      "24H %": 0.09,
+      "turnover 24H USDT": 248963
     },
     {
-      "coin": "EDGE/USDT",
+      "coin": "MOVR/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.2756,
+      "giá": 0.8868,
       "5m %": null,
       "15m %": 1.03,
       "1H %": null,
-      "24H %": 2.64,
-      "turnover 24H USDT": 464089
+      "24H %": 2.75,
+      "turnover 24H USDT": 198863
     },
     {
-      "coin": "ETHFI/USDT",
+      "coin": "INNOVENTSTOCK/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.5031,
+      "giá": 10.93,
       "5m %": null,
       "15m %": 1.02,
       "1H %": null,
-      "24H %": 8.35,
-      "turnover 24H USDT": 981105
+      "24H %": 2.91,
+      "turnover 24H USDT": 101838
     },
     {
-      "coin": "SKHYSTOCK/USDT",
+      "coin": "BIRB/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 125.21,
+      "giá": 0.06808,
       "5m %": null,
       "15m %": 1.01,
       "1H %": null,
-      "24H %": 2.53,
-      "turnover 24H USDT": 64960021
+      "24H %": 6.39,
+      "turnover 24H USDT": 130685
     },
     {
-      "coin": "TOSHI/USDT",
+      "coin": "SOLV/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 8.03e-05,
+      "giá": 0.004094,
       "5m %": null,
       "15m %": 1.01,
       "1H %": null,
-      "24H %": 1.0,
-      "turnover 24H USDT": 119107
+      "24H %": -1.79,
+      "turnover 24H USDT": 116268
+    },
+    {
+      "coin": "MINIMAXSTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 14.21,
+      "5m %": null,
+      "15m %": 1.0,
+      "1H %": null,
+      "24H %": -4.5,
+      "turnover 24H USDT": 151772
+    },
+    {
+      "coin": "UMCSTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 2.718,
+      "5m %": null,
+      "15m %": 1.0,
+      "1H %": null,
+      "24H %": -3.2,
+      "turnover 24H USDT": 102203
+    },
+    {
+      "coin": "SOPH/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.001018,
+      "5m %": null,
+      "15m %": 0.99,
+      "1H %": null,
+      "24H %": 0.99,
+      "turnover 24H USDT": 779325
+    },
+    {
+      "coin": "ORDER/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.02855,
+      "5m %": null,
+      "15m %": 0.99,
+      "1H %": null,
+      "24H %": 1.16,
+      "turnover 24H USDT": 122591
+    },
+    {
+      "coin": "FLOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.03249,
+      "5m %": null,
+      "15m %": 0.99,
+      "1H %": null,
+      "24H %": 1.27,
+      "turnover 24H USDT": 115092
     },
     {
       "coin": "PHA/USDT",
@@ -771,107 +511,97 @@
       "15m %": 0.98,
       "1H %": null,
       "24H %": 1.78,
-      "turnover 24H USDT": 282675
+      "turnover 24H USDT": 282854
     },
     {
-      "coin": "BMT/USDT",
+      "coin": "MUU/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.01949,
+      "giá": 14.42,
       "5m %": null,
       "15m %": 0.98,
       "1H %": null,
-      "24H %": 1.77,
-      "turnover 24H USDT": 138219
+      "24H %": 3.89,
+      "turnover 24H USDT": 26746722
     },
     {
-      "coin": "MRVLSTOCK/USDT",
+      "coin": "RBLXSTOCK/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 148.04,
+      "giá": 47.54,
       "5m %": null,
       "15m %": 0.98,
       "1H %": null,
-      "24H %": 1.13,
-      "turnover 24H USDT": 5042373
+      "24H %": 1.01,
+      "turnover 24H USDT": 139589
     },
     {
-      "coin": "GOAT/USDT",
+      "coin": "SAMSUNGSTOCK/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.01135,
+      "giá": 145.39,
       "5m %": null,
-      "15m %": 0.98,
+      "15m %": 0.97,
       "1H %": null,
-      "24H %": 1.33,
-      "turnover 24H USDT": 122972
+      "24H %": 1.19,
+      "turnover 24H USDT": 38542007
     },
     {
-      "coin": "MANTRA/USDT",
+      "coin": "EWT/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.002213,
+      "giá": 86.16,
+      "5m %": null,
+      "15m %": 0.97,
+      "1H %": null,
+      "24H %": -2.73,
+      "turnover 24H USDT": 235589
+    },
+    {
+      "coin": "BEAT/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.07971,
       "5m %": null,
       "15m %": 0.96,
       "1H %": null,
-      "24H %": 0.09,
-      "turnover 24H USDT": 121296
+      "24H %": -3.84,
+      "turnover 24H USDT": 1086533
     },
     {
-      "coin": "BMNRSTOCK/USDT",
+      "coin": "KAT/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 15.77,
+      "giá": 0.003156,
       "5m %": null,
       "15m %": 0.96,
       "1H %": null,
-      "24H %": -0.56,
-      "turnover 24H USDT": 571865
+      "24H %": 2.3,
+      "turnover 24H USDT": 113726
     },
     {
-      "coin": "MSTRSTOCK/USDT",
+      "coin": "PYTH/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 91.97,
+      "giá": 0.05435,
       "5m %": null,
       "15m %": 0.95,
       "1H %": null,
-      "24H %": -1.53,
-      "turnover 24H USDT": 24433822
+      "24H %": 2.5,
+      "turnover 24H USDT": 589950
     },
     {
-      "coin": "NBISSTOCK/USDT",
+      "coin": "INTW/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 108.78,
+      "giá": 5.117,
       "5m %": null,
       "15m %": 0.95,
       "1H %": null,
-      "24H %": 1.0,
-      "turnover 24H USDT": 13931346
+      "24H %": 4.02,
+      "turnover 24H USDT": 803079
     },
     {
-      "coin": "MONAD/USDT",
+      "coin": "ETHFI/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.01378,
+      "giá": 0.5027,
       "5m %": null,
-      "15m %": 0.95,
+      "15m %": 0.94,
       "1H %": null,
-      "24H %": -5.8,
-      "turnover 24H USDT": 495843
-    },
-    {
-      "coin": "MOVR/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.8861,
-      "5m %": null,
-      "15m %": 0.95,
-      "1H %": null,
-      "24H %": 2.67,
-      "turnover 24H USDT": 198673
-    },
-    {
-      "coin": "RBRKSTOCK/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 112.7,
-      "5m %": null,
-      "15m %": 0.95,
-      "1H %": null,
-      "24H %": 5.33,
-      "turnover 24H USDT": 117864
+      "24H %": 8.27,
+      "turnover 24H USDT": 983626
     },
     {
       "coin": "MOCA/USDT",
@@ -881,27 +611,7 @@
       "15m %": 0.94,
       "1H %": null,
       "24H %": 0.93,
-      "turnover 24H USDT": 254637
-    },
-    {
-      "coin": "VIRTUAL/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.4288,
-      "5m %": null,
-      "15m %": 0.94,
-      "1H %": null,
-      "24H %": -0.71,
-      "turnover 24H USDT": 731664
-    },
-    {
-      "coin": "POPCAT/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.02789,
-      "5m %": null,
-      "15m %": 0.94,
-      "1H %": null,
-      "24H %": 1.63,
-      "turnover 24H USDT": 152315
+      "turnover 24H USDT": 254791
     },
     {
       "coin": "ACT/USDT",
@@ -911,97 +621,387 @@
       "15m %": 0.94,
       "1H %": null,
       "24H %": 1.64,
-      "turnover 24H USDT": 107356
+      "turnover 24H USDT": 107665
     },
     {
-      "coin": "TREE/USDT",
+      "coin": "BABY/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.0316,
+      "giá": 0.00859,
       "5m %": null,
-      "15m %": 0.93,
+      "15m %": 0.94,
       "1H %": null,
-      "24H %": 2.93,
-      "turnover 24H USDT": 103636
+      "24H %": 2.26,
+      "turnover 24H USDT": 146765
     },
     {
-      "coin": "ANTHROPIC/USDT",
+      "coin": "SKHYSTOCK/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 101.09,
-      "5m %": null,
-      "15m %": 0.92,
-      "1H %": null,
-      "24H %": 4.49,
-      "turnover 24H USDT": 8569007
-    },
-    {
-      "coin": "USELESS/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.09728,
+      "giá": 125.1,
       "5m %": null,
       "15m %": 0.92,
       "1H %": null,
-      "24H %": 2.93,
-      "turnover 24H USDT": 1512785
+      "24H %": 2.44,
+      "turnover 24H USDT": 64960277
     },
     {
-      "coin": "SKSQUARESTOCK/USDT",
+      "coin": "MEDIATEKSTOCK/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 524.9,
+      "giá": 113.99,
       "5m %": null,
       "15m %": 0.92,
       "1H %": null,
-      "24H %": -3.13,
-      "turnover 24H USDT": 442474
+      "24H %": -4.49,
+      "turnover 24H USDT": 158682
     },
     {
-      "coin": "TSMCSTOCK/USDT",
+      "coin": "RBRKSTOCK/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 64.85,
-      "5m %": null,
-      "15m %": 0.92,
-      "1H %": null,
-      "24H %": -1.56,
-      "turnover 24H USDT": 130156
-    },
-    {
-      "coin": "PEPE/USDT",
-      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 3.7448e-06,
+      "giá": 112.66,
       "5m %": null,
       "15m %": 0.91,
       "1H %": null,
-      "24H %": 1.16,
-      "turnover 24H USDT": 31775531
+      "24H %": 5.29,
+      "turnover 24H USDT": 118040
     },
     {
-      "coin": "VVV/USDT",
+      "coin": "PUMPFUN/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 22.175,
+      "giá": 0.002612,
       "5m %": null,
-      "15m %": 0.91,
+      "15m %": 0.89,
       "1H %": null,
-      "24H %": 6.48,
-      "turnover 24H USDT": 1773320
+      "24H %": 1.43,
+      "turnover 24H USDT": 9301098
+    },
+    {
+      "coin": "LIT/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 2.7413,
+      "5m %": null,
+      "15m %": 0.89,
+      "1H %": null,
+      "24H %": -0.33,
+      "turnover 24H USDT": 6469742
+    },
+    {
+      "coin": "GOAT/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.01134,
+      "5m %": null,
+      "15m %": 0.89,
+      "1H %": null,
+      "24H %": 1.25,
+      "turnover 24H USDT": 124315
+    },
+    {
+      "coin": "DRAM/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 39.82,
+      "5m %": null,
+      "15m %": 0.89,
+      "1H %": null,
+      "24H %": 1.99,
+      "turnover 24H USDT": 14386526
+    },
+    {
+      "coin": "NANYATECHSTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 9.09,
+      "5m %": null,
+      "15m %": 0.89,
+      "1H %": null,
+      "24H %": -7.24,
+      "turnover 24H USDT": 295474
+    },
+    {
+      "coin": "FWDISTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 4.085,
+      "5m %": null,
+      "15m %": 0.89,
+      "1H %": null,
+      "24H %": -0.29,
+      "turnover 24H USDT": 103959
+    },
+    {
+      "coin": "KSTR/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 18.11,
+      "5m %": null,
+      "15m %": 0.89,
+      "1H %": null,
+      "24H %": 2.08,
+      "turnover 24H USDT": 108445
+    },
+    {
+      "coin": "HMSTR/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.0001399,
+      "5m %": null,
+      "15m %": 0.87,
+      "1H %": null,
+      "24H %": -2.71,
+      "turnover 24H USDT": 120202
+    },
+    {
+      "coin": "STONK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.04079,
+      "5m %": null,
+      "15m %": 0.87,
+      "1H %": null,
+      "24H %": -6.33,
+      "turnover 24H USDT": 136808
+    },
+    {
+      "coin": "AMDSTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 533.9,
+      "5m %": null,
+      "15m %": 0.86,
+      "1H %": null,
+      "24H %": 4.22,
+      "turnover 24H USDT": 15396113
+    },
+    {
+      "coin": "SPX/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.3173,
+      "5m %": null,
+      "15m %": 0.86,
+      "1H %": null,
+      "24H %": 1.3,
+      "turnover 24H USDT": 1303736
+    },
+    {
+      "coin": "ZKC/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.02721,
+      "5m %": null,
+      "15m %": 0.85,
+      "1H %": null,
+      "24H %": -5.29,
+      "turnover 24H USDT": 1695618
+    },
+    {
+      "coin": "MET/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.272,
+      "5m %": null,
+      "15m %": 0.85,
+      "1H %": null,
+      "24H %": 2.1,
+      "turnover 24H USDT": 321909
+    },
+    {
+      "coin": "XPIN/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.0007146,
+      "5m %": null,
+      "15m %": 0.85,
+      "1H %": null,
+      "24H %": 5.22,
+      "turnover 24H USDT": 120201
+    },
+    {
+      "coin": "HK0992/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 16.61,
+      "5m %": null,
+      "15m %": 0.85,
+      "1H %": null,
+      "24H %": -2.29,
+      "turnover 24H USDT": 101357
+    },
+    {
+      "coin": "SKR/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.009716,
+      "5m %": null,
+      "15m %": 0.84,
+      "1H %": null,
+      "24H %": -0.45,
+      "turnover 24H USDT": 196778
+    },
+    {
+      "coin": "UAI/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.03413,
+      "5m %": null,
+      "15m %": 0.83,
+      "1H %": null,
+      "24H %": 5.46,
+      "turnover 24H USDT": 921479
+    },
+    {
+      "coin": "BMT/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.01946,
+      "5m %": null,
+      "15m %": 0.83,
+      "1H %": null,
+      "24H %": 1.61,
+      "turnover 24H USDT": 138393
+    },
+    {
+      "coin": "POPCAT/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.02786,
+      "5m %": null,
+      "15m %": 0.83,
+      "1H %": null,
+      "24H %": 1.53,
+      "turnover 24H USDT": 152514
+    },
+    {
+      "coin": "BMNRSTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 15.75,
+      "5m %": null,
+      "15m %": 0.83,
+      "1H %": null,
+      "24H %": -0.69,
+      "turnover 24H USDT": 572052
+    },
+    {
+      "coin": "ZEC/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 908.86,
+      "5m %": null,
+      "15m %": 0.82,
+      "1H %": null,
+      "24H %": -1.99,
+      "turnover 24H USDT": 1197015889
+    },
+    {
+      "coin": "BLUR/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.006657,
+      "5m %": null,
+      "15m %": 0.82,
+      "1H %": null,
+      "24H %": 4.12,
+      "turnover 24H USDT": 152297
+    },
+    {
+      "coin": "PRL/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.07171,
+      "5m %": null,
+      "15m %": 0.82,
+      "1H %": null,
+      "24H %": 3.04,
+      "turnover 24H USDT": 118330
+    },
+    {
+      "coin": "ONDO/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.2982,
+      "5m %": null,
+      "15m %": 0.81,
+      "1H %": null,
+      "24H %": -0.56,
+      "turnover 24H USDT": 11363229
+    },
+    {
+      "coin": "MONAD/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.01376,
+      "5m %": null,
+      "15m %": 0.81,
+      "1H %": null,
+      "24H %": -5.94,
+      "turnover 24H USDT": 496086
+    },
+    {
+      "coin": "STBL/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.01999,
+      "5m %": null,
+      "15m %": 0.81,
+      "1H %": null,
+      "24H %": -0.84,
+      "turnover 24H USDT": 129891
+    },
+    {
+      "coin": "CARTSTOCK/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 58.39,
+      "5m %": null,
+      "15m %": 0.81,
+      "1H %": null,
+      "24H %": -0.34,
+      "turnover 24H USDT": 114399
+    },
+    {
+      "coin": "SNXX/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 2.775,
+      "5m %": null,
+      "15m %": 0.8,
+      "1H %": null,
+      "24H %": 3.19,
+      "turnover 24H USDT": 39528360
     },
     {
       "coin": "BARD/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 0.0888,
+      "giá": 0.0887,
       "5m %": null,
-      "15m %": 0.91,
+      "15m %": 0.8,
       "1H %": null,
-      "24H %": 2.65,
-      "turnover 24H USDT": 402601
+      "24H %": 2.54,
+      "turnover 24H USDT": 404702
     },
     {
-      "coin": "IRENSTOCK/USDT",
+      "coin": "MSTRSTOCK/USDT",
       "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
-      "giá": 15.58,
+      "giá": 91.82,
       "5m %": null,
-      "15m %": 0.91,
+      "15m %": 0.79,
       "1H %": null,
-      "24H %": 1.03,
-      "turnover 24H USDT": 794908
+      "24H %": -1.69,
+      "turnover 24H USDT": 24453229
+    },
+    {
+      "coin": "PONS/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.1154,
+      "5m %": null,
+      "15m %": 0.79,
+      "1H %": null,
+      "24H %": 3.12,
+      "turnover 24H USDT": 1120455
+    },
+    {
+      "coin": "LAB/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.03485,
+      "5m %": null,
+      "15m %": 0.78,
+      "1H %": null,
+      "24H %": 0.54,
+      "turnover 24H USDT": 523492
+    },
+    {
+      "coin": "KIMCHI/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.001678,
+      "5m %": null,
+      "15m %": 0.78,
+      "1H %": null,
+      "24H %": -16.76,
+      "turnover 24H USDT": 224112
+    },
+    {
+      "coin": "PARTI/USDT",
+      "trạng thái": "ĐANG NHÍCH LÊN — CHỜ XÁC NHẬN",
+      "giá": 0.03471,
+      "5m %": null,
+      "15m %": 0.78,
+      "1H %": null,
+      "24H %": 0.11,
+      "turnover 24H USDT": 155620
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
