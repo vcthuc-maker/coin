@@ -1,57 +1,67 @@
 {
-  "collected_at_utc": "2026-11-19T10:36:02+00:00",
-  "universe_size": 1043,
+  "collected_at_utc": "2026-11-19T11:28:22+00:00",
+  "universe_size": 1036,
   "history_intervals": 3,
   "rows": [
     {
       "coin": "VELVET/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.07725,
+      "giá": 0.07665,
       "5m %": null,
       "15m %": null,
-      "1H %": 0.87,
-      "24H %": 31.02,
-      "turnover 24H USDT": 6498713
+      "1H %": null,
+      "24H %": 30.0,
+      "turnover 24H USDT": 7510518
     },
     {
       "coin": "IRYS/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.02316,
+      "giá": 0.02211,
       "5m %": null,
       "15m %": null,
-      "1H %": 0.0,
-      "24H %": 34.26,
-      "turnover 24H USDT": 11216275
+      "1H %": null,
+      "24H %": 28.17,
+      "turnover 24H USDT": 10932881
     },
     {
       "coin": "ICNT/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.4207,
+      "giá": 0.4279,
       "5m %": null,
       "15m %": null,
-      "1H %": 3.37,
-      "24H %": 26.83,
-      "turnover 24H USDT": 5238839
+      "1H %": null,
+      "24H %": 29.0,
+      "turnover 24H USDT": 5204035
     },
     {
       "coin": "BITO/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 16.86,
+      "giá": 16.79,
       "5m %": null,
       "15m %": null,
-      "1H %": -0.41,
-      "24H %": 101.43,
-      "turnover 24H USDT": 1381674
+      "1H %": null,
+      "24H %": 100.59,
+      "turnover 24H USDT": 1652515
     },
     {
       "coin": "NAORIS/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.03265,
+      "giá": 0.03268,
       "5m %": null,
       "15m %": null,
-      "1H %": -15.24,
-      "24H %": 46.87,
-      "turnover 24H USDT": 1052431
+      "1H %": null,
+      "24H %": 47.0,
+      "turnover 24H USDT": 1142327
+    },
+    {
+      "coin": "DCTY/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.01803,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 50.0,
+      "turnover 24H USDT": 218179
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
