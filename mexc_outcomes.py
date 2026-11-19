@@ -45,8 +45,9 @@ def update_events(events, rows, timestamp, markets, *, min_age=EVENT_COOLDOWN):
         observed = markets.get(symbol)
         if observed is None or observed[0] <= 0:
             continue
+        cooldown = 48*3600 if row["trạng thái"].startswith("0.") else min_age
         if any(e["coin"] == row["coin"] and e["trạng thái"] == row["trạng thái"]
-               and 0 <= now - int(e["ts"]) < min_age for e in current):
+               and 0 <= now - int(e["ts"]) < cooldown for e in current):
             continue
         current.append({
             "ts": now, "coin": row["coin"], "trạng thái": row["trạng thái"],
