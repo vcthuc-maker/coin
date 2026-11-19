@@ -123,6 +123,7 @@ def scan_quality(markets, history, now, *, limit=30):
     """Sample diverse candidates to control API load. Not full-market verification."""
     from mexc_early import select_candidates
     from mexc_fast import get_json
+    from mexc_fresh import hourly_context, fresh_breakout, apply_48h_guard, FRESH, LATE48
     from concurrent.futures import ThreadPoolExecutor, as_completed
 
     # Detect compressed / quiet names as well as mild accelerators.
@@ -137,7 +138,21 @@ def scan_quality(markets, history, now, *, limit=30):
     pick_by_sym = {x["native"]: x for x in quiet}
     for x in picks:
         pick_by_sym.setdefault(x["native"], x)
-    chosen = list(pick_by_sym.values())[:limit]
+    # Reserve slots for active 24H movers to flag already-rallied coins.
+    # Other slots keep preparation candidates ahead of recent gainers.
+    movers = sorted(
+        [{"native": sym, "coin": sym[:-5]+"/USDT",
+          "change24": values[2], "turnover24": values[1]}
+         for sym, values in markets.items()
+         if 6 <= values[2] <= 40 and values[1] >= 100000],
+        key=lambda x: x["change24"], reverse=True
+    )[:max(4, limit//4)]
+    chosen = list(pick_by_sym.values())[:max(1, limit-len(movers))]
+    seen = {x["native"] for x in chosen}
+    for item in movers:
+        if item["native"] not in seen and len(chosen) < limit:
+            chosen.append(item)
+            seen.add(item["native"])
     errors, rows = [], []
     def fetch(item):
         raw = get_json("/api/v1/contract/kline/"+item["native"],
@@ -150,7 +165,37 @@ def scan_quality(markets, history, now, *, limit=30):
         if frame.empty:
             return None
         frame = frame[frame["t"] + 300 <= now]
-        return analyze(item, frame, now=now)
+        # Hourly candles are essential: 24H percentage alone misses 2-day rallies.
+        long_raw = get_json("/api/v1/contract/kline/"+item["native"],
+                            {"interval":"Min60","start":now-58*3600,"end":now})
+        times = long_raw.get("time", [])
+        hourly = pd.DataFrame([{
+            "t":int(t), "high":float(long_raw["high"][i]),
+            "low":float(long_raw["low"][i]),
+            "close":float(long_raw["close"][i])
+        } for i,t in enumerate(times)], columns=["t","high","low","close"])
+        hourly = hourly[hourly["t"] + 3600 <= now] if not hourly.empty else hourly
+        if len(frame) < 70:
+            return None
+        current_price = float(frame.sort_values("t")["close"].iloc[-1])
+        context = hourly_context(hourly, current_price, now=now)
+        if context is None:
+            return None
+        # First closed 5m breakout is eligible before the 2-bar hold classification.
+        first = fresh_breakout(item, frame, now=now)
+        row = first if first is not None else analyze(item, frame, now=now)
+        if row is None and context["late"]:
+            # Diagnose late coins even when they have no compression setup.
+            row = {
+                "coin":item["coin"],"trạng thái":LATE48,"giá":round(current_price,12),
+                "nén (phút)":None,"biên nén %":None,"RVOL 5m":None,
+                "đến đỉnh nền %":None,"tăng từ đáy 1H %":None,
+                "giá so EMA20 %":None,"râu trên %":None,"số nến giữ nền":None,
+                "24H %":float(item["change24"]),
+                "lý do":"Đã tăng mạnh nhiều giờ; không phải tín hiệu vào sớm",
+                "nến cuối UTC":pd.to_datetime(int(frame["t"].max()),unit="s",utc=True).strftime("%Y-%m-%d %H:%M")
+            }
+        return apply_48h_guard(row, context)
     with ThreadPoolExecutor(max_workers=2) as pool:
         futures = {pool.submit(fetch, item): item for item in chosen}
         for future in as_completed(futures):
@@ -160,5 +205,6 @@ def scan_quality(markets, history, now, *, limit=30):
                     rows.append(outcome)
             except Exception as err:
                 errors.append(f"{futures[future]['native']}: {str(err)[:130]}")
-    rank = {PREP:0, HOLD:1, REJECT:2}
-    return sorted(rows, key=lambda x:(rank[x["trạng thái"]], x["biên nén %"])), errors, len(chosen)
+    rank = {FRESH:0, PREP:1, HOLD:2, REJECT:3, LATE48:3}
+    return sorted(rows, key=lambda x:(rank.get(x["trạng thái"],4),
+                                     x["biên nén %"] if x["biên nén %"] is not None else 999)), errors, len(chosen)
