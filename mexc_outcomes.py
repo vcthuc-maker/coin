@@ -102,10 +102,24 @@ def outcomes_table(events, last=100):
 def simple_summary(events):
     data = outcomes_table(events, last=MAX_EVENTS)
     if data.empty:
-        return {"evaluated_15":0, "positive_15_pct":None, "avg_15_pct":None}
+        return {"evaluated_15":0, "positive_15_pct":None, "avg_15_pct":None,
+                "dump_15_pct":None, "by_state":[] }
     valid = data["15 phút %"].dropna()
+    groups = []
+    for state, part in data.groupby("trạng thái"):
+        observed = part["15 phút %"].dropna()
+        if len(observed):
+            groups.append({
+                "trạng thái": state,
+                "số tín hiệu có kết quả 15m": int(len(observed)),
+                "tăng sau 15m %": round(100 * float((observed > 0).mean()), 2),
+                "giảm sâu <=-2% sau 15m": round(100 * float((observed <= -2).mean()), 2),
+                "lợi nhuận TB 15m % (chưa phí)": round(float(observed.mean()), 3),
+            })
     return {
         "evaluated_15": len(valid),
         "positive_15_pct": round(100*float((valid > 0).mean()),2) if len(valid) else None,
         "avg_15_pct": round(float(valid.mean()),3) if len(valid) else None,
+        "dump_15_pct": round(100*float((valid <= -2).mean()),2) if len(valid) else None,
+        "by_state": groups,
     }
