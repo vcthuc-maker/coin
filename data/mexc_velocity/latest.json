@@ -1,37 +1,27 @@
 {
-  "collected_at_utc": "2026-11-20T21:04:25+00:00",
-  "universe_size": 982,
+  "collected_at_utc": "2026-11-20T21:49:28+00:00",
+  "universe_size": 1055,
   "history_intervals": 3,
   "rows": [
     {
-      "coin": "AKE/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.0065,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 28.96,
-      "turnover 24H USDT": 25134855
-    },
-    {
       "coin": "CLAUDIA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.006289,
+      "giá": 0.006285,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 31.34,
-      "turnover 24H USDT": 817193
+      "24H %": 31.26,
+      "turnover 24H USDT": 849009
     },
     {
       "coin": "FLOAT/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.00314,
+      "giá": 0.00372,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 81.29,
-      "turnover 24H USDT": 282748
+      "24H %": 114.78,
+      "turnover 24H USDT": 320233
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
