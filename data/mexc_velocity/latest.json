@@ -1,27 +1,17 @@
 {
-  "collected_at_utc": "2026-11-20T09:42:01+00:00",
-  "universe_size": 1046,
+  "collected_at_utc": "2026-11-20T10:39:25+00:00",
+  "universe_size": 1044,
   "history_intervals": 3,
   "rows": [
     {
-      "coin": "AKE/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.008686,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 38.25,
-      "24H %": -16.85,
-      "turnover 24H USDT": 11322253
-    },
-    {
       "coin": "CYBER/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.2848,
+      "giá": 0.2657,
       "5m %": null,
       "15m %": null,
-      "1H %": 1.71,
-      "24H %": 41.55,
-      "turnover 24H USDT": 1169503
+      "1H %": -6.71,
+      "24H %": 32.05,
+      "turnover 24H USDT": 1482363
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
