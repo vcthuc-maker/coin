@@ -1,8 +1,69 @@
 {
-  "collected_at_utc": "2026-11-20T20:16:48+00:00",
-  "universe_size": 1021,
+  "collected_at_utc": "2026-11-20T21:04:25+00:00",
+  "universe_size": 982,
   "scanned_1m": 24,
-  "rows": [],
+  "rows": [
+    {
+      "coin": "BTW/USDT",
+      "trạng thái": "MỚI BẬT LÊN — 1–2 NẾN",
+      "giá": 0.6743,
+      "nến xanh liên tiếp": 2,
+      "1m %": 0.387,
+      "3m %": 0.402,
+      "15m %": -0.178,
+      "RVOL 1m": 2.68,
+      "tăng từ đáy 30m %": 2.07,
+      "so với đỉnh trước %": -0.47,
+      "turnover 3m USDT": 10238.58,
+      "24h %": 6.02,
+      "nến cuối UTC": "2026-11-20 21:03"
+    },
+    {
+      "coin": "RT/USDT",
+      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
+      "giá": 0.001138,
+      "nến xanh liên tiếp": 0,
+      "1m %": -0.785,
+      "3m %": -0.175,
+      "15m %": 3.08,
+      "RVOL 1m": 0.8,
+      "tăng từ đáy 30m %": 6.45,
+      "so với đỉnh trước %": -1.39,
+      "turnover 3m USDT": 187.25,
+      "24h %": 7.27,
+      "nến cuối UTC": "2026-11-20 21:03"
+    },
+    {
+      "coin": "SOXL/USDT",
+      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
+      "giá": 32.15,
+      "nến xanh liên tiếp": 0,
+      "1m %": -0.31,
+      "3m %": 1.42,
+      "15m %": 1.101,
+      "RVOL 1m": 0.48,
+      "tăng từ đáy 30m %": 7.49,
+      "so với đỉnh trước %": 0.34,
+      "turnover 3m USDT": 8782006.76,
+      "24h %": -12.1,
+      "nến cuối UTC": "2026-11-20 21:03"
+    },
+    {
+      "coin": "IDOL/USDT",
+      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
+      "giá": 0.023522,
+      "nến xanh liên tiếp": 2,
+      "1m %": 0.491,
+      "3m %": 0.698,
+      "15m %": 4.445,
+      "RVOL 1m": 0.3,
+      "tăng từ đáy 30m %": 6.12,
+      "so với đỉnh trước %": 0.7,
+      "turnover 3m USDT": 544.26,
+      "24h %": 4.78,
+      "nến cuối UTC": "2026-11-20 21:03"
+    }
+  ],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
