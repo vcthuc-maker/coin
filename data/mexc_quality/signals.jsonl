@@ -79,3 +79,6 @@
 {"ts": 1795171165, "coin": "BTC/USDT", "trạng thái": "2. BREAKOUT GIỮ GIÁ — CHƯA ĐUỔI", "signal_close_5m": 62153.8, "entry_snapshot_price": 62245.5, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -0.7427}, "stale": false}
 {"ts": 1795174364, "coin": "TESLA/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 368.0, "entry_snapshot_price": 367.95, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -0.0815}, "stale": false}
 {"ts": 1795182306, "coin": "XAUT/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 3551.5, "entry_snapshot_price": 3551.5, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": {"missing": true}}, "stale": false}
+{"ts": 1795198719, "coin": "SOL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 68.97, "entry_snapshot_price": 69.29, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795198719, "coin": "XRP/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.9044, "entry_snapshot_price": 0.9072, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795198719, "coin": "PHAROS/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.5546, "entry_snapshot_price": 0.5563, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
