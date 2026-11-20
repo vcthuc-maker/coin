@@ -82,4 +82,4 @@
 {"ts": 1795198719, "coin": "SOL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 68.97, "entry_snapshot_price": 69.29, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -2.0061}, "stale": false}
 {"ts": 1795198719, "coin": "XRP/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.9044, "entry_snapshot_price": 0.9072, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -1.0802}, "stale": false}
 {"ts": 1795198719, "coin": "PHAROS/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.5546, "entry_snapshot_price": 0.5563, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -0.0899}, "stale": false}
-{"ts": 1795202627, "coin": "SPCXSTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 129.57, "entry_snapshot_price": 129.52, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795202627, "coin": "SPCXSTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 129.57, "entry_snapshot_price": 129.52, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 0.0}, "stale": false}
