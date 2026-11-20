@@ -1,17 +1,17 @@
 {
-  "collected_at_utc": "2026-11-20T10:39:25+00:00",
-  "universe_size": 1044,
+  "collected_at_utc": "2026-11-20T11:32:44+00:00",
+  "universe_size": 1042,
   "history_intervals": 3,
   "rows": [
     {
-      "coin": "CYBER/USDT",
+      "coin": "KERNEL/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.2657,
+      "giá": 0.04981,
       "5m %": null,
       "15m %": null,
-      "1H %": -6.71,
-      "24H %": 32.05,
-      "turnover 24H USDT": 1482363
+      "1H %": 17.56,
+      "24H %": 27.26,
+      "turnover 24H USDT": 199949
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."

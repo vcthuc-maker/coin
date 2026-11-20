@@ -1,69 +1,8 @@
 {
-  "collected_at_utc": "2026-11-20T10:39:25+00:00",
-  "universe_size": 1044,
+  "collected_at_utc": "2026-11-20T11:32:44+00:00",
+  "universe_size": 1042,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "SILVER/USDT",
-      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
-      "giá": 42.87,
-      "nến xanh liên tiếp": 1,
-      "1m %": 0.047,
-      "3m %": 0.21,
-      "15m %": 0.752,
-      "RVOL 1m": 1.82,
-      "tăng từ đáy 30m %": 1.11,
-      "so với đỉnh trước %": 0.16,
-      "turnover 3m USDT": 967684.3,
-      "24h %": -3.92,
-      "nến cuối UTC": "2026-11-20 10:38"
-    },
-    {
-      "coin": "PIPPIN/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 0.01978,
-      "nến xanh liên tiếp": 1,
-      "1m %": 1.332,
-      "3m %": -0.951,
-      "15m %": 0.304,
-      "RVOL 1m": 1.83,
-      "tăng từ đáy 30m %": 8.21,
-      "so với đỉnh trước %": -3.65,
-      "turnover 3m USDT": 5882.31,
-      "24h %": 8.53,
-      "nến cuối UTC": "2026-11-20 10:38"
-    },
-    {
-      "coin": "ESPORTS/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 0.010587,
-      "nến xanh liên tiếp": 5,
-      "1m %": 0.513,
-      "3m %": 1.398,
-      "15m %": 1.955,
-      "RVOL 1m": 1.07,
-      "tăng từ đáy 30m %": 4.43,
-      "so với đỉnh trước %": 1.19,
-      "turnover 3m USDT": 669.96,
-      "24h %": 5.27,
-      "nến cuối UTC": "2026-11-20 10:38"
-    },
-    {
-      "coin": "HMSTR/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 0.0001489,
-      "nến xanh liên tiếp": 5,
-      "1m %": 0.269,
-      "3m %": 0.744,
-      "15m %": 2.548,
-      "RVOL 1m": 0.22,
-      "tăng từ đáy 30m %": 3.33,
-      "so với đỉnh trước %": -1.06,
-      "turnover 3m USDT": 349.97,
-      "24h %": 5.68,
-      "nến cuối UTC": "2026-11-20 10:38"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
