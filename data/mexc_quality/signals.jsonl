@@ -55,4 +55,4 @@
 {"ts": 1795133209, "coin": "SPCXSTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 137.42, "entry_snapshot_price": 137.33, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -0.7136}, "stale": false}
 {"ts": 1795133209, "coin": "ZEC/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 896.29, "entry_snapshot_price": 896.15, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -1.069}, "stale": false}
 {"ts": 1795133209, "coin": "OPG/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.1388, "entry_snapshot_price": 0.1378, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -0.508}, "stale": false}
-{"ts": 1795136731, "coin": "BTC/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 62130.1, "entry_snapshot_price": 62048.1, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795136731, "coin": "BTC/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 62130.1, "entry_snapshot_price": 62048.1, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -1.1757}, "stale": false}
