@@ -1,17 +1,27 @@
 {
-  "collected_at_utc": "2026-11-20T12:29:27+00:00",
-  "universe_size": 1038,
-  "history_intervals": 3,
+  "collected_at_utc": "2026-11-20T13:45:06+00:00",
+  "universe_size": 1051,
+  "history_intervals": 2,
   "rows": [
     {
       "coin": "KERNEL/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.05125,
+      "giá": 0.05918,
       "5m %": null,
       "15m %": null,
-      "1H %": 2.89,
-      "24H %": 30.94,
-      "turnover 24H USDT": 532578
+      "1H %": null,
+      "24H %": 51.2,
+      "turnover 24H USDT": 1111783
+    },
+    {
+      "coin": "FLOAT/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.0019,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 25.74,
+      "turnover 24H USDT": 220108
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
