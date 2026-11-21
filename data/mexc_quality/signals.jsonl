@@ -112,3 +112,5 @@
 {"ts": 1795226325, "coin": "LAB/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.03291, "entry_snapshot_price": 0.03294, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": {"missing": true}}, "stale": false}
 {"ts": 1795226325, "coin": "CORE/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.01039, "entry_snapshot_price": 0.01033, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": {"missing": true}}, "stale": false}
 {"ts": 1795231952, "coin": "USOIL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 83.83, "entry_snapshot_price": 83.76, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -0.191}, "stale": false}
+{"ts": 1795238779, "coin": "UKOIL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 89.91, "entry_snapshot_price": 89.86, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795238779, "coin": "SPCXSTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 128.2, "entry_snapshot_price": 128.2, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
