@@ -1,17 +1,17 @@
 {
-  "collected_at_utc": "2026-11-21T22:43:14+00:00",
-  "universe_size": 1067,
+  "collected_at_utc": "2026-11-21T23:19:57+00:00",
+  "universe_size": 962,
   "history_intervals": 4,
   "rows": [
     {
-      "coin": "IDOL/USDT",
+      "coin": "CLAUDIA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.03885,
+      "giá": 0.00996,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 34.2,
-      "turnover 24H USDT": 7304109
+      "24H %": 25.77,
+      "turnover 24H USDT": 1923926
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
