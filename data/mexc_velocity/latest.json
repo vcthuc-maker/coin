@@ -1,6 +1,6 @@
 {
-  "collected_at_utc": "2026-11-21T16:05:23+00:00",
-  "universe_size": 943,
+  "collected_at_utc": "2026-11-21T16:46:17+00:00",
+  "universe_size": 1068,
   "history_intervals": 3,
   "rows": [],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
