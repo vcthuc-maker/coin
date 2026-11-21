@@ -1,58 +1,7 @@
 {
-  "collected_at_utc": "2026-11-21T15:21:05+00:00",
-  "universe_size": 1035,
+  "collected_at_utc": "2026-11-21T16:05:23+00:00",
+  "universe_size": 943,
   "history_intervals": 3,
-  "rows": [
-    {
-      "coin": "FLOAT/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.003154,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 82.1,
-      "turnover 24H USDT": 483036
-    },
-    {
-      "coin": "CLAUDIA/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.007531,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 57.28,
-      "turnover 24H USDT": 1242956
-    },
-    {
-      "coin": "IDOL/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.028523,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 26.43,
-      "turnover 24H USDT": 1688124
-    },
-    {
-      "coin": "SI/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.00356,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 41.43,
-      "turnover 24H USDT": 539407
-    },
-    {
-      "coin": "SKYAI/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.03552,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 25.51,
-      "turnover 24H USDT": 1008196
-    }
-  ],
+  "rows": [],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
 }
