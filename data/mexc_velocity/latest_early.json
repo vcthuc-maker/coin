@@ -1,24 +1,8 @@
 {
-  "collected_at_utc": "2026-11-21T01:58:45+00:00",
-  "universe_size": 1053,
+  "collected_at_utc": "2026-11-21T02:43:33+00:00",
+  "universe_size": 1049,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "ENSO/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 0.4564,
-      "nến xanh liên tiếp": 1,
-      "1m %": 0.198,
-      "3m %": 0.573,
-      "15m %": 2.263,
-      "RVOL 1m": 1.7,
-      "tăng từ đáy 30m %": 5.5,
-      "so với đỉnh trước %": -1.85,
-      "turnover 3m USDT": 2927.12,
-      "24h %": 9.11,
-      "nến cuối UTC": "2026-11-21 01:57"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
