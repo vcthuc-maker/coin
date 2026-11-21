@@ -1,57 +1,57 @@
 {
-  "collected_at_utc": "2026-11-21T12:06:44+00:00",
-  "universe_size": 983,
+  "collected_at_utc": "2026-11-21T12:55:59+00:00",
+  "universe_size": 1066,
   "history_intervals": 3,
   "rows": [
     {
       "coin": "FLOAT/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.003474,
+      "giá": 0.00332,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 100.57,
-      "turnover 24H USDT": 473295
+      "24H %": 91.68,
+      "turnover 24H USDT": 484072
     },
     {
       "coin": "CLAUDIA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.006585,
+      "giá": 0.006689,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 37.53,
-      "turnover 24H USDT": 1040938
+      "24H %": 39.7,
+      "turnover 24H USDT": 1058720
     },
     {
       "coin": "SI/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.003253,
+      "giá": 0.00333,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 29.24,
-      "turnover 24H USDT": 466152
+      "24H %": 32.3,
+      "turnover 24H USDT": 477150
     },
     {
       "coin": "SKYAI/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.0357,
+      "giá": 0.03609,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 26.14,
-      "turnover 24H USDT": 641555
+      "24H %": 27.52,
+      "turnover 24H USDT": 715859
     },
     {
       "coin": "DODO/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.04173,
+      "giá": 0.04293,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 27.14,
-      "turnover 24H USDT": 760773
+      "24H %": 30.8,
+      "turnover 24H USDT": 1036859
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
