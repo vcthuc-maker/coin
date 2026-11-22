@@ -1,54 +1,8 @@
 {
-  "collected_at_utc": "2026-11-22T13:41:27+00:00",
-  "universe_size": 1063,
+  "collected_at_utc": "2026-11-22T14:29:12+00:00",
+  "universe_size": 1026,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "NEAR/USDT",
-      "trạng thái": "MỚI BẬT LÊN — 1–2 NẾN",
-      "giá": 3.033,
-      "nến xanh liên tiếp": 1,
-      "1m %": 0.298,
-      "3m %": 0.53,
-      "15m %": 1.201,
-      "RVOL 1m": 2.72,
-      "tăng từ đáy 30m %": 1.64,
-      "so với đỉnh trước %": 0.26,
-      "turnover 3m USDT": 130765.81,
-      "24h %": 6.38,
-      "nến cuối UTC": "2026-11-22 13:40"
-    },
-    {
-      "coin": "KIMCHI/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 0.001305,
-      "nến xanh liên tiếp": 1,
-      "1m %": 2.353,
-      "3m %": 1.636,
-      "15m %": 7.319,
-      "RVOL 1m": 1.75,
-      "tăng từ đáy 30m %": 7.85,
-      "so với đỉnh trước %": 1.08,
-      "turnover 3m USDT": 4718.16,
-      "24h %": 8.9,
-      "nến cuối UTC": "2026-11-22 13:40"
-    },
-    {
-      "coin": "MMT/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 0.2277,
-      "nến xanh liên tiếp": 0,
-      "1m %": -0.306,
-      "3m %": -0.219,
-      "15m %": 0.353,
-      "RVOL 1m": 1.49,
-      "tăng từ đáy 30m %": 6.01,
-      "so với đỉnh trước %": -1.13,
-      "turnover 3m USDT": 8186.18,
-      "24h %": 6.36,
-      "nến cuối UTC": "2026-11-22 13:40"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
