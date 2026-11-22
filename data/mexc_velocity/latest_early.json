@@ -1,24 +1,8 @@
 {
-  "collected_at_utc": "2026-11-22T21:35:44+00:00",
-  "universe_size": 1048,
+  "collected_at_utc": "2026-11-22T22:22:14+00:00",
+  "universe_size": 950,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "DELTAELECSTOCK/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 26.66,
-      "nến xanh liên tiếp": 2,
-      "1m %": 0.038,
-      "3m %": -0.15,
-      "15m %": 1.678,
-      "RVOL 1m": 0.75,
-      "tăng từ đáy 30m %": 5.92,
-      "so với đỉnh trước %": -2.95,
-      "turnover 3m USDT": 187.5,
-      "24h %": 2.71,
-      "nến cuối UTC": "2026-11-22 21:34"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
