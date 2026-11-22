@@ -1,37 +1,67 @@
 {
-  "collected_at_utc": "2026-11-22T07:30:20+00:00",
-  "universe_size": 1039,
+  "collected_at_utc": "2026-11-22T08:26:24+00:00",
+  "universe_size": 998,
   "history_intervals": 2,
   "rows": [
     {
-      "coin": "CLAUDIA/USDT",
+      "coin": "BLESS/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.01018,
+      "giá": 0.014479,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 28.55,
-      "turnover 24H USDT": 2224794
+      "1H %": 12.98,
+      "24H %": 28.08,
+      "turnover 24H USDT": 56771729
+    },
+    {
+      "coin": "CLAUDIA/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.01136,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 11.59,
+      "24H %": 43.45,
+      "turnover 24H USDT": 2274501
+    },
+    {
+      "coin": "PIEVERSE/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 4.1554,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 13.8,
+      "24H %": 38.81,
+      "turnover 24H USDT": 8959464
+    },
+    {
+      "coin": "SKYAI/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.04421,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 10.77,
+      "24H %": 26.78,
+      "turnover 24H USDT": 2035807
     },
     {
       "coin": "NIUBI/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.000675,
+      "giá": 0.000674,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 36.91,
-      "turnover 24H USDT": 300937
+      "1H %": -0.15,
+      "24H %": 36.71,
+      "turnover 24H USDT": 342888
     },
     {
-      "coin": "AIGENSYN/USDT",
+      "coin": "GANG/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.01738,
+      "giá": 0.002008,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 26.3,
-      "turnover 24H USDT": 461404
+      "1H %": 9.55,
+      "24H %": 32.98,
+      "turnover 24H USDT": 280786
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
