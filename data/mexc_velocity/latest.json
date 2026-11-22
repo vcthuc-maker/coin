@@ -1,47 +1,57 @@
 {
-  "collected_at_utc": "2026-11-22T14:29:12+00:00",
-  "universe_size": 1026,
+  "collected_at_utc": "2026-11-22T15:15:02+00:00",
+  "universe_size": 871,
   "history_intervals": 3,
   "rows": [
     {
       "coin": "BLESS/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.015928,
+      "giá": 0.01651,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 40.9,
-      "turnover 24H USDT": 35887952
+      "24H %": 46.05,
+      "turnover 24H USDT": 35719203
     },
     {
       "coin": "CLAUDIA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.010919,
+      "giá": 0.011497,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 37.88,
-      "turnover 24H USDT": 2727943
+      "24H %": 45.18,
+      "turnover 24H USDT": 2683233
     },
     {
       "coin": "NIUBI/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.000644,
+      "giá": 0.000673,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 30.62,
-      "turnover 24H USDT": 425146
+      "24H %": 36.51,
+      "turnover 24H USDT": 438344
+    },
+    {
+      "coin": "BULLA/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.01897,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 27.05,
+      "turnover 24H USDT": 666151
     },
     {
       "coin": "DGAI/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.925,
+      "giá": 0.949,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 25.81,
-      "turnover 24H USDT": 1172243
+      "24H %": 29.08,
+      "turnover 24H USDT": 1295561
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
