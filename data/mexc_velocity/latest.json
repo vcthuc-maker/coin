@@ -1,7 +1,18 @@
 {
-  "collected_at_utc": "2026-11-22T18:39:13+00:00",
-  "universe_size": 1061,
-  "history_intervals": 4,
-  "rows": [],
+  "collected_at_utc": "2026-11-22T19:30:38+00:00",
+  "universe_size": 1031,
+  "history_intervals": 3,
+  "rows": [
+    {
+      "coin": "ACE/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.0554,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 49.61,
+      "24H %": -35.93,
+      "turnover 24H USDT": 1761467
+    }
+  ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
 }
