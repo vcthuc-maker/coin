@@ -1,47 +1,57 @@
 {
-  "collected_at_utc": "2026-11-22T09:11:02+00:00",
-  "universe_size": 827,
+  "collected_at_utc": "2026-11-22T09:52:57+00:00",
+  "universe_size": 1067,
   "history_intervals": 3,
   "rows": [
     {
       "coin": "CLAUDIA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.011744,
+      "giá": 0.01188,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 48.3,
-      "turnover 24H USDT": 2446885
+      "24H %": 50.01,
+      "turnover 24H USDT": 2517046
     },
     {
       "coin": "PIEVERSE/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 4.2734,
+      "giá": 4.9648,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 42.76,
-      "turnover 24H USDT": 10234634
+      "24H %": 65.85,
+      "turnover 24H USDT": 14128939
     },
     {
       "coin": "NIUBI/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.000648,
+      "giá": 0.000657,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 31.44,
-      "turnover 24H USDT": 350926
+      "24H %": 33.26,
+      "turnover 24H USDT": 365942
     },
     {
       "coin": "GANG/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.002036,
+      "giá": 0.001958,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 34.83,
-      "turnover 24H USDT": 288559
+      "24H %": 29.66,
+      "turnover 24H USDT": 296926
+    },
+    {
+      "coin": "ELSA/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.08435,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 26.65,
+      "turnover 24H USDT": 440071
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
