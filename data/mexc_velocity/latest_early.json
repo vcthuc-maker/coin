@@ -1,54 +1,8 @@
 {
-  "collected_at_utc": "2026-11-22T06:17:25+00:00",
-  "universe_size": 908,
+  "collected_at_utc": "2026-11-22T07:30:20+00:00",
+  "universe_size": 1039,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "VVV/USDT",
-      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
-      "giá": 25.107,
-      "nến xanh liên tiếp": 0,
-      "1m %": -0.084,
-      "3m %": 0.352,
-      "15m %": -0.092,
-      "RVOL 1m": 2.47,
-      "tăng từ đáy 30m %": 1.12,
-      "so với đỉnh trước %": -0.35,
-      "turnover 3m USDT": 15291.1,
-      "24h %": 7.2,
-      "nến cuối UTC": "2026-11-22 06:16"
-    },
-    {
-      "coin": "BTW/USDT",
-      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
-      "giá": 0.6806,
-      "nến xanh liên tiếp": 3,
-      "1m %": 0.25,
-      "3m %": 0.651,
-      "15m %": 0.25,
-      "RVOL 1m": 2.45,
-      "tăng từ đáy 30m %": 0.73,
-      "so với đỉnh trước %": -1.03,
-      "turnover 3m USDT": 9550.78,
-      "24h %": 5.83,
-      "nến cuối UTC": "2026-11-22 06:16"
-    },
-    {
-      "coin": "NTRASTOCK/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 289.14,
-      "nến xanh liên tiếp": 0,
-      "1m %": -0.003,
-      "3m %": 0.042,
-      "15m %": 0.048,
-      "RVOL 1m": 0.37,
-      "tăng từ đáy 30m %": 5.95,
-      "so với đỉnh trước %": -0.06,
-      "turnover 3m USDT": 170.6,
-      "24h %": 4.28,
-      "nến cuối UTC": "2026-11-22 06:16"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
