@@ -1,54 +1,8 @@
 {
-  "collected_at_utc": "2026-11-22T17:23:12+00:00",
-  "universe_size": 959,
+  "collected_at_utc": "2026-11-22T18:00:00+00:00",
+  "universe_size": 1052,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "CT/USDT",
-      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
-      "giá": 0.13589,
-      "nến xanh liên tiếp": 0,
-      "1m %": -0.022,
-      "3m %": 0.295,
-      "15m %": 1.312,
-      "RVOL 1m": 11.88,
-      "tăng từ đáy 30m %": 1.78,
-      "so với đỉnh trước %": 0.08,
-      "turnover 3m USDT": 4927.3,
-      "24h %": 3.04,
-      "nến cuối UTC": "2026-11-22 17:22"
-    },
-    {
-      "coin": "BEAT/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 0.07799,
-      "nến xanh liên tiếp": 2,
-      "1m %": 1.141,
-      "3m %": 0.013,
-      "15m %": 1.023,
-      "RVOL 1m": 1.0,
-      "tăng từ đáy 30m %": 6.04,
-      "so với đỉnh trước %": -1.02,
-      "turnover 3m USDT": 52525.2,
-      "24h %": 8.49,
-      "nến cuối UTC": "2026-11-22 17:22"
-    },
-    {
-      "coin": "SLSSTOCK/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 15.04,
-      "nến xanh liên tiếp": 1,
-      "1m %": 0.804,
-      "3m %": 0.334,
-      "15m %": 3.226,
-      "RVOL 1m": 0.94,
-      "tăng từ đáy 30m %": 5.03,
-      "so với đỉnh trước %": -0.2,
-      "turnover 3m USDT": 220.72,
-      "24h %": 2.25,
-      "nến cuối UTC": "2026-11-22 17:22"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
