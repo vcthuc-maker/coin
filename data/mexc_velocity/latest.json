@@ -1,27 +1,17 @@
 {
-  "collected_at_utc": "2026-11-22T04:24:43+00:00",
-  "universe_size": 998,
+  "collected_at_utc": "2026-11-22T05:22:57+00:00",
+  "universe_size": 979,
   "history_intervals": 3,
   "rows": [
     {
       "coin": "NIUBI/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.000625,
+      "giá": 0.000695,
       "5m %": null,
       "15m %": null,
-      "1H %": 18.6,
-      "24H %": 26.77,
-      "turnover 24H USDT": 185566
-    },
-    {
-      "coin": "JAGENT/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 1.92e-06,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 15.59,
-      "24H %": -44.0,
-      "turnover 24H USDT": 174267
+      "1H %": 11.2,
+      "24H %": 40.97,
+      "turnover 24H USDT": 213906
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
