@@ -1,17 +1,37 @@
 {
-  "collected_at_utc": "2026-11-22T05:22:57+00:00",
-  "universe_size": 979,
+  "collected_at_utc": "2026-11-22T06:17:25+00:00",
+  "universe_size": 908,
   "history_intervals": 3,
   "rows": [
     {
-      "coin": "NIUBI/USDT",
+      "coin": "CLAUDIA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.000695,
+      "giá": 0.010342,
       "5m %": null,
       "15m %": null,
-      "1H %": 11.2,
-      "24H %": 40.97,
-      "turnover 24H USDT": 213906
+      "1H %": 8.19,
+      "24H %": 30.59,
+      "turnover 24H USDT": 2198809
+    },
+    {
+      "coin": "NIUBI/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.00072,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 3.6,
+      "24H %": 46.04,
+      "turnover 24H USDT": 257700
+    },
+    {
+      "coin": "GANG/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.001972,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 18.08,
+      "24H %": 30.59,
+      "turnover 24H USDT": 239334
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
