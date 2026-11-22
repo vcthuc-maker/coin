@@ -194,3 +194,6 @@
 {"ts": 1795312012, "coin": "SILVER/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 41.62, "entry_snapshot_price": 41.63, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": {"missing": true}}, "stale": false}
 {"ts": 1795312012, "coin": "SOL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 70.33, "entry_snapshot_price": 70.29, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": {"missing": true}}, "stale": false}
 {"ts": 1795312012, "coin": "ETH/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 1685.67, "entry_snapshot_price": 1686.05, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": {"missing": true}}, "stale": false}
+{"ts": 1795321483, "coin": "MUSTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 608.43, "entry_snapshot_price": 608.01, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795321483, "coin": "SKHYNIXSTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 765.27, "entry_snapshot_price": 764.07, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795321483, "coin": "SOXL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 32.54, "entry_snapshot_price": 32.46, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
