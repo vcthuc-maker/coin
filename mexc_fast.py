@@ -144,13 +144,87 @@ def classify(market, candles):
     }
 
 
+
+def closed_hourly(native, *, now=None):
+    """Read closed hourly Futures bars, preserving gaps for context validation."""
+    now = int(time.time()) if now is None else int(now)
+    data = get_json(f"/api/v1/contract/kline/{native}",
+                    {"interval": "Min60", "start": now - 58 * 3600, "end": now})
+    rows = [
+        {"t": int(t), "high": float(data["high"][i]),
+         "low": float(data["low"][i]), "close": float(data["close"][i])}
+        for i, t in enumerate(data.get("time", []))
+    ]
+    df = pd.DataFrame(rows, columns=["t", "high", "low", "close"])
+    if df.empty:
+        return df
+    return (df[df["t"] + 3600 <= now].sort_values("t")
+            .drop_duplicates("t").tail(55).reset_index(drop=True))
+
+
+def apply_fast_history_guard(result, hourly, *, now=None):
+    """Attach 24/48h historical extension to the EXISTING Fast-Mover scoring.
+
+    The original momentum score is not modified. A high score must never
+    override insufficient history or a measured old multi-day price rally.
+    """
+    if result is None:
+        return None
+    from mexc_fresh import hourly_context
+    row = dict(result)
+    current = float(row["giá (USDT)"])
+    context = hourly_context(hourly, current, now=now)
+    row["mức tăng 24H từ nến %"] = None
+    row["mức tăng 48H %"] = None
+    row["tăng từ đáy 48H %"] = None
+    row["lý do phân loại"] = ""
+    if context is None:
+        row["trạng thái"] = "CHƯA ĐỦ LỊCH SỬ 48H — KHÔNG XÁC NHẬN"
+        row["lý do phân loại"] = "Thiếu hoặc lỗi nến 1H đã đóng; không gọi là tăng tốc sớm"
+        return row
+    row["mức tăng 24H từ nến %"] = context["24H nến %"]
+    row["mức tăng 48H %"] = context["48H %"]
+    row["tăng từ đáy 48H %"] = context["tăng từ đáy 48H %"]
+    if context["late"]:
+        row["trạng thái"] = "ĐÃ TĂNG XA 24–48H — TRÁNH MUA ĐUỔI"
+        row["lý do phân loại"] = (
+            "Tăng 24H >=9% hoặc 48H >=10% hoặc cao hơn đáy 48H >=15%"
+        )
+    elif row["trạng thái"] == "TĂNG TỐC SỚM — THEO DÕI":
+        if row["15m %"] > 2.5 or row["vượt đỉnh gần đây %"] > 1.5:
+            row["trạng thái"] = "ĐANG TĂNG — CHỜ GIỮ GIÁ"
+            row["lý do phân loại"] = "Tăng nhanh 15M hoặc đã vượt xa đỉnh gần đây"
+        else:
+            row["trạng thái"] = "MỚI TĂNG TỐC — THEO DÕI"
+            row["lý do phân loại"] = "Momentum 5–15M và chưa tăng xa theo lịch sử 48H"
+    elif row["trạng thái"] == "VOLUME TĂNG — CHỜ PHÁ CẢN":
+        if row["5m %"] < 0 and row["15m %"] < 0:
+            row["trạng thái"] = "VOLUME TĂNG NHƯNG GIÁ GIẢM"
+            row["lý do phân loại"] = "Volume tăng không đồng nghĩa lực mua"
+        else:
+            row["lý do phân loại"] = "Chưa xác nhận phá cản và duy trì đà tăng"
+    else:
+        row["lý do phân loại"] = "Giữ cảnh báo tăng nóng của Fast-Mover gốc"
+    return row
+
+
 def scan_fast(min_turnover_usdt=250_000, max_candidates=45):
     markets = universe(min_turnover_usdt=min_turnover_usdt,
                        max_candidates=max_candidates)
     results, errors = [], []
     def job(market):
-        df = closed_klines(market["native"])
-        return classify(market, df)
+        now = int(time.time())
+        df = closed_klines(market["native"], now=now)
+        signal = classify(market, df)
+        if signal is None:
+            return None
+        try:
+            hourly = closed_hourly(market["native"], now=now)
+        except Exception as exc:
+            # Preserve the 5m observation but visibly mark missing long history.
+            hourly = pd.DataFrame()
+            errors.append(f"{market['coin']} 48H: {str(exc)[:100]}")
+        return apply_fast_history_guard(signal, hourly, now=now)
     # Small pool to avoid bursts of requests from Streamlit Cloud shared IP.
     with ThreadPoolExecutor(max_workers=2) as pool:
         futures = {pool.submit(job, x): x["coin"] for x in markets}
@@ -163,10 +237,14 @@ def scan_fast(min_turnover_usdt=250_000, max_candidates=45):
                 errors.append(f"{futures[future]}: {str(exc)[:110]}")
     df = pd.DataFrame(results)
     if not df.empty:
-        priority = {"TĂNG TỐC SỚM — THEO DÕI": 0,
-                    "VOLUME TĂNG — CHỜ PHÁ CẢN": 1,
-                    "ĐÃ PUMP — TRÁNH MUA ĐUỔI": 2}
-        df["_rank"] = df["trạng thái"].map(priority)
+        priority = {"MỚI TĂNG TỐC — THEO DÕI": 0,
+                    "ĐANG TĂNG — CHỜ GIỮ GIÁ": 1,
+                    "VOLUME TĂNG — CHỜ PHÁ CẢN": 2,
+                    "VOLUME TĂNG NHƯNG GIÁ GIẢM": 3,
+                    "CHƯA ĐỦ LỊCH SỬ 48H — KHÔNG XÁC NHẬN": 4,
+                    "ĐÃ PUMP — TRÁNH MUA ĐUỔI": 5,
+                    "ĐÃ TĂNG XA 24–48H — TRÁNH MUA ĐUỔI": 5}
+        df["_rank"] = df["trạng thái"].map(priority).fillna(6)
         df = df.sort_values(["_rank", "điểm hoạt động /100"],
                             ascending=[True, False]).drop(columns="_rank")
     return df, errors, len(markets)
