@@ -1,22 +1,22 @@
 {
-  "collected_at_utc": "2026-11-23T05:49:31+00:00",
-  "universe_size": 1068,
+  "collected_at_utc": "2026-11-23T06:55:00+00:00",
+  "universe_size": 1069,
   "scanned_1m": 24,
   "rows": [
     {
-      "coin": "NIUBI/USDT",
+      "coin": "GANG/USDT",
       "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 0.000707,
+      "giá": 0.001866,
       "nến xanh liên tiếp": 0,
-      "1m %": 0.0,
-      "3m %": 1.435,
-      "15m %": 9.953,
-      "RVOL 1m": 0.91,
-      "tăng từ đáy 30m %": 11.34,
-      "so với đỉnh trước %": 1.0,
-      "turnover 3m USDT": 526.28,
-      "24h %": 7.44,
-      "nến cuối UTC": "2026-11-23 05:48"
+      "1m %": -0.745,
+      "3m %": 1.083,
+      "15m %": 2.584,
+      "RVOL 1m": 2.08,
+      "tăng từ đáy 30m %": 7.43,
+      "so với đỉnh trước %": 0.92,
+      "turnover 3m USDT": 512.91,
+      "24h %": 7.16,
+      "nến cuối UTC": "2026-11-23 06:54"
     }
   ],
   "errors": [],
