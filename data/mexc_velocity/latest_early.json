@@ -1,24 +1,8 @@
 {
-  "collected_at_utc": "2026-11-23T06:55:00+00:00",
-  "universe_size": 1069,
+  "collected_at_utc": "2026-11-23T08:18:55+00:00",
+  "universe_size": 960,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "GANG/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 0.001866,
-      "nến xanh liên tiếp": 0,
-      "1m %": -0.745,
-      "3m %": 1.083,
-      "15m %": 2.584,
-      "RVOL 1m": 2.08,
-      "tăng từ đáy 30m %": 7.43,
-      "so với đỉnh trước %": 0.92,
-      "turnover 3m USDT": 512.91,
-      "24h %": 7.16,
-      "nến cuối UTC": "2026-11-23 06:54"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
