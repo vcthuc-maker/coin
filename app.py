@@ -542,8 +542,9 @@ if "frame" in st.session_state:
                "Trạng thái 3 là xác nhận sơ bộ của bộ quy tắc, chưa được chứng minh lợi thế giao dịch.")
     with st.expander("⚡ MEXC FAST-MOVER — Phát hiện biến động sớm 5–15 phút",
                      expanded=False):
-        st.caption("Bộ quét độc lập với 3 trạng thái tích lũy. Tìm volume tăng tốc, "
-                   "giá bắt đầu phá vùng gần đây; coin tăng nóng được cảnh báo riêng. "
+        st.caption("Fast-Mover 5–15 phút giữ nguyên điểm hoạt động, nhưng bổ sung giá tăng "
+                   "24–48 giờ và khoảng cách từ đáy 48H để phân biệt mới tăng với "
+                   "đã tăng xa. Thiếu lịch sử sẽ hiển thị chưa xác nhận. "
                    "Điểm hoạt động KHÔNG phải xác suất pump.")
         fm1, fm2 = st.columns(2)
         with fm1:
@@ -554,7 +555,7 @@ if "frame" in st.session_state:
                                      min_value=100000, max_value=10000000,
                                      value=250000, step=250000, key="fast_liq")
         if st.button("⚡ QUÉT BIẾN ĐỘNG NHANH MEXC", key="fast_run"):
-            with st.spinner("Đang kiểm tra nến 5 phút đã đóng..."):
+            with st.spinner("Đang kiểm tra nến 5 phút và lịch sử 48H..."):
                 fast_data, fast_errors, checked = scan_fast(
                     min_turnover_usdt=fm_liq, max_candidates=fm_count)
             st.session_state["fast_result"] = (fast_data, fast_errors, checked,
@@ -573,9 +574,10 @@ if "frame" in st.session_state:
             if errors:
                 with st.expander(f"Lỗi dữ liệu MEXC ({len(errors)})"):
                     st.code("\n".join(errors[:30]))
-        st.caption("Nguồn: MEXC Futures ticker 24H + nến Min5. "
-                   "Không quét đủ toàn bộ hợp đồng khi giới hạn mẫu, "
-                   "không đo được giao dịch ẩn hoặc xác suất tăng giá.")
+        st.caption("Nguồn: MEXC Futures ticker 24H + nến 5M và 1H đã đóng. "
+                   "Ngưỡng lọc chống mua đuổi: 24H nến +9%, 48H +10%, "
+                   "hoặc giá cao hơn đáy 48H +15%. Chỉ quét mẫu hợp đồng, "
+                   "không dự báo xác suất tăng giá.")
     with st.expander("⚙️ Phân tích nâng cao: dữ liệu sàn, OI, nhật ký, kiểm định, lỗi API",
                      expanded=False):
         st.subheader("Trạng thái kết nối 4 sàn")
