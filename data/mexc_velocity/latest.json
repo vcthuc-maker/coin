@@ -1,7 +1,18 @@
 {
-  "collected_at_utc": "2026-11-23T20:21:56+00:00",
-  "universe_size": 1045,
+  "collected_at_utc": "2026-11-23T21:14:08+00:00",
+  "universe_size": 1036,
   "history_intervals": 3,
-  "rows": [],
+  "rows": [
+    {
+      "coin": "KIMCHI/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.001851,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 38.96,
+      "turnover 24H USDT": 291306
+    }
+  ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
 }
