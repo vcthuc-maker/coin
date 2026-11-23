@@ -1,39 +1,8 @@
 {
-  "collected_at_utc": "2026-11-23T22:00:45+00:00",
-  "universe_size": 1003,
+  "collected_at_utc": "2026-11-23T22:49:23+00:00",
+  "universe_size": 1058,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "MUSTOCK/USDT",
-      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
-      "giá": 710.93,
-      "nến xanh liên tiếp": 3,
-      "1m %": 0.032,
-      "3m %": 0.269,
-      "15m %": 0.444,
-      "RVOL 1m": 1.79,
-      "tăng từ đáy 30m %": 0.71,
-      "so với đỉnh trước %": -0.05,
-      "turnover 3m USDT": 336001.93,
-      "24h %": 0.43,
-      "nến cuối UTC": "2026-11-23 21:59"
-    },
-    {
-      "coin": "LISTA/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 0.09124,
-      "nến xanh liên tiếp": 4,
-      "1m %": 0.22,
-      "3m %": 0.551,
-      "15m %": 1.063,
-      "RVOL 1m": 3.27,
-      "tăng từ đáy 30m %": 2.28,
-      "so với đỉnh trước %": -0.56,
-      "turnover 3m USDT": 3024.8,
-      "24h %": 4.69,
-      "nến cuối UTC": "2026-11-23 21:59"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
