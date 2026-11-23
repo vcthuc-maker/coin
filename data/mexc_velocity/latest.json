@@ -1,18 +1,7 @@
 {
-  "collected_at_utc": "2026-11-23T16:41:57+00:00",
-  "universe_size": 1054,
+  "collected_at_utc": "2026-11-23T17:37:15+00:00",
+  "universe_size": 1053,
   "history_intervals": 3,
-  "rows": [
-    {
-      "coin": "NVD/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 4.09,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 23.94,
-      "24H %": 22.82,
-      "turnover 24H USDT": 1386897
-    }
-  ],
+  "rows": [],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
 }
