@@ -215,3 +215,14 @@ MEXC five-minute price acceleration watch tiếp tục chạy theo lịch GitHub
 - Khi tín hiệu loại 0. xuất hiện, ghi giá chụp và thời điểm trong **data/mexc_quality/signals.jsonl**. Bộ theo dõi đặt cooldown **48 giờ** cho cùng coin + tín hiệu phá nền, tránh gắn nhãn “mới” lặp lại trong một xu hướng đã kéo dài. Bảng chính chỉ nhấn mạnh những cảnh báo phát đúng ở lượt quét hiện tại; các loại nén/giữ giá nằm bên dưới.
 - Vẫn chỉ quét tối đa khoảng 30 hợp đồng/chu kỳ, chọn một phần coin thanh khoản cao, tiền tăng nhẹ và nhóm tăng 24h để phát hiện cảnh báo trễ. Chưa bao phủ toàn bộ MEXC; GitHub Actions 5 phút có thể chậm hoặc bỏ lượt. Tín hiệu này **không thể báo chính xác tại từng giây giá bắt đầu tăng**. Cần worker liên tục/WebSocket + database để làm được mức độ gần thời gian thực hơn.
 - Lưu kết quả giá 15/30/60 phút sau báo để đánh giá khách quan, chưa tính khả năng khớp lệnh, phí hoặc funding. Đây KHÔNG phải mô hình AI dự đoán pump đã kiểm chứng.
+
+
+## V3.7 — Bộ lọc 24/48H ngay trong bảng MEXC Fast-Mover thủ công
+
+Mục tiêu: không phát nhãn **TĂNG TỐC SỚM** cho coin như ELSA/SENT khi giá đã tăng mạnh từ đáy một hoặc hai ngày trước đó. Không tạo bảng Scanner khác. Giữ nguyên các tính toán và điểm kỹ thuật 5m/15m/RVOL của Fast-Mover gốc.
+
+Sau khi phát hiện một ứng viên từ nến Min5 đã đóng, Scanner tải thêm nến **Min60 đã đóng** của cùng hợp đồng và sử dụng tối thiểu 48 nến liên tục để tính: **24H từ nến %**, **48H %**, **tăng từ đáy 48H %**. Khi 24H >=9% hoặc 48H >=10% hoặc mức tăng từ đáy >=15%, đổi nhãn thành **ĐÃ TĂNG XA 24–48H — TRÁNH MUA ĐUỔI**. Thiếu lịch sử hoặc dữ liệu lỗi thì ghi **CHƯA ĐỦ LỊCH SỬ 48H — KHÔNG XÁC NHẬN**, không tự gán nhãn sớm. Những coin tăng nhanh 15M >2,5% hoặc vượt đỉnh gần nhất >1,5% được gắn **ĐANG TĂNG — CHỜ GIỮ GIÁ** thay vì mới tăng tốc.
+
+Giao diện và nút quét vẫn là **MEXC FAST-MOVER — Phát hiện biến động sớm 5–15 phút**. Số lượng kiểm tra mặc định vẫn là 35 hợp đồng, turnover tối thiểu 250.000 USDT. Kết quả có thêm cột tăng 24H từ nến, tăng 48H, tăng từ đáy 48H và lý do phân loại. Việc thêm một lượt tải nến 1H cho mỗi ứng viên có tín hiệu có thể làm quét chậm hơn và tăng lỗi rate limit.
+
+Đây là bộ lọc chống mua đuổi theo quy tắc thủ công, **không phải dự báo pump**, chưa chứng minh làm tăng win rate. Không dùng để tự động mở vị thế. Để đánh giá khách quan cần lưu tín hiệu tại thời điểm phát và theo dõi 15/30/60 phút trong tương lai, tách các trường hợp có đủ dữ liệu với trường hợp bị lọc vì thiếu dữ liệu.
