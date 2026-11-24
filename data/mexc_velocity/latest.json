@@ -1,27 +1,27 @@
 {
-  "collected_at_utc": "2026-11-24T12:36:05+00:00",
-  "universe_size": 1055,
-  "history_intervals": 3,
+  "collected_at_utc": "2026-11-24T13:53:09+00:00",
+  "universe_size": 1057,
+  "history_intervals": 2,
   "rows": [
     {
-      "coin": "KIMCHI/USDT",
+      "coin": "AIOT/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.001694,
+      "giá": 0.09395,
       "5m %": null,
       "15m %": null,
-      "1H %": 2.85,
-      "24H %": 27.17,
-      "turnover 24H USDT": 1494689
+      "1H %": null,
+      "24H %": 32.06,
+      "turnover 24H USDT": 3165218
     },
     {
       "coin": "NVD/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 4.34,
+      "giá": 4.26,
       "5m %": null,
       "15m %": null,
-      "1H %": 0.7,
-      "24H %": 30.33,
-      "turnover 24H USDT": 2647097
+      "1H %": null,
+      "24H %": 27.92,
+      "turnover 24H USDT": 2672626
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
