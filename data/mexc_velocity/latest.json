@@ -1,38 +1,7 @@
 {
-  "collected_at_utc": "2026-11-24T15:45:56+00:00",
-  "universe_size": 1051,
+  "collected_at_utc": "2026-11-24T16:47:07+00:00",
+  "universe_size": 1052,
   "history_intervals": 3,
-  "rows": [
-    {
-      "coin": "LISTA/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.10917,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 2.17,
-      "24H %": 25.26,
-      "turnover 24H USDT": 4261968
-    },
-    {
-      "coin": "AIOT/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.09189,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 7.73,
-      "24H %": 29.16,
-      "turnover 24H USDT": 4141101
-    },
-    {
-      "coin": "NVD/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 4.49,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 2.75,
-      "24H %": 34.83,
-      "turnover 24H USDT": 2416291
-    }
-  ],
+  "rows": [],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
 }
