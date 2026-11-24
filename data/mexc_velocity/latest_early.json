@@ -1,24 +1,8 @@
 {
-  "collected_at_utc": "2026-11-24T02:40:17+00:00",
+  "collected_at_utc": "2026-11-24T03:34:50+00:00",
   "universe_size": 1056,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "SAHARA/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 0.005638,
-      "nến xanh liên tiếp": 0,
-      "1m %": -0.336,
-      "3m %": 2.138,
-      "15m %": -0.159,
-      "RVOL 1m": 0.4,
-      "tăng từ đáy 30m %": 6.54,
-      "so với đỉnh trước %": -0.91,
-      "turnover 3m USDT": 432.58,
-      "24h %": 7.64,
-      "nến cuối UTC": "2026-11-24 02:39"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
