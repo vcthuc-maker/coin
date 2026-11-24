@@ -1,8 +1,69 @@
 {
-  "collected_at_utc": "2026-11-24T03:34:50+00:00",
-  "universe_size": 1056,
+  "collected_at_utc": "2026-11-24T04:39:23+00:00",
+  "universe_size": 1057,
   "scanned_1m": 24,
-  "rows": [],
+  "rows": [
+    {
+      "coin": "SOXL/USDT",
+      "trạng thái": "MỚI BẬT LÊN — 1–2 NẾN",
+      "giá": 42.91,
+      "nến xanh liên tiếp": 1,
+      "1m %": 0.539,
+      "3m %": 0.657,
+      "15m %": 0.775,
+      "RVOL 1m": 4.22,
+      "tăng từ đáy 30m %": 1.16,
+      "so với đỉnh trước %": 0.05,
+      "turnover 3m USDT": 774891.64,
+      "24h %": -0.99,
+      "nến cuối UTC": "2026-11-24 04:38"
+    },
+    {
+      "coin": "ETH/USDT",
+      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
+      "giá": 1706.64,
+      "nến xanh liên tiếp": 4,
+      "1m %": 0.188,
+      "3m %": 0.32,
+      "15m %": 0.398,
+      "RVOL 1m": 2.03,
+      "tăng từ đáy 30m %": 0.67,
+      "so với đỉnh trước %": 0.25,
+      "turnover 3m USDT": 1861159.94,
+      "24h %": -3.76,
+      "nến cuối UTC": "2026-11-24 04:38"
+    },
+    {
+      "coin": "BTC/USDT",
+      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
+      "giá": 60659.4,
+      "nến xanh liên tiếp": 6,
+      "1m %": 0.131,
+      "3m %": 0.204,
+      "15m %": 0.279,
+      "RVOL 1m": 1.51,
+      "tăng từ đáy 30m %": 0.6,
+      "so với đỉnh trước %": 0.14,
+      "turnover 3m USDT": 7375714.71,
+      "24h %": -3.55,
+      "nến cuối UTC": "2026-11-24 04:38"
+    },
+    {
+      "coin": "IBIDENSTOCK/USDT",
+      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
+      "giá": 33.53,
+      "nến xanh liên tiếp": 4,
+      "1m %": 0.03,
+      "3m %": 0.51,
+      "15m %": 0.691,
+      "RVOL 1m": 0.89,
+      "tăng từ đáy 30m %": 2.32,
+      "so với đỉnh trước %": -0.92,
+      "turnover 3m USDT": 206.25,
+      "24h %": 5.83,
+      "nến cuối UTC": "2026-11-24 04:38"
+    }
+  ],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
