@@ -1,17 +1,17 @@
 {
-  "collected_at_utc": "2026-11-24T20:21:09+00:00",
-  "universe_size": 1033,
+  "collected_at_utc": "2026-11-24T21:17:12+00:00",
+  "universe_size": 1021,
   "history_intervals": 3,
   "rows": [
     {
       "coin": "GUA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.04135,
+      "giá": 0.04684,
       "5m %": null,
       "15m %": null,
-      "1H %": -0.82,
-      "24H %": 29.42,
-      "turnover 24H USDT": 827645
+      "1H %": 13.28,
+      "24H %": 46.6,
+      "turnover 24H USDT": 1172894
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
