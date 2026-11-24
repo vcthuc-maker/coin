@@ -1,24 +1,8 @@
 {
-  "collected_at_utc": "2026-11-24T14:45:48+00:00",
-  "universe_size": 1057,
+  "collected_at_utc": "2026-11-24T15:45:56+00:00",
+  "universe_size": 1051,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "ZMSTOCK/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 91.65,
-      "nến xanh liên tiếp": 0,
-      "1m %": -0.261,
-      "3m %": 2.037,
-      "15m %": 5.661,
-      "RVOL 1m": 0.57,
-      "tăng từ đáy 30m %": 8.1,
-      "so với đỉnh trước %": 1.5,
-      "turnover 3m USDT": 819.99,
-      "24h %": 7.51,
-      "nến cuối UTC": "2026-11-24 14:44"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
