@@ -1,17 +1,37 @@
 {
-  "collected_at_utc": "2026-11-24T04:39:23+00:00",
-  "universe_size": 1057,
+  "collected_at_utc": "2026-11-24T05:36:57+00:00",
+  "universe_size": 1058,
   "history_intervals": 3,
   "rows": [
     {
-      "coin": "KIMCHI/USDT",
+      "coin": "LISTA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.001837,
+      "giá": 0.11295,
       "5m %": null,
       "15m %": null,
-      "1H %": 11.6,
-      "24H %": 37.91,
-      "turnover 24H USDT": 1255845
+      "1H %": 9.59,
+      "24H %": 29.6,
+      "turnover 24H USDT": 1486231
+    },
+    {
+      "coin": "KIMCHI/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.001841,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 0.22,
+      "24H %": 38.21,
+      "turnover 24H USDT": 1282969
+    },
+    {
+      "coin": "MMT/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.2488,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 7.57,
+      "24H %": 30.19,
+      "turnover 24H USDT": 3586546
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
