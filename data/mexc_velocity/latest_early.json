@@ -1,22 +1,22 @@
 {
-  "collected_at_utc": "2026-11-24T19:28:03+00:00",
-  "universe_size": 1042,
+  "collected_at_utc": "2026-11-24T20:21:09+00:00",
+  "universe_size": 1033,
   "scanned_1m": 24,
   "rows": [
     {
-      "coin": "LISTA/USDT",
+      "coin": "KOR/USDT",
       "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 0.11777,
-      "nến xanh liên tiếp": 0,
-      "1m %": -0.186,
-      "3m %": -0.051,
-      "15m %": 4.055,
-      "RVOL 1m": 0.66,
-      "tăng từ đáy 30m %": 6.1,
-      "so với đỉnh trước %": -1.51,
-      "turnover 3m USDT": 12793.31,
-      "24h %": 5.16,
-      "nến cuối UTC": "2026-11-24 19:27"
+      "giá": 5.23e-05,
+      "nến xanh liên tiếp": 1,
+      "1m %": 3.564,
+      "3m %": 4.391,
+      "15m %": 2.549,
+      "RVOL 1m": 1.0,
+      "tăng từ đáy 30m %": 8.51,
+      "so với đỉnh trước %": -4.04,
+      "turnover 3m USDT": 918.87,
+      "24h %": 6.1,
+      "nến cuối UTC": "2026-11-24 20:20"
     }
   ],
   "errors": [],
