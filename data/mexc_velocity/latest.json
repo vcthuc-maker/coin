@@ -1,27 +1,27 @@
 {
-  "collected_at_utc": "2026-11-24T13:53:09+00:00",
+  "collected_at_utc": "2026-11-24T14:45:48+00:00",
   "universe_size": 1057,
   "history_intervals": 2,
   "rows": [
     {
-      "coin": "AIOT/USDT",
+      "coin": "EVAA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.09395,
+      "giá": 2.5327,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 32.06,
-      "turnover 24H USDT": 3165218
+      "1H %": 12.22,
+      "24H %": -18.74,
+      "turnover 24H USDT": 22747939
     },
     {
       "coin": "NVD/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 4.26,
+      "giá": 4.37,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 27.92,
-      "turnover 24H USDT": 2672626
+      "1H %": 2.58,
+      "24H %": 31.23,
+      "turnover 24H USDT": 2654937
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
