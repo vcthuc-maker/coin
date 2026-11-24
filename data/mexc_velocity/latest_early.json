@@ -1,24 +1,8 @@
 {
-  "collected_at_utc": "2026-11-24T21:17:12+00:00",
-  "universe_size": 1021,
+  "collected_at_utc": "2026-11-24T22:13:40+00:00",
+  "universe_size": 1011,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "CLAUDIA/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 0.008938,
-      "nến xanh liên tiếp": 1,
-      "1m %": 1.916,
-      "3m %": 1.834,
-      "15m %": 3.954,
-      "RVOL 1m": 2.08,
-      "tăng từ đáy 30m %": 5.1,
-      "so với đỉnh trước %": -0.25,
-      "turnover 3m USDT": 450.85,
-      "24h %": 5.62,
-      "nến cuối UTC": "2026-11-24 21:16"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
