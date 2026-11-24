@@ -360,4 +360,7 @@
 {"ts": 1795558420, "coin": "SNDKSTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 77.99, "entry_snapshot_price": 77.9, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 0.7317}, "stale": false}
 {"ts": 1795558420, "coin": "SOXL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 33.11, "entry_snapshot_price": 33.1, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 0.997}, "stale": false}
 {"ts": 1795558420, "coin": "SNXX/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 1.637, "entry_snapshot_price": 1.635, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 1.4679}, "stale": false}
-{"ts": 1795561608, "coin": "ETH/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 1684.29, "entry_snapshot_price": 1685.23, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795561608, "coin": "ETH/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 1684.29, "entry_snapshot_price": 1685.23, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": null}, "stale": false}
+{"ts": 1795564328, "coin": "BTC/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 59783.8, "entry_snapshot_price": 59793.9, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795564328, "coin": "SOL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 69.7, "entry_snapshot_price": 69.67, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795564328, "coin": "XRP/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.9239, "entry_snapshot_price": 0.9246, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
