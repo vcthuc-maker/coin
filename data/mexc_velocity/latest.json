@@ -1,27 +1,47 @@
 {
-  "collected_at_utc": "2026-11-24T08:51:18+00:00",
-  "universe_size": 1059,
-  "history_intervals": 2,
+  "collected_at_utc": "2026-11-24T09:52:37+00:00",
+  "universe_size": 1057,
+  "history_intervals": 3,
   "rows": [
     {
       "coin": "ARIA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.34087,
+      "giá": 0.34375,
       "5m %": null,
       "15m %": null,
-      "1H %": 1.45,
-      "24H %": 29.09,
-      "turnover 24H USDT": 9973779
+      "1H %": 0.84,
+      "24H %": 30.18,
+      "turnover 24H USDT": 10061671
     },
     {
-      "coin": "KIMCHI/USDT",
+      "coin": "NVD/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.001787,
+      "giá": 4.2,
       "5m %": null,
       "15m %": null,
-      "1H %": -0.33,
-      "24H %": 34.15,
-      "turnover 24H USDT": 1379676
+      "1H %": 2.44,
+      "24H %": 26.12,
+      "turnover 24H USDT": 2564681
+    },
+    {
+      "coin": "FLOAT/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.004059,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 66.97,
+      "24H %": 28.81,
+      "turnover 24H USDT": 159625
+    },
+    {
+      "coin": "INSMSTOCK/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 170.37,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 14.04,
+      "24H %": 16.61,
+      "turnover 24H USDT": 139296
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
