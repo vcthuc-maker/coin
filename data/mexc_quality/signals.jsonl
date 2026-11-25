@@ -390,4 +390,4 @@
 {"ts": 1795605724, "coin": "SOXL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 28.59, "entry_snapshot_price": 28.54, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -2.2425}, "stale": false}
 {"ts": 1795614485, "coin": "TESLA/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 373.34, "entry_snapshot_price": 374.48, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -3.4074}, "stale": false}
 {"ts": 1795614485, "coin": "XRP/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.899, "entry_snapshot_price": 0.9003, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -0.4887}, "stale": false}
-{"ts": 1795625080, "coin": "SILVER/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 38.76, "entry_snapshot_price": 38.67, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795625080, "coin": "SILVER/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 38.76, "entry_snapshot_price": 38.67, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": null}, "stale": false}
