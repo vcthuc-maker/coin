@@ -1,39 +1,8 @@
 {
-  "collected_at_utc": "2026-11-25T18:58:30+00:00",
-  "universe_size": 1063,
+  "collected_at_utc": "2026-11-25T19:49:25+00:00",
+  "universe_size": 1058,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "US/USDT",
-      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
-      "giá": 0.003372,
-      "nến xanh liên tiếp": 1,
-      "1m %": 0.268,
-      "3m %": 0.567,
-      "15m %": 1.536,
-      "RVOL 1m": 5.84,
-      "tăng từ đáy 30m %": 2.52,
-      "so với đỉnh trước %": 0.24,
-      "turnover 3m USDT": 4842.73,
-      "24h %": 8.68,
-      "nến cuối UTC": "2026-11-25 18:57"
-    },
-    {
-      "coin": "SOXL/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 30.68,
-      "nến xanh liên tiếp": 0,
-      "1m %": -0.357,
-      "3m %": -0.033,
-      "15m %": 2.335,
-      "RVOL 1m": 0.52,
-      "tăng từ đáy 30m %": 5.1,
-      "so với đỉnh trước %": -1.0,
-      "turnover 3m USDT": 3741598.15,
-      "24h %": 19.56,
-      "nến cuối UTC": "2026-11-25 18:57"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
