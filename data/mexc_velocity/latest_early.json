@@ -1,39 +1,8 @@
 {
-  "collected_at_utc": "2026-11-25T09:14:39+00:00",
-  "universe_size": 1014,
+  "collected_at_utc": "2026-11-25T10:22:35+00:00",
+  "universe_size": 1037,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "NVD/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 4.78,
-      "nến xanh liên tiếp": 0,
-      "1m %": 0.0,
-      "3m %": 0.844,
-      "15m %": 7.658,
-      "RVOL 1m": 0.36,
-      "tăng từ đáy 30m %": 8.14,
-      "so với đỉnh trước %": 0.63,
-      "turnover 3m USDT": 318.7,
-      "24h %": 6.45,
-      "nến cuối UTC": "2026-11-25 09:13"
-    },
-    {
-      "coin": "SLSSTOCK/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 13.39,
-      "nến xanh liên tiếp": 1,
-      "1m %": 0.98,
-      "3m %": 4.283,
-      "15m %": 4.937,
-      "RVOL 1m": 0.15,
-      "tăng từ đáy 30m %": 5.52,
-      "so với đỉnh trước %": 0.9,
-      "turnover 3m USDT": 129.11,
-      "24h %": 6.97,
-      "nến cuối UTC": "2026-11-25 09:13"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
