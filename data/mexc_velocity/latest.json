@@ -1,17 +1,27 @@
 {
-  "collected_at_utc": "2026-11-25T02:51:16+00:00",
-  "universe_size": 1053,
-  "history_intervals": 2,
+  "collected_at_utc": "2026-11-25T03:46:41+00:00",
+  "universe_size": 1049,
+  "history_intervals": 3,
   "rows": [
     {
-      "coin": "ANSEM/USDT",
+      "coin": "OPG/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.0235,
+      "giá": 0.1735,
       "5m %": null,
       "15m %": null,
-      "1H %": 15.08,
-      "24H %": 14.69,
-      "turnover 24H USDT": 1356742
+      "1H %": 2.12,
+      "24H %": 25.81,
+      "turnover 24H USDT": 1223689
+    },
+    {
+      "coin": "KOR/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 6.17e-05,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 5.65,
+      "24H %": 25.66,
+      "turnover 24H USDT": 324996
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
