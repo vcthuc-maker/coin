@@ -1,37 +1,27 @@
 {
-  "collected_at_utc": "2026-11-25T06:41:37+00:00",
-  "universe_size": 1048,
-  "history_intervals": 3,
+  "collected_at_utc": "2026-11-25T08:08:26+00:00",
+  "universe_size": 996,
+  "history_intervals": 2,
   "rows": [
-    {
-      "coin": "OPG/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.1745,
-      "5m %": null,
-      "15m %": null,
-      "1H %": -2.3,
-      "24H %": 26.54,
-      "turnover 24H USDT": 2111141
-    },
     {
       "coin": "BIGTIME/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.006698,
+      "giá": 0.00607,
       "5m %": null,
       "15m %": null,
-      "1H %": 6.1,
-      "24H %": 64.57,
-      "turnover 24H USDT": 1900488
+      "1H %": null,
+      "24H %": 49.14,
+      "turnover 24H USDT": 2889485
     },
     {
-      "coin": "SLX/USDT",
+      "coin": "MANTRA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.03482,
+      "giá": 0.002272,
       "5m %": null,
       "15m %": null,
-      "1H %": 3.63,
-      "24H %": 25.56,
-      "turnover 24H USDT": 457148
+      "1H %": null,
+      "24H %": 35.15,
+      "turnover 24H USDT": 338358
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
