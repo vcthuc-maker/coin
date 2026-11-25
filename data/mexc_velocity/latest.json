@@ -1,37 +1,67 @@
 {
-  "collected_at_utc": "2026-11-25T20:39:15+00:00",
-  "universe_size": 1056,
+  "collected_at_utc": "2026-11-25T21:37:29+00:00",
+  "universe_size": 1057,
   "history_intervals": 3,
   "rows": [
     {
       "coin": "SI/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.006647,
+      "giá": 0.006586,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 39.02,
-      "turnover 24H USDT": 588197
+      "1H %": -0.92,
+      "24H %": 37.75,
+      "turnover 24H USDT": 629903
     },
     {
       "coin": "BULLA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.03374,
+      "giá": 0.03504,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 25.19,
-      "turnover 24H USDT": 933522
+      "1H %": 3.85,
+      "24H %": 30.01,
+      "turnover 24H USDT": 1070130
+    },
+    {
+      "coin": "DCTY/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.001216,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 19.1,
+      "24H %": 20.63,
+      "turnover 24H USDT": 396337
+    },
+    {
+      "coin": "KIMCHI/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.001756,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 11.78,
+      "24H %": 32.82,
+      "turnover 24H USDT": 348396
     },
     {
       "coin": "NES/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.2273,
+      "giá": 0.2486,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 29.51,
-      "turnover 24H USDT": 271665
+      "1H %": 9.37,
+      "24H %": 41.65,
+      "turnover 24H USDT": 380929
+    },
+    {
+      "coin": "MSTU/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 9.52,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 5.08,
+      "24H %": 28.99,
+      "turnover 24H USDT": 441330
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
