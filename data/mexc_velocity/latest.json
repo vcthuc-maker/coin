@@ -1,27 +1,27 @@
 {
-  "collected_at_utc": "2026-11-25T03:46:41+00:00",
+  "collected_at_utc": "2026-11-25T04:50:36+00:00",
   "universe_size": 1049,
   "history_intervals": 3,
   "rows": [
     {
       "coin": "OPG/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.1735,
+      "giá": 0.1745,
       "5m %": null,
       "15m %": null,
-      "1H %": 2.12,
-      "24H %": 25.81,
-      "turnover 24H USDT": 1223689
+      "1H %": 0.58,
+      "24H %": 26.54,
+      "turnover 24H USDT": 1435483
     },
     {
-      "coin": "KOR/USDT",
+      "coin": "BIGTIME/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 6.17e-05,
+      "giá": 0.005382,
       "5m %": null,
       "15m %": null,
-      "1H %": 5.65,
-      "24H %": 25.66,
-      "turnover 24H USDT": 324996
+      "1H %": 21.65,
+      "24H %": 32.23,
+      "turnover 24H USDT": 685497
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
