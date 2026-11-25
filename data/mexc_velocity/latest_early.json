@@ -1,24 +1,8 @@
 {
-  "collected_at_utc": "2026-11-25T04:50:36+00:00",
-  "universe_size": 1049,
+  "collected_at_utc": "2026-11-25T05:44:17+00:00",
+  "universe_size": 1048,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "WAXP/USDT",
-      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 0.003547,
-      "nến xanh liên tiếp": 6,
-      "1m %": 0.681,
-      "3m %": 1.141,
-      "15m %": 3.471,
-      "RVOL 1m": 0.11,
-      "tăng từ đáy 30m %": 4.54,
-      "so với đỉnh trước %": -11.15,
-      "turnover 3m USDT": 300.1,
-      "24h %": 8.03,
-      "nến cuối UTC": "2026-11-25 04:49"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
