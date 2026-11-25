@@ -376,3 +376,4 @@
 {"ts": 1795588897, "coin": "BTC/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 59218.2, "entry_snapshot_price": 59157.9, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": {"missing": true}}, "stale": false}
 {"ts": 1795588897, "coin": "SKHYNIXSTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 774.61, "entry_snapshot_price": 772.19, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": {"missing": true}}, "stale": false}
 {"ts": 1795588897, "coin": "CHILLGUY/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.0072, "entry_snapshot_price": 0.00721, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": {"missing": true}}, "stale": false}
+{"ts": 1795598079, "coin": "GOAT/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.01097, "entry_snapshot_price": 0.01092, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
