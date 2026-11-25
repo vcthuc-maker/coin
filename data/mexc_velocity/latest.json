@@ -1,37 +1,37 @@
 {
-  "collected_at_utc": "2026-11-25T13:48:05+00:00",
-  "universe_size": 1053,
+  "collected_at_utc": "2026-11-25T14:48:52+00:00",
+  "universe_size": 1054,
   "history_intervals": 2,
   "rows": [
     {
       "coin": "BIGTIME/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.006579,
+      "giá": 0.006203,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 61.64,
-      "turnover 24H USDT": 7026852
+      "1H %": -5.72,
+      "24H %": 52.4,
+      "turnover 24H USDT": 7609689
     },
     {
       "coin": "KOR/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.0001054,
+      "giá": 8.7e-05,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 114.66,
-      "turnover 24H USDT": 1120062
+      "1H %": -17.46,
+      "24H %": 77.18,
+      "turnover 24H USDT": 1300020
     },
     {
       "coin": "MANTRA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.0023,
+      "giá": 0.002286,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 36.82,
-      "turnover 24H USDT": 1047230
+      "1H %": -0.61,
+      "24H %": 35.99,
+      "turnover 24H USDT": 1187239
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
