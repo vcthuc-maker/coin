@@ -1,18 +1,7 @@
 {
-  "collected_at_utc": "2026-11-26T16:46:19+00:00",
-  "universe_size": 1081,
+  "collected_at_utc": "2026-11-26T17:38:20+00:00",
+  "universe_size": 1080,
   "history_intervals": 3,
-  "rows": [
-    {
-      "coin": "BULLA/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.06271,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 32.24,
-      "24H %": 42.91,
-      "turnover 24H USDT": 9370331
-    }
-  ],
+  "rows": [],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
 }
