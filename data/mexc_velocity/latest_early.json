@@ -1,22 +1,22 @@
 {
-  "collected_at_utc": "2026-11-26T06:31:03+00:00",
-  "universe_size": 1051,
+  "collected_at_utc": "2026-11-26T07:56:05+00:00",
+  "universe_size": 1058,
   "scanned_1m": 24,
   "rows": [
     {
       "coin": "SOXL/USDT",
       "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
-      "giá": 32.75,
+      "giá": 33.19,
       "nến xanh liên tiếp": 0,
-      "1m %": -0.031,
-      "3m %": 0.153,
-      "15m %": 0.399,
-      "RVOL 1m": 3.59,
-      "tăng từ đáy 30m %": 0.86,
-      "so với đỉnh trước %": -1.33,
-      "turnover 3m USDT": 350047.32,
-      "24h %": 27.63,
-      "nến cuối UTC": "2026-11-26 06:30"
+      "1m %": 0.0,
+      "3m %": 0.03,
+      "15m %": 0.242,
+      "RVOL 1m": 0.05,
+      "tăng từ đáy 30m %": 1.04,
+      "so với đỉnh trước %": -0.12,
+      "turnover 3m USDT": 6858.92,
+      "24h %": 29.34,
+      "nến cuối UTC": "2026-11-26 07:55"
     }
   ],
   "errors": [],
