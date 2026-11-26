@@ -1,17 +1,17 @@
 {
-  "collected_at_utc": "2026-11-26T20:26:18+00:00",
-  "universe_size": 1053,
+  "collected_at_utc": "2026-11-26T21:19:41+00:00",
+  "universe_size": 1006,
   "history_intervals": 3,
   "rows": [
     {
       "coin": "KNTQ/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.195,
+      "giá": 0.2118,
       "5m %": null,
       "15m %": null,
-      "1H %": 13.5,
-      "24H %": 20.14,
-      "turnover 24H USDT": 122973
+      "1H %": null,
+      "24H %": 30.49,
+      "turnover 24H USDT": 159170
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
