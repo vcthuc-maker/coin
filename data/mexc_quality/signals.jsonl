@@ -519,4 +519,4 @@
 {"ts": 1795727981, "coin": "SILVER/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 41.81, "entry_snapshot_price": 41.82, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -0.2152}, "stale": false}
 {"ts": 1795727981, "coin": "ETH/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 1704.39, "entry_snapshot_price": 1706.07, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -0.5135}, "stale": false}
 {"ts": 1795727981, "coin": "SOL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 71.48, "entry_snapshot_price": 71.56, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -0.559}, "stale": false}
-{"ts": 1795731432, "coin": "BEAMX/USDT", "trạng thái": "0. MỚI PHÁ NỀN — QUAN SÁT", "signal_close_5m": 0.003328, "entry_snapshot_price": 0.003334, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795731432, "coin": "BEAMX/USDT", "trạng thái": "0. MỚI PHÁ NỀN — QUAN SÁT", "signal_close_5m": 0.003328, "entry_snapshot_price": 0.003334, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": -1.2897}, "stale": false}
