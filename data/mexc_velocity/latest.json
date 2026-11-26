@@ -1,77 +1,17 @@
 {
-  "collected_at_utc": "2026-11-26T15:45:09+00:00",
+  "collected_at_utc": "2026-11-26T16:46:19+00:00",
   "universe_size": 1081,
   "history_intervals": 3,
   "rows": [
     {
-      "coin": "SOXL/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 33.34,
-      "5m %": null,
-      "15m %": null,
-      "1H %": -0.36,
-      "24H %": 29.92,
-      "turnover 24H USDT": 1326989433
-    },
-    {
       "coin": "BULLA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.04742,
+      "giá": 0.06271,
       "5m %": null,
       "15m %": null,
-      "1H %": -7.4,
-      "24H %": 75.95,
-      "turnover 24H USDT": 7984061
-    },
-    {
-      "coin": "SI/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.0077,
-      "5m %": null,
-      "15m %": null,
-      "1H %": -5.94,
-      "24H %": 61.05,
-      "turnover 24H USDT": 1895638
-    },
-    {
-      "coin": "INIT/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.1316,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 0.94,
-      "24H %": 51.47,
-      "turnover 24H USDT": 5368220
-    },
-    {
-      "coin": "SSV/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 2.78,
-      "5m %": null,
-      "15m %": null,
-      "1H %": -2.01,
-      "24H %": 40.97,
-      "turnover 24H USDT": 2763809
-    },
-    {
-      "coin": "NES/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.2603,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 0.58,
-      "24H %": 48.31,
-      "turnover 24H USDT": 1186687
-    },
-    {
-      "coin": "MSTU/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 9.67,
-      "5m %": null,
-      "15m %": null,
-      "1H %": -1.73,
-      "24H %": 31.02,
-      "turnover 24H USDT": 521712
+      "1H %": 32.24,
+      "24H %": 42.91,
+      "turnover 24H USDT": 9370331
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
