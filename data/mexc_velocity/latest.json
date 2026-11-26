@@ -1,67 +1,77 @@
 {
-  "collected_at_utc": "2026-11-25T23:22:58+00:00",
-  "universe_size": 1046,
+  "collected_at_utc": "2026-11-26T00:09:19+00:00",
+  "universe_size": 1007,
   "history_intervals": 3,
   "rows": [
     {
-      "coin": "SI/USDT",
+      "coin": "SOXL/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.007445,
+      "giá": 32.43,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 55.72,
-      "turnover 24H USDT": 812150
+      "24H %": 26.38,
+      "turnover 24H USDT": 1894820041
+    },
+    {
+      "coin": "MANTRA/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.003288,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 25.64,
+      "turnover 24H USDT": 3917873
+    },
+    {
+      "coin": "SI/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.00721,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 50.8,
+      "turnover 24H USDT": 918449
     },
     {
       "coin": "BULLA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.0364,
+      "giá": 0.036,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 35.06,
-      "turnover 24H USDT": 1304634
-    },
-    {
-      "coin": "AT/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.0631,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 29.83,
-      "turnover 24H USDT": 857236
+      "24H %": 33.58,
+      "turnover 24H USDT": 1340995
     },
     {
       "coin": "NES/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.2348,
+      "giá": 0.244,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 33.78,
-      "turnover 24H USDT": 576104
+      "24H %": 39.03,
+      "turnover 24H USDT": 618539
     },
     {
-      "coin": "KIMCHI/USDT",
+      "coin": "AT/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.001693,
+      "giá": 0.0618,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 28.06,
-      "turnover 24H USDT": 331343
+      "24H %": 27.16,
+      "turnover 24H USDT": 886122
     },
     {
       "coin": "MSTU/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 9.45,
+      "giá": 9.77,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 28.04,
-      "turnover 24H USDT": 441939
+      "24H %": 32.38,
+      "turnover 24H USDT": 450951
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
