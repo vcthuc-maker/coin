@@ -1,24 +1,8 @@
 {
-  "collected_at_utc": "2026-11-26T01:20:24+00:00",
-  "universe_size": 1043,
+  "collected_at_utc": "2026-11-26T02:28:21+00:00",
+  "universe_size": 1051,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "SKHYNIXSTOCK/USDT",
-      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
-      "giá": 815.5,
-      "nến xanh liên tiếp": 2,
-      "1m %": 0.211,
-      "3m %": 0.202,
-      "15m %": 0.081,
-      "RVOL 1m": 1.66,
-      "tăng từ đáy 30m %": 0.92,
-      "so với đỉnh trước %": -0.13,
-      "turnover 3m USDT": 1128353.24,
-      "24h %": 11.41,
-      "nến cuối UTC": "2026-11-26 01:19"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }

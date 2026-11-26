@@ -429,3 +429,6 @@
 {"ts": 1795651759, "coin": "BTC/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 60380.3, "entry_snapshot_price": 60482.6, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 0.4833}, "stale": false}
 {"ts": 1795651759, "coin": "RAY/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 1.3253, "entry_snapshot_price": 1.3272, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 1.5295}, "stale": false}
 {"ts": 1795651759, "coin": "ENA/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.10068, "entry_snapshot_price": 0.10127, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 0.4444}, "stale": false}
+{"ts": 1795660101, "coin": "US30/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 50409.0, "entry_snapshot_price": 50393.32, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795660101, "coin": "SPCXSTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 128.79, "entry_snapshot_price": 128.67, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795660101, "coin": "SMCISTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 23.74, "entry_snapshot_price": 23.72, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
