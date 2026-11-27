@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 import json
+import os
 from pathlib import Path
 
 THRESHOLDS = (5, 10)
@@ -98,3 +99,42 @@ def write_events(events, path=EVENTS_PATH):
 def recent_events(events, now, *, lookback=RECENT_SECONDS):
     return sorted([e for e in events if 0 <= now-int(e["ts"]) <= lookback],
                   key=lambda e: int(e["ts"]), reverse=True)
+
+def notify_telegram(new_events):
+    """Optional notification; requires TWO repository GitHub Actions secrets.
+
+    Only first crossings pass here. Secrets never appear in output or files.
+    Returns a non-secret status for workflow logs.
+    """
+    if not new_events:
+        return "No new milestones"
+    token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+    chat_id = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+    if not token or not chat_id:
+        return "Telegram not configured; website events still saved"
+    import httpx
+    sent = 0
+    for e in new_events:
+        message = (
+            f"🔔 MEXC Futures {e['coin']} vừa được ghi nhận vượt "
+            f"+{e['mốc']}% trong 24H\\n"
+            f"Giá lúc quét: {e['giá lần đầu']} USDT\\n"
+            f"Tăng 24H: {e['tăng 24H %']}% | "
+            f"Tăng từ snapshot trước: {e['tăng từ snapshot trước %']}%\\n"
+            f"UTC: {e['lúc UTC']}\\n"
+            "Chỉ là mốc quan sát, KHÔNG phải lệnh mua hay dự báo tăng tiếp."
+        )
+        try:
+            resp = httpx.post(
+                f"https://api.telegram.org/bot{token}/sendMessage",
+                data={"chat_id": chat_id, "text": message},
+                timeout=8,
+            )
+            resp.raise_for_status()
+            if not resp.json().get("ok", False):
+                raise RuntimeError("Telegram returned not ok")
+            sent += 1
+        except Exception as exc:
+            # Never include request URL in exception: it embeds the bot token.
+            return f"Telegram delivery not confirmed ({type(exc).__name__}); sent={sent}"
+    return f"Telegram notifications delivered: {sent}"
