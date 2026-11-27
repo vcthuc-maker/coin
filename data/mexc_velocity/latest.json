@@ -1,27 +1,17 @@
 {
-  "collected_at_utc": "2026-11-27T16:43:19+00:00",
-  "universe_size": 1054,
+  "collected_at_utc": "2026-11-27T17:36:22+00:00",
+  "universe_size": 1053,
   "history_intervals": 3,
   "rows": [
     {
       "coin": "PORTAL/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.03423,
+      "giá": 0.0395,
       "5m %": null,
       "15m %": null,
-      "1H %": 36.0,
-      "24H %": 25.24,
-      "turnover 24H USDT": 6699514
-    },
-    {
-      "coin": "COOKIE/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.008753,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 15.25,
-      "24H %": 15.73,
-      "turnover 24H USDT": 124815
+      "1H %": 15.4,
+      "24H %": 44.52,
+      "turnover 24H USDT": 8174846
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low.",

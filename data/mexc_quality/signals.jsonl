@@ -553,3 +553,7 @@
 {"ts": 1795782824, "coin": "USOIL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 85.38, "entry_snapshot_price": 85.36, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": {"missing": true}}, "stale": false}
 {"ts": 1795782824, "coin": "XRP/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.973, "entry_snapshot_price": 0.9731, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": {"missing": true}}, "stale": false}
 {"ts": 1795787533, "coin": "SOL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 73.42, "entry_snapshot_price": 73.39, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": {"missing": true}}, "stale": false}
+{"ts": 1795800982, "coin": "XAUT/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 3627.75, "entry_snapshot_price": 3628.88, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795800982, "coin": "XRP/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.9474, "entry_snapshot_price": 0.9463, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795800982, "coin": "SILVER/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 43.57, "entry_snapshot_price": 43.55, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795800982, "coin": "OPG/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.1722, "entry_snapshot_price": 0.173, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
