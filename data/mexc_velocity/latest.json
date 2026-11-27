@@ -1,47 +1,47 @@
 {
-  "collected_at_utc": "2026-11-27T14:42:27+00:00",
-  "universe_size": 1049,
-  "history_intervals": 2,
+  "collected_at_utc": "2026-11-27T15:39:51+00:00",
+  "universe_size": 1052,
+  "history_intervals": 3,
   "rows": [
     {
       "coin": "BULLA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.06555,
+      "giá": 0.06647,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 49.38,
-      "turnover 24H USDT": 12850473
+      "1H %": 1.4,
+      "24H %": 51.48,
+      "turnover 24H USDT": 12151169
     },
     {
       "coin": "PORTAL/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.0229,
+      "giá": 0.02517,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 83.34,
-      "turnover 24H USDT": 4029202
+      "1H %": 9.91,
+      "24H %": 101.52,
+      "turnover 24H USDT": 4890987
     },
     {
       "coin": "HAEDAL/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.0233,
+      "giá": 0.0238,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 29.08,
-      "turnover 24H USDT": 2149395
+      "1H %": 2.15,
+      "24H %": 31.85,
+      "turnover 24H USDT": 2184037
     },
     {
-      "coin": "KNTQ/USDT",
+      "coin": "SNXX/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.2062,
+      "giá": 1.831,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 27.04,
-      "turnover 24H USDT": 476883
+      "1H %": 12.33,
+      "24H %": 20.06,
+      "turnover 24H USDT": 20083632
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low.",
