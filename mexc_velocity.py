@@ -128,6 +128,13 @@ def run():
         prior = json.loads(HISTORY.read_text(encoding="utf-8")).get("snapshots", [])
     history = apply_snapshot(prior, now, markets)
     alerts = compute(history)
+    from mexc_threshold import (detect_crossings, merge_events, read_events as read_threshold_events,
+                                write_events as write_threshold_events, recent_events)
+    threshold_candidates = detect_crossings(history, now)
+    threshold_all, threshold_new = merge_events(
+        read_threshold_events(), threshold_candidates, now)
+    write_threshold_events(threshold_all)
+    threshold_recent = recent_events(threshold_all, now)
     # Short-horizon detector only checks a bounded, diverse subset of markets.
     # Keep its failures separate: market-wide snapshot must not be lost.
     early_rows, early_errors, early_count = [], [], 0
@@ -187,7 +194,9 @@ def run():
         "universe_size": len(markets),
         "history_intervals": len(history),
         "rows": [{k: v for k, v in x.items() if k != "_rank"} for x in alerts[:100]],
-        "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
+        "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low.",
+        "threshold_new_count": len(threshold_new),
+        "threshold_recent_count": len(threshold_recent)
     }
     ROOT.mkdir(parents=True, exist_ok=True)
     HISTORY.write_text(json.dumps({"snapshots": history}, ensure_ascii=False, separators=(",", ":")),
@@ -196,6 +205,7 @@ def run():
     EARLY_LATEST.write_text(json.dumps(payload_early, ensure_ascii=False, indent=2), encoding="utf-8")
     QUALITY_LATEST.write_text(json.dumps(quality_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"mexc_velocity: markets={len(markets)} snapshots={len(history)} alerts={len(alerts)}")
+    print(f"24h threshold crossings: new={len(threshold_new)}, last hour={len(threshold_recent)}")
     print(f"early={sum(x['_rank']==0 for x in alerts)} late={sum(x['_rank']==2 for x in alerts)}")
     print(f"1m_scanned={early_count} 1m_alerts={len(early_rows)} 1m_errors={len(early_errors)}")
 
