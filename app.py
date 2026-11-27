@@ -382,7 +382,7 @@ else:
         st.info("Chưa có coin lần đầu vượt +5% hoặc +10% đủ điều kiện trong 60 phút gần nhất.")
 st.caption("Quét tất cả hợp đồng Futures USDT hợp lệ có turnover >=100.000 USDT mỗi lượt; "
            "lịch 5 phút có thể trễ hoặc bỏ qua một lần vượt mốc. "
-           "Không gửi Telegram/push; mới là cảnh báo trên website.")
+           "Telegram chỉ gửi nếu đã thiết lập hai GitHub Actions Secrets; mặc định chỉ hiển thị trên web.")
 st.divider()
 
 st.subheader("🎯 MEXC — LỌC NÉN TRƯỚC PUMP / TRÁNH XẢ 15 PHÚT")
