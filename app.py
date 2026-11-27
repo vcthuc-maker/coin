@@ -355,6 +355,36 @@ if st.button("🔄 QUÉT NGAY", type="primary"):
         st.session_state["status"] = status
         st.session_state["scan_time"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
 
+st.subheader("🔔 MEXC — VỪA VƯỢT +5% / +10% (24H)")
+st.caption("Cảnh báo ghi nhận lần đầu vượt ngưỡng theo ticker 24H của MEXC. "
+           "Chỉ xác nhận việc vượt mốc, KHÔNG dự báo giá sẽ tăng tiếp hay điểm mua an toàn.")
+from mexc_threshold import read_events as read_threshold_events, recent_events as recent_threshold_events
+_recent = recent_threshold_events(read_threshold_events(), int(pd.Timestamp.now(tz="UTC").timestamp()))
+_vel_now = read_latest()
+if _vel_now is None:
+    st.info("Chưa có snapshot MEXC. Cần chạy bộ thu thập ít nhất hai lần cách nhau khoảng 5 phút.")
+else:
+    _vt = pd.to_datetime(_vel_now.get("collected_at_utc"), utc=True, errors="coerce")
+    _age = (pd.Timestamp.now(tz="UTC") - _vt).total_seconds() if pd.notna(_vt) else float("inf")
+    if _age < 0 or _age > MAX_LAG_SECONDS:
+        st.warning("Bộ thu thập MEXC đang chậm / lỗi, các cảnh báo dưới đây là lịch sử.")
+    if _recent:
+        _alert_frame = pd.DataFrame([{
+            "coin": e["coin"], "vừa vượt": f'+{e["mốc"]}% (24H)',
+            "giá phát hiện": e["giá lần đầu"], "tăng 24H lúc báo %": e["tăng 24H %"],
+            "tăng giữa 2 lần quét %": e["tăng từ snapshot trước %"],
+            "thời điểm UTC": e["lúc UTC"],
+            "trạng thái": e["trạng thái"]
+        } for e in _recent])
+        st.dataframe(_alert_frame.head(20), use_container_width=True, hide_index=True)
+        st.caption("Danh sách lưu 60 phút để theo dõi. Không phát lại một ngưỡng của cùng coin trong 24 giờ.")
+    else:
+        st.info("Chưa có coin lần đầu vượt +5% hoặc +10% đủ điều kiện trong 60 phút gần nhất.")
+st.caption("Quét tất cả hợp đồng Futures USDT hợp lệ có turnover >=100.000 USDT mỗi lượt; "
+           "lịch 5 phút có thể trễ hoặc bỏ qua một lần vượt mốc. "
+           "Không gửi Telegram/push; mới là cảnh báo trên website.")
+st.divider()
+
 st.subheader("🎯 MEXC — LỌC NÉN TRƯỚC PUMP / TRÁNH XẢ 15 PHÚT")
 st.caption("Thay đổi cách chọn: ưu tiên nền giá nén và volume nền suy giảm, sau đó mới "
            "xem breakout giữ vùng giá. Cảnh báo xả hoặc tăng nóng không phải lệnh bán.")
