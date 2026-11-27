@@ -226,3 +226,16 @@ Sau khi phát hiện một ứng viên từ nến Min5 đã đóng, Scanner tả
 Giao diện và nút quét vẫn là **MEXC FAST-MOVER — Phát hiện biến động sớm 5–15 phút**. Số lượng kiểm tra mặc định vẫn là 35 hợp đồng, turnover tối thiểu 250.000 USDT. Kết quả có thêm cột tăng 24H từ nến, tăng 48H, tăng từ đáy 48H và lý do phân loại. Việc thêm một lượt tải nến 1H cho mỗi ứng viên có tín hiệu có thể làm quét chậm hơn và tăng lỗi rate limit.
 
 Đây là bộ lọc chống mua đuổi theo quy tắc thủ công, **không phải dự báo pump**, chưa chứng minh làm tăng win rate. Không dùng để tự động mở vị thế. Để đánh giá khách quan cần lưu tín hiệu tại thời điểm phát và theo dõi 15/30/60 phút trong tương lai, tách các trường hợp có đủ dữ liệu với trường hợp bị lọc vì thiếu dữ liệu.
+
+
+## V3.8 — MEXC cảnh báo NGAY KHI GHI NHẬN vượt mốc tăng +5% / +10% trong 24H
+
+Mục tiêu: thay vì tìm coin top +50% đến +60% sau khi pump, ghi nhận lần đầu vượt +5% hoặc +10% từ các snapshot Futures toàn sàn, không phụ thuộc danh sách chỉ 35 hợp đồng Fast-Mover thủ công.
+
+- Mỗi lần chạy lịch GitHub Actions 5 phút lấy ticker toàn sàn USDT Futures có turnover 24H >=100.000 USDT. So sánh 2 snapshot cách nhau khoảng 4–11 phút.
+- +5%: cần snapshot trước dưới +5%, snapshot mới +5% đến +8,5%. +10%: cần snapshot trước dưới +10%, snapshot mới +10% đến +13,5%.
+- Giá thật phải tăng tối thiểu +0,15% so với snapshot trước và không nhảy >5% trong một lần quan sát (tránh nhảy gap rồi gọi là phát hiện sớm). Snapshot đầu tiên đã ở +55% (như BULLA) **không tạo cảnh báo hồi tố**.
+- Lưu sự kiện thật trong data/mexc_velocity/threshold_events.json, hiển thị các cảnh báo 60 phút gần nhất ở đầu Streamlit. Có thời điểm phát hiện UTC và giá phát hiện. Không phát lại cùng coin/cùng ngưỡng trong 24 giờ. Đây là sự kiện **vượt % thay đổi 24H MEXC**, KHÔNG phải lời dự báo pump, không suy ra mức tăng từ đáy cục bộ.
+- Có **Telegram tùy chọn**: cấu hình GitHub repository Settings > Secrets and variables > Actions > New repository secret với tên TELEGRAM_BOT_TOKEN và TELEGRAM_CHAT_ID. KHÔNG viết token/chat ID vào code/config công khai. Sau khi cấu hình, những mốc mới trong lần chạy được gửi qua bot; nếu chưa cấu hình thì chỉ hiển thị web. Hãy tự chạy workflow **MEXC five-minute price acceleration watch** để kiểm tra trước.
+- **Giới hạn:** GitHub Actions lịch mỗi 5 phút có thể trễ, bỏ lần quét, chặn IP hoặc vượt ngưỡng giữa hai lần quan sát. Do đó không thể đảm bảo mọi coin đều được cảnh báo trước +10%, chưa kể độ trễ Telegram. Giá có thể đảo chiều ngay sau cảnh báo. Muốn gần thời gian thực dưới 1 phút cần worker/WebSocket chạy liên tục và lưu event DB.
+- Đây là bộ quét bổ sung, KHÔNG thay bộ Fast-Mover 5–15 phút và KHÔNG biến mức +5% thành lệnh mua. Phải backtest hoặc forward-test cảnh báo +5/+10% với lợi nhuận và mức giảm sau 15/30/60 phút để đánh giá.
