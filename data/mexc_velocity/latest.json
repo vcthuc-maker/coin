@@ -1,7 +1,38 @@
 {
-  "collected_at_utc": "2026-11-27T01:20:53+00:00",
-  "universe_size": 1002,
+  "collected_at_utc": "2026-11-27T02:30:10+00:00",
+  "universe_size": 1050,
   "history_intervals": 2,
-  "rows": [],
+  "rows": [
+    {
+      "coin": "BIGTIME/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.007384,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 33.11,
+      "turnover 24H USDT": 2640994
+    },
+    {
+      "coin": "BULLA/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.0828,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 88.69,
+      "turnover 24H USDT": 14376345
+    },
+    {
+      "coin": "KNTQ/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.219,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 34.93,
+      "turnover 24H USDT": 293744
+    }
+  ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
 }
