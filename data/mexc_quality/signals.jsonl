@@ -534,3 +534,4 @@
 {"ts": 1795754324, "coin": "SOL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 72.91, "entry_snapshot_price": 72.93, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 0.192}, "stale": false}
 {"ts": 1795754324, "coin": "SKHYNIXSTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 824.68, "entry_snapshot_price": 824.85, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 0.3443}, "stale": false}
 {"ts": 1795754324, "coin": "ZEC/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 759.6, "entry_snapshot_price": 758.99, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 0.0619}, "stale": false}
+{"ts": 1795761353, "coin": "SKHYNIXSTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 830.18, "entry_snapshot_price": 828.55, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
