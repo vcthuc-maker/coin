@@ -1,28 +1,7 @@
 {
-  "collected_at_utc": "2026-11-27T00:06:28+00:00",
-  "universe_size": 869,
-  "history_intervals": 3,
-  "rows": [
-    {
-      "coin": "BULLA/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.05792,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 1.86,
-      "24H %": 31.99,
-      "turnover 24H USDT": 13211532
-    },
-    {
-      "coin": "KNTQ/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.206,
-      "5m %": null,
-      "15m %": null,
-      "1H %": 0.44,
-      "24H %": 26.92,
-      "turnover 24H USDT": 226595
-    }
-  ],
+  "collected_at_utc": "2026-11-27T01:20:53+00:00",
+  "universe_size": 1002,
+  "history_intervals": 2,
+  "rows": [],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low."
 }

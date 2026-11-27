@@ -1,24 +1,8 @@
 {
-  "collected_at_utc": "2026-11-27T00:06:28+00:00",
-  "universe_size": 869,
+  "collected_at_utc": "2026-11-27T01:20:53+00:00",
+  "universe_size": 1002,
   "scanned_1m": 24,
-  "rows": [
-    {
-      "coin": "ZEC/USDT",
-      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
-      "giá": 690.0,
-      "nến xanh liên tiếp": 6,
-      "1m %": 0.2,
-      "3m %": 0.717,
-      "15m %": 1.097,
-      "RVOL 1m": 1.64,
-      "tăng từ đáy 30m %": 1.81,
-      "so với đỉnh trước %": 0.42,
-      "turnover 3m USDT": 4372281.53,
-      "24h %": -1.66,
-      "nến cuối UTC": "2026-11-27 00:05"
-    }
-  ],
+  "rows": [],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
