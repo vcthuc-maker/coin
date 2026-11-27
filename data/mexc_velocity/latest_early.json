@@ -1,8 +1,69 @@
 {
-  "collected_at_utc": "2026-11-27T22:09:55+00:00",
-  "universe_size": 961,
+  "collected_at_utc": "2026-11-27T23:02:00+00:00",
+  "universe_size": 914,
   "scanned_1m": 24,
-  "rows": [],
+  "rows": [
+    {
+      "coin": "SOXL/USDT",
+      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
+      "giá": 35.56,
+      "nến xanh liên tiếp": 0,
+      "1m %": -0.084,
+      "3m %": 0.31,
+      "15m %": -0.224,
+      "RVOL 1m": 3.92,
+      "tăng từ đáy 30m %": 0.71,
+      "so với đỉnh trước %": -0.25,
+      "turnover 3m USDT": 184473.3,
+      "24h %": 2.53,
+      "nến cuối UTC": "2026-11-27 23:01"
+    },
+    {
+      "coin": "ZEC/USDT",
+      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
+      "giá": 731.39,
+      "nến xanh liên tiếp": 0,
+      "1m %": -0.164,
+      "3m %": 0.486,
+      "15m %": 0.495,
+      "RVOL 1m": 2.64,
+      "tăng từ đáy 30m %": 1.1,
+      "so với đỉnh trước %": 0.26,
+      "turnover 3m USDT": 3538908.38,
+      "24h %": -1.18,
+      "nến cuối UTC": "2026-11-27 23:01"
+    },
+    {
+      "coin": "SOL/USDT",
+      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
+      "giá": 71.69,
+      "nến xanh liên tiếp": 2,
+      "1m %": 0.028,
+      "3m %": 0.266,
+      "15m %": 0.182,
+      "RVOL 1m": 1.87,
+      "tăng từ đáy 30m %": 0.39,
+      "so với đỉnh trước %": 0.1,
+      "turnover 3m USDT": 461560.97,
+      "24h %": -0.56,
+      "nến cuối UTC": "2026-11-27 23:01"
+    },
+    {
+      "coin": "ETH/USDT",
+      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
+      "giá": 1659.7,
+      "nến xanh liên tiếp": 2,
+      "1m %": 0.013,
+      "3m %": 0.21,
+      "15m %": 0.122,
+      "RVOL 1m": 1.77,
+      "tăng từ đáy 30m %": 0.35,
+      "so với đỉnh trước %": 0.01,
+      "turnover 3m USDT": 1213006.3,
+      "24h %": -0.69,
+      "nến cuối UTC": "2026-11-27 23:01"
+    }
+  ],
   "errors": [],
   "notice": "Đọc nến 1 phút đã đóng; chạy lịch 5 phút có thể bỏ qua đợt pump xảy ra giữa các lần quét."
 }
