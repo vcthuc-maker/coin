@@ -117,11 +117,11 @@ def notify_telegram(new_events):
     for e in new_events:
         message = (
             f"🔔 MEXC Futures {e['coin']} vừa được ghi nhận vượt "
-            f"+{e['mốc']}% trong 24H\\n"
-            f"Giá lúc quét: {e['giá lần đầu']} USDT\\n"
+            f"+{e['mốc']}% trong 24H\n"
+            f"Giá lúc quét: {e['giá lần đầu']} USDT\n"
             f"Tăng 24H: {e['tăng 24H %']}% | "
-            f"Tăng từ snapshot trước: {e['tăng từ snapshot trước %']}%\\n"
-            f"UTC: {e['lúc UTC']}\\n"
+            f"Tăng từ snapshot trước: {e['tăng từ snapshot trước %']}%\n"
+            f"UTC: {e['lúc UTC']}\n"
             "Chỉ là mốc quan sát, KHÔNG phải lệnh mua hay dự báo tăng tiếp."
         )
         try:
