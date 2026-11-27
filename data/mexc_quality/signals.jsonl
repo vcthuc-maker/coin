@@ -577,3 +577,7 @@
 {"ts": 1795817395, "coin": "ETH/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 1659.99, "entry_snapshot_price": 1659.64, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 0.003}, "stale": false}
 {"ts": 1795817395, "coin": "SCR/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.01757, "entry_snapshot_price": 0.01761, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 0.0568}, "stale": false}
 {"ts": 1795817395, "coin": "ACT/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.009619, "entry_snapshot_price": 0.009599, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": 1.2501}, "stale": false}
+{"ts": 1795823468, "coin": "BTC/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 59838.8, "entry_snapshot_price": 59866.1, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795823468, "coin": "ETH/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 1659.53, "entry_snapshot_price": 1660.13, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795823468, "coin": "SOL/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 71.49, "entry_snapshot_price": 71.52, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795823468, "coin": "JCT/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.001566, "entry_snapshot_price": 0.001567, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
