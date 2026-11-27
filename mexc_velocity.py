@@ -135,6 +135,8 @@ def run():
         read_threshold_events(), threshold_candidates, now)
     write_threshold_events(threshold_all)
     threshold_recent = recent_events(threshold_all, now)
+    from mexc_threshold import notify_telegram
+    print(notify_telegram(threshold_new))
     # Short-horizon detector only checks a bounded, diverse subset of markets.
     # Keep its failures separate: market-wide snapshot must not be lost.
     early_rows, early_errors, early_count = [], [], 0
