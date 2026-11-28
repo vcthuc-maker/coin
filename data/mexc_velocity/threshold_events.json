@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "coin": "NES/USDT",
+    "symbol": "NES_USDT",
+    "mốc": 10,
+    "giá lần đầu": 0.2711,
+    "tăng 24H %": 10.42,
+    "tăng từ snapshot trước %": 1.12,
+    "turnover 24H USDT": 295826,
+    "lúc UTC": "2026-11-28T07:56:10+00:00",
+    "ts": 1795852570,
+    "trạng thái": "VỪA VƯỢT MỐC — CẦN KIỂM TRA GIỮ GIÁ"
+  },
+  {
+    "coin": "ACE/USDT",
+    "symbol": "ACE_USDT",
+    "mốc": 10,
+    "giá lần đầu": 0.0792,
+    "tăng 24H %": 11.62,
+    "tăng từ snapshot trước %": 3.99,
+    "turnover 24H USDT": 3784597,
+    "lúc UTC": "2026-11-28T07:56:10+00:00",
+    "ts": 1795852570,
+    "trạng thái": "VỪA VƯỢT MỐC — CẦN KIỂM TRA GIỮ GIÁ"
+  }
+]
