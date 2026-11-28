@@ -1,22 +1,22 @@
 {
-  "collected_at_utc": "2026-11-28T04:39:09+00:00",
-  "universe_size": 1047,
+  "collected_at_utc": "2026-11-28T05:34:59+00:00",
+  "universe_size": 1044,
   "scanned_1m": 24,
   "rows": [
     {
-      "coin": "BTW/USDT",
-      "trạng thái": "DÒNG TIỀN NHÍCH LÊN — THEO DÕI",
-      "giá": 1.1899,
-      "nến xanh liên tiếp": 2,
-      "1m %": 0.278,
-      "3m %": 0.202,
-      "15m %": -0.833,
-      "RVOL 1m": 1.62,
-      "tăng từ đáy 30m %": 1.03,
-      "so với đỉnh trước %": -1.15,
-      "turnover 3m USDT": 26166.28,
-      "24h %": 8.0,
-      "nến cuối UTC": "2026-11-28 04:38"
+      "coin": "VRSKSTOCK/USDT",
+      "trạng thái": "ĐÃ CHẠY XA — KHÔNG MUA ĐUỔI",
+      "giá": 217.54,
+      "nến xanh liên tiếp": 3,
+      "1m %": 8.331,
+      "3m %": 8.423,
+      "15m %": 8.364,
+      "RVOL 1m": 1.0,
+      "tăng từ đáy 30m %": 8.85,
+      "so với đỉnh trước %": 8.13,
+      "turnover 3m USDT": 188.66,
+      "24h %": 6.45,
+      "nến cuối UTC": "2026-11-28 05:33"
     }
   ],
   "errors": [],
