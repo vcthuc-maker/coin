@@ -1,27 +1,37 @@
 {
-  "collected_at_utc": "2026-11-28T02:44:19+00:00",
-  "universe_size": 1050,
+  "collected_at_utc": "2026-11-28T03:38:00+00:00",
+  "universe_size": 1046,
   "history_intervals": 3,
   "rows": [
     {
-      "coin": "PORTAL/USDT",
+      "coin": "EVAA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.03884,
+      "giá": 1.432,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 42.11,
-      "turnover 24H USDT": 14581062
+      "1H %": 17.1,
+      "24H %": 9.26,
+      "turnover 24H USDT": 23553829
+    },
+    {
+      "coin": "MONTRA/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.02076,
+      "5m %": null,
+      "15m %": null,
+      "1H %": 6.74,
+      "24H %": 30.4,
+      "turnover 24H USDT": 200197
     },
     {
       "coin": "FIONA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.001312,
+      "giá": 0.001292,
       "5m %": null,
       "15m %": null,
-      "1H %": null,
-      "24H %": 29.0,
-      "turnover 24H USDT": 176880
+      "1H %": -1.52,
+      "24H %": 27.04,
+      "turnover 24H USDT": 176485
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low.",
