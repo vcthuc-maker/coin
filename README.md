@@ -239,3 +239,17 @@ Mục tiêu: thay vì tìm coin top +50% đến +60% sau khi pump, ghi nhận l�
 - Có **Telegram tùy chọn**: cấu hình GitHub repository Settings > Secrets and variables > Actions > New repository secret với tên TELEGRAM_BOT_TOKEN và TELEGRAM_CHAT_ID. KHÔNG viết token/chat ID vào code/config công khai. Sau khi cấu hình, những mốc mới trong lần chạy được gửi qua bot; nếu chưa cấu hình thì chỉ hiển thị web. Hãy tự chạy workflow **MEXC five-minute price acceleration watch** để kiểm tra trước.
 - **Giới hạn:** GitHub Actions lịch mỗi 5 phút có thể trễ, bỏ lần quét, chặn IP hoặc vượt ngưỡng giữa hai lần quan sát. Do đó không thể đảm bảo mọi coin đều được cảnh báo trước +10%, chưa kể độ trễ Telegram. Giá có thể đảo chiều ngay sau cảnh báo. Muốn gần thời gian thực dưới 1 phút cần worker/WebSocket chạy liên tục và lưu event DB.
 - Đây là bộ quét bổ sung, KHÔNG thay bộ Fast-Mover 5–15 phút và KHÔNG biến mức +5% thành lệnh mua. Phải backtest hoặc forward-test cảnh báo +5/+10% với lợi nhuận và mức giảm sau 15/30/60 phút để đánh giá.
+
+
+## V3.9 — MEXC Radar toàn thị trường (theo dõi biến động quan sát được)
+
+- **Không cần quét thủ công 35 hợp đồng:** chương trình mới `mexc_radar.py` sử dụng một cặp API Futures toàn thị trường MEXC (metadata và ticker) cho mỗi lần cập nhật, lọc hợp đồng USDT đang giao dịch với turnover 24H >=100.000 USDT.
+- **MỚI TĂNG 1–3% (5M):** so sánh giá ticker hiện tại với giá ticker thực gần 5 phút trước (sai số thời gian cho phép tối đa 3 phút), chỉ báo nếu % 24H ở snapshot trước **<5%** và ở snapshot mới **<8%**. Đây là phát hiện đà tăng ban đầu, không đo được RVOL hay không chứng minh đó là tiền mua thực.
+- **+5% và +10%:** chỉ khi % tăng 24H MEXC lần đầu vượt mốc giữa hai lần quan sát còn gần nhau. Khi đã vượt xa mốc (ví dụ từ +4% lên +15%) hệ thống đánh dấu **VƯỢT MỐC NHƯNG BÁO TRỄ**, KHÔNG mô tả là tín hiệu sớm.
+- Lưu `data/mexc_radar/history.json`, `events.json` và `latest.json`; bản web hiển thị sự kiện mới được lưu trong một giờ. Cảnh báo trùng cùng coin và loại tín hiệu giãn cách 45 phút.
+- **GitHub Actions:** workflow **MEXC five-minute price acceleration watch** sẽ chạy radar trước, sau đó mới thử các bộ quét chuyên sâu cũ. Nếu bước quét phụ bị lỗi thì vẫn cố lưu snapshot Radar. Lưu ý cron mỗi 5 phút **không được GitHub bảo đảm**, thực tế có thể trễ rất lâu; không gọi đó là real-time.
+- **Chạy trên máy Windows / server đang bật:** trong thư mục repo với các thư viện đã cài, gõ `py mexc_radar.py --loop --interval 30` (hoặc `python mexc_radar.py --loop --interval 30`). Lệnh này chỉ chạy khi terminal và máy vẫn hoạt động; nó lưu dữ liệu **trên chính máy chạy**. Website Streamlit deploy từ GitHub **không tự thấy dữ liệu lưu trên máy đó**; cần cơ chế đồng bộ dữ liệu riêng nếu muốn hiện trên website từ nhiều thiết bị.
+- Có thể cung cấp `TELEGRAM_BOT_TOKEN` và `TELEGRAM_CHAT_ID` làm biến môi trường **bí mật** để bot gửi cảnh báo vừa phát (mặc định chỉ lưu dữ liệu). Không gửi token lên GitHub công khai. Không bảo đảm tín hiệu trước khi coin pump; không tự đặt lệnh.
+- Kết quả 15/30/60 phút và backtest độc lập là yêu cầu trước khi quyết định sử dụng thực tế. Scanner báo giá tăng không phải xác suất pump.
+
+**Lỗi chạy:** mở Actions > MEXC five-minute price acceleration watch > job scan để xem log. Bước Radar mới có thể thất bại do GitHub runner IP/rate limit/API; bước quét legacy được cấu hình không ngăn lưu Radar nhưng không chữa được IP/API bị chặn. Nên dùng worker chạy trên server ổn định, monitor lỗi và tự động khởi động lại nếu cần.
