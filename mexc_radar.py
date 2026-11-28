@@ -86,7 +86,7 @@ def detect_radar(history, events, now):
         signals = []
         # Early acceleration is only eligible when already-not-pumped (24h <10).
         # Volume acceleration is not inferred from 24h turnover; price-only research flag.
-        if change5 is not None and 1.0 <= change5 <= 3.0 and -5 <= ch_before < 10 and ch24 < 12 and delta > 0:
+        if change5 is not None and 1.0 <= change5 <= 3.0 and -5 <= ch_before < 5 and ch24 < 8 and delta > 0:
             signals.append(("EARLY", "MỚI TĂNG 1–3% (5M) — THEO DÕI"))
         for threshold in (5, 10):
             if ch_before < threshold <= ch24 and delta > 0:
