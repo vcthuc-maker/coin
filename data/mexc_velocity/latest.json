@@ -1,27 +1,27 @@
 {
-  "collected_at_utc": "2026-11-28T01:57:26+00:00",
-  "universe_size": 1052,
+  "collected_at_utc": "2026-11-28T02:44:19+00:00",
+  "universe_size": 1050,
   "history_intervals": 3,
   "rows": [
     {
       "coin": "PORTAL/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.04007,
+      "giá": 0.03884,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 46.61,
-      "turnover 24H USDT": 13178460
+      "24H %": 42.11,
+      "turnover 24H USDT": 14581062
     },
     {
       "coin": "FIONA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.001306,
+      "giá": 0.001312,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 28.41,
-      "turnover 24H USDT": 176703
+      "24H %": 29.0,
+      "turnover 24H USDT": 176880
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low.",
