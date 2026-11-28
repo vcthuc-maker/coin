@@ -57,7 +57,7 @@ def detect_radar(history, events, now):
     if len(history) < 2:
         return [], []
     previous, latest = history[-2:]
-    if not (0 < now - latest["ts"] < 180):
+    if not (0 <= now - latest["ts"] < 180):
         return [], []
     gap = latest["ts"] - previous["ts"]
     # Late GitHub runs may skip crossing; never claim timing precision.
