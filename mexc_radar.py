@@ -105,6 +105,36 @@ def detect_radar(history, events, now):
             new_events.append({**base, "kind": key, "status": status})
     return new_events, warnings
 
+def notify_new_events(events):
+    if not events:
+        return "No new radar milestones"
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+    chat = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+    if not token or not chat:
+        return "Telegram not configured; radar saved"
+    import httpx
+    sent = 0
+    for event in events:
+        scope = ("1–3% trong 5 phút" if event["kind"] == "EARLY" else
+                 f"+{event['kind'][1:]}% trong 24 giờ")
+        message = (f"📡 MEXC Futures {event['coin']}: {scope} vừa được ghi nhận\n"
+                   f"Giá: {event['price']} USDT | lúc {event['utc']} UTC\n"
+                   f"Biến động 24H: {event['change24_pct']}%\n"
+                   "Chỉ là quan sát, KHÔNG xác nhận đợt pump hay khuyến nghị mua.")
+        try:
+            resp = httpx.post(
+                f"https://api.telegram.org/bot{token}/sendMessage",
+                data={"chat_id":chat,"text":message}, timeout=6)
+            resp.raise_for_status()
+            if not resp.json().get("ok",False):
+                return f"Telegram API did not confirm; sent={sent}"
+            sent += 1
+        except Exception as exc:
+            # Never print URL (contains bot secret).
+            return f"Telegram failed ({type(exc).__name__}); sent={sent}"
+    return f"Radar Telegram alerts delivered: {sent}"
+
+
 def once(*, now=None):
     now = int(time.time()) if now is None else int(now)
     markets = parse_tickers(get_json("/api/v1/contract/detail"),
@@ -135,14 +165,8 @@ def once(*, now=None):
         "source":"MEXC Futures all-market ticker; REST snapshot observations",
         "warning":"Lịch GitHub Actions không bảo đảm 5 phút. Cảnh báo không phải khuyến nghị mua.",
     })
-    # Optional push only for genuinely new, deduplicated observations.
-    from mexc_threshold import notify_telegram
-    telegram = [{
-        "coin":e["coin"], "mốc": ("1–3" if e["kind"] == "EARLY" else e["kind"][1:]),
-        "giá lần đầu":e["price"], "tăng 24H %":e["change24_pct"],
-        "tăng từ snapshot trước %":e["change_prev_pct"],"lúc UTC":e["utc"]
-    } for e in new]
-    print(notify_telegram(telegram))
+    # Optional Telegram push; explicitly state whether the trigger is 5m or 24h.
+    print(notify_new_events(new))
     print(f"radar markets={len(markets)} snapshots={len(snapshots)} new={len(new)} delayed={len(missed)}")
     return new
 
