@@ -355,6 +355,43 @@ if st.button("🔄 QUÉT NGAY", type="primary"):
         st.session_state["status"] = status
         st.session_state["scan_time"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
 
+st.subheader("📡 MEXC RADAR — TĂNG TỐC 1–3% / MỐC +5% +10%")
+st.caption("Toàn thị trường Futures USDT đủ thanh khoản; chỉ số giá và mức tăng được "
+           "ghi nhận giữa các snapshot thực, không phải xác suất pump. "
+           "Cảnh báo 1–3% được đo trong 5 phút; +5/+10% là biến động 24H của MEXC.")
+from mexc_radar import LATEST as RADAR_LATEST
+import json as _radar_json
+try:
+    _radar = _radar_json.loads(RADAR_LATEST.read_text(encoding="utf-8"))
+except (OSError, ValueError):
+    _radar = None
+if _radar is None:
+    st.info("Chưa có Radar snapshot. Cần ít nhất hai lần thu thập để phát hiện biến động.")
+else:
+    _rtime = pd.to_datetime(_radar.get("collected_at_utc"), utc=True, errors="coerce")
+    _r_age = ((pd.Timestamp.now(tz="UTC") - _rtime).total_seconds()
+              if pd.notna(_rtime) else float("inf"))
+    st.caption(f"Dữ liệu từ {_radar.get('universe', 0)} hợp đồng lúc "
+               f"{str(_rtime)[:19]} UTC; {_radar.get('snapshots', 0)} snapshot đã lưu.")
+    if _r_age < 0 or _r_age > 660:
+        st.error("Radar chưa cập nhật trong 11 phút. Không coi dữ liệu là cảnh báo hiện hành.")
+    _radar_events = pd.DataFrame(_radar.get("recent", []))
+    if _radar_events.empty:
+        st.info("Chưa ghi nhận coin mới tăng 1–3% trong 5 phút hoặc lần đầu vượt +5/+10% (24H).")
+    else:
+        _cols = ["coin", "status", "price", "change5_pct", "change24_pct",
+                 "change_prev_pct", "utc"]
+        st.dataframe(_radar_events[[x for x in _cols if x in _radar_events.columns]].head(30),
+                     hide_index=True, use_container_width=True)
+    _late = pd.DataFrame(_radar.get("late_crossings", []))
+    if not _late.empty:
+        with st.expander(f"Đã vượt mốc nhưng dữ liệu đến trễ ({len(_late)})"):
+            st.dataframe(_late.head(30), hide_index=True, use_container_width=True)
+st.caption("GitHub Actions không bảo đảm chạy mỗi 5 phút. Để quan sát gần liên tục, "
+           "chạy mexc_radar.py --loop trên máy chủ/máy tính luôn bật; "
+           "bản web triển khai từ GitHub không tự đọc được file lưu riêng trên máy đó.")
+st.divider()
+
 st.subheader("🔔 MEXC — VỪA VƯỢT +5% / +10% (24H)")
 st.caption("Cảnh báo ghi nhận lần đầu vượt ngưỡng theo ticker 24H của MEXC. "
            "Chỉ xác nhận việc vượt mốc, KHÔNG dự báo giá sẽ tăng tiếp hay điểm mua an toàn.")
