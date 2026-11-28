@@ -608,3 +608,6 @@
 {"ts": 1795858143, "coin": "XRP/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.9405, "entry_snapshot_price": 0.9409, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": {"missing": true}}, "stale": false}
 {"ts": 1795861199, "coin": "BTC/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 59412.1, "entry_snapshot_price": 59378.1, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": {"missing": true}}, "stale": false}
 {"ts": 1795861199, "coin": "ACT/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.009637, "entry_snapshot_price": 0.00958, "metrics": {"15": {"missing": true}, "30": {"missing": true}, "60": {"missing": true}}, "stale": false}
+{"ts": 1795869617, "coin": "MUSTOCK/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 644.43, "entry_snapshot_price": 644.43, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795869617, "coin": "ACU/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.10321, "entry_snapshot_price": 0.10319, "metrics": {"15": null, "30": null, "60": null}, "stale": false}
+{"ts": 1795869617, "coin": "CLO/USDT", "trạng thái": "1. NÉN GIÁ — CHỜ DÒNG TIỀN", "signal_close_5m": 0.0307, "entry_snapshot_price": 0.0307, "metrics": {"15": null, "30": null, "60": null}, "stale": false}

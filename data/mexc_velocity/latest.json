@@ -1,67 +1,57 @@
 {
-  "collected_at_utc": "2026-11-28T11:53:29+00:00",
-  "universe_size": 1057,
+  "collected_at_utc": "2026-11-28T12:40:17+00:00",
+  "universe_size": 1060,
   "history_intervals": 3,
   "rows": [
     {
       "coin": "BTW/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 1.53,
+      "giá": 1.5162,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 38.9,
-      "turnover 24H USDT": 17920761
+      "24H %": 37.64,
+      "turnover 24H USDT": 18894933
     },
     {
       "coin": "EVAA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 2.0748,
+      "giá": 2.111,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 58.3,
-      "turnover 24H USDT": 41754559
-    },
-    {
-      "coin": "TAG/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.000625,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 38.7,
-      "turnover 24H USDT": 2910755
+      "24H %": 61.07,
+      "turnover 24H USDT": 42307046
     },
     {
       "coin": "ACE/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.09,
+      "giá": 0.08922,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 26.84,
-      "turnover 24H USDT": 4995485
+      "24H %": 25.75,
+      "turnover 24H USDT": 5492889
     },
     {
       "coin": "IDOL/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.020617,
+      "giá": 0.020133,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 37.8,
-      "turnover 24H USDT": 1422615
+      "24H %": 34.56,
+      "turnover 24H USDT": 1438651
     },
     {
       "coin": "FIONA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.001643,
+      "giá": 0.001476,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 61.55,
-      "turnover 24H USDT": 224375
+      "24H %": 45.13,
+      "turnover 24H USDT": 230256
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low.",
