@@ -1,67 +1,67 @@
 {
-  "collected_at_utc": "2026-11-28T14:28:57+00:00",
-  "universe_size": 1043,
+  "collected_at_utc": "2026-11-28T15:16:13+00:00",
+  "universe_size": 952,
   "history_intervals": 3,
   "rows": [
     {
       "coin": "BTW/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 1.4725,
+      "giá": 1.4574,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 33.68,
-      "turnover 24H USDT": 19612341
+      "24H %": 32.31,
+      "turnover 24H USDT": 19288446
     },
     {
       "coin": "EVAA/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 2.1047,
+      "giá": 2.0866,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 60.59,
-      "turnover 24H USDT": 41966443
-    },
-    {
-      "coin": "ACE/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.09026,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 27.21,
-      "turnover 24H USDT": 6741309
-    },
-    {
-      "coin": "IDOL/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.0189,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 26.32,
-      "turnover 24H USDT": 1646329
-    },
-    {
-      "coin": "FIONA/USDT",
-      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 0.001456,
-      "5m %": null,
-      "15m %": null,
-      "1H %": null,
-      "24H %": 43.16,
-      "turnover 24H USDT": 242737
+      "24H %": 59.2,
+      "turnover 24H USDT": 38463950
     },
     {
       "coin": "O/USDT",
       "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
-      "giá": 1.0435,
+      "giá": 1.2139,
       "5m %": null,
       "15m %": null,
       "1H %": null,
-      "24H %": 54.86,
-      "turnover 24H USDT": 1085258
+      "24H %": 80.15,
+      "turnover 24H USDT": 2461688
+    },
+    {
+      "coin": "IDOL/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.01905,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 27.33,
+      "turnover 24H USDT": 1707931
+    },
+    {
+      "coin": "FIONA/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.00132,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 29.79,
+      "turnover 24H USDT": 244601
+    },
+    {
+      "coin": "LAB/USDT",
+      "trạng thái": "ĐÃ TĂNG NÓNG — KHÔNG MUA ĐUỔI",
+      "giá": 0.04061,
+      "5m %": null,
+      "15m %": null,
+      "1H %": null,
+      "24H %": 31.85,
+      "turnover 24H USDT": 1618136
     }
   ],
   "coverage_notice": "5m/15m/1H values are snapshot-to-snapshot changes, not candle high/low.",
